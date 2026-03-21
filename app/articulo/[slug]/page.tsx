@@ -2,6 +2,7 @@ export const dynamic = 'force-static'
 export const revalidate = false
 
 import { marked } from 'marked'
+import AdUnit from '@/components/AdUnit'
 import { getAllArticles, getArticleBySlug, getArticlesByNivel } from '@/lib/articles'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -215,8 +216,14 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
 
+            {/* Ad — rectangle after content */}
+            <div className="mt-10">
+              <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
+              <AdUnit slot="1234567890" format="rectangle" />
+            </div>
+
             {/* Share buttons */}
-            <div className="mt-10 pt-8 border-t border-border">
+            <div className="mt-8 pt-8 border-t border-border">
               <ShareButtons title={article.title} url={articleUrl} />
             </div>
 
@@ -247,6 +254,12 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 ) : <div />}
               </nav>
             )}
+
+            {/* Ad — horizontal before related articles */}
+            <div className="mt-10">
+              <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
+              <AdUnit slot="0987654321" format="horizontal" />
+            </div>
 
             {/* More articles grid — mobile TOC + related */}
             {moreArticles.length > 0 && (

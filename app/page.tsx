@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import AdUnit from '@/components/AdUnit'
 import Hero from '@/components/Hero'
 import LevelBar from '@/components/LevelBar'
 import FeaturedArticle from '@/components/FeaturedArticle'
@@ -84,6 +85,13 @@ export default function HomePage() {
       <LevelBar />
       <FeaturedArticle featured={featured} side={sideCards} />
       <ProblemBand />
+
+      {/* Ad — horizontal between ProblemBand and recent articles */}
+      <div className="max-w-wrap mx-auto px-7 py-6">
+        <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
+        <AdUnit slot="5544332211" format="horizontal" />
+      </div>
+
       <section className="py-[52px]">
         <div className="max-w-wrap mx-auto px-7">
           <div className="flex items-baseline justify-between mb-6">

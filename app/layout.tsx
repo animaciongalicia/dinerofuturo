@@ -23,7 +23,8 @@ const instrumentSans = Instrument_Sans({
 const SITE_NAME = 'Dinero Futuro'
 const SITE_DESC =
   'Educación financiera práctica para personas normales. Artículos sin jerga, sin humo y sin venderte nada que no te sirva.'
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+const GA_ID       = process.env.NEXT_PUBLIC_GA_ID
+const ADSENSE_ID  = process.env.NEXT_PUBLIC_ADSENSE_ID
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
@@ -77,6 +78,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
       </body>
+
+      {/* Google AdSense — solo carga si NEXT_PUBLIC_ADSENSE_ID está definida */}
+      {ADSENSE_ID && (
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+      )}
 
       {/* Google Analytics 4 — solo carga si NEXT_PUBLIC_GA_ID está definida */}
       {GA_ID && (

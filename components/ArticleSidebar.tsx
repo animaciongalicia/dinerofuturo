@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import type { Article } from '@/lib/types'
 import type { Heading } from '@/lib/utils'
+import AdUnit from '@/components/AdUnit'
 
 // ── Mini newsletter CTA ────────────────────────────────────────────────────────
 function MiniNewsletter() {
@@ -117,6 +118,11 @@ export default function ArticleSidebar({ headings, related }: Props) {
           </div>
         )}
         <MiniNewsletter />
+        {/* Ad — rectangle in sidebar (desktop only, max 1) */}
+        <div>
+          <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
+          <AdUnit slot="1122334455" format="rectangle" />
+        </div>
         {related.length > 0 && (
           <RelatedArticles articles={related} />
         )}
