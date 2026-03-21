@@ -1,0 +1,36 @@
+name: Artículo diario
+
+on:
+  schedule:
+    # Cada día a las 07:00 UTC (09:00 España, 02:00 CDMX)
+    - cron: '0 7 * * *'
+  # También se puede lanzar a mano desde Actions → Run workflow
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Generar y publicar artículo
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # El token con permiso de escritura permite el git push final
+          token: ${{ secrets.GH_TOKEN }}
+          # Traemos todo el historial para que gray-matter pueda leer los archivos
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias del script
+        # Solo instalamos lo que necesita el script — no el proyecto completo
+        run: npm install @anthropic-ai/sdk gray-matter
+
+      - name: Generar artículo con Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-article.mjs
