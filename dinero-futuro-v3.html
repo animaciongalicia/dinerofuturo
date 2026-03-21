@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinero Futuro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0F1B12;
+  --ink2:#2D3F32;
+  --ink3:#5C7060;
+  --forest:#1A3D2B;
+  --moss:#2D6A4F;
+  --sage:#52B788;
+  --mint:#95D5B2;
+  --mist:#D8F3DC;
+  --cream:#F6FAF0;
+  --paper:#FAFCF7;
+  --white:#FFFFFF;
+  --gold:#B8963E;
+  --gold-light:#F5EDD0;
+  --border:#DDE8D8;
+  --border2:#EBF2E7;
+  --shadow:0 2px 16px rgba(15,27,18,.07);
+  --shadow-lg:0 8px 40px rgba(15,27,18,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+.fade-up{animation:fadeUp .6s ease both}
+.fade-up-2{animation:fadeUp .6s .12s ease both}
+.fade-up-3{animation:fadeUp .6s .24s ease both}
+.fade-up-4{animation:fadeUp .6s .36s ease both}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,252,247,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-wrap{max-width:1320px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:0;height:58px}
+.nav-logo{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:900;color:var(--forest);letter-spacing:-.5px;margin-right:32px;white-space:nowrap;flex-shrink:0}
+.nav-logo em{font-style:italic;color:var(--gold)}
+.nav-links{display:flex;gap:0;overflow-x:auto;flex:1;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--ink3);padding:0 13px;height:58px;display:flex;align-items:center;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover,.nav-links a.on{color:var(--moss);border-bottom-color:var(--sage)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:16px}
+.nav-search{display:flex;align-items:center;gap:7px;background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:7px 13px;font-size:13px;color:var(--ink3);cursor:text;width:190px;transition:border-color .2s}
+.nav-search:hover{border-color:var(--sage)}
+.nav-cta{background:var(--forest);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--moss)}
+
+/* ── HERO ── */
+.hero{background:var(--forest);overflow:hidden;position:relative}
+.hero-texture{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(82,183,136,.15) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(184,150,62,.1) 0%,transparent 40%);pointer-events:none}
+.hero-wrap{max-width:1320px;margin:0 auto;padding:60px 28px 0;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:520px}
+
+.hero-left{padding-bottom:60px;display:flex;flex-direction:column;justify-content:center}
+.hero-kicker{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hero-kicker::before{content:'';display:block;width:24px;height:1px;background:var(--sage)}
+.hero-h1{font-family:'Fraunces',Georgia,serif;font-size:54px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.5px;margin-bottom:16px}
+.hero-h1 em{font-style:italic;font-weight:700;color:var(--mint)}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:28px;max-width:440px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-gold{background:var(--gold);color:var(--forest);border:none;padding:14px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:filter .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-gold:hover{filter:brightness(1.1)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.22);padding:14px 26px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:background .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+.hero-stats{display:flex;gap:32px}
+.hs{border-left:1px solid rgba(255,255,255,.12);padding-left:20px}
+.hs-num{font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:#fff;line-height:1}
+.hs-label{font-size:11px;color:rgba(255,255,255,.45);margin-top:3px;letter-spacing:.02em}
+
+/* HERO RIGHT - problem cards */
+.hero-right{padding:40px 0 0 48px;display:flex;flex-direction:column;justify-content:flex-start;gap:10px;position:relative}
+.hero-right::before{content:'¿Cuál es tu situación?';font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:4px}
+.hp{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.hp::after{content:'→';position:absolute;right:16px;font-size:14px;color:var(--sage);opacity:0;transform:translateX(-6px);transition:all .2s}
+.hp:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.2);padding-right:38px}
+.hp:hover::after{opacity:1;transform:translateX(0)}
+.hp-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.hp-title{font-size:13.5px;font-weight:600;color:#fff;line-height:1.3}
+.hp-sub{font-size:11.5px;color:var(--sage);margin-top:2px;font-weight:500}
+
+/* ── LEVEL PILLS ── */
+.level-bar{background:var(--cream);border-bottom:1px solid var(--border);padding:12px 0;overflow-x:auto}
+.level-inner{max-width:1320px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.l-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--ink3);margin-right:6px}
+.lp{padding:6px 15px;border-radius:99px;font-size:12.5px;font-weight:500;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.lp:hover{transform:translateY(-1px)}
+.lp.on{font-weight:700;border-color:currentColor}
+.lp-all{background:#E8ECE5;color:var(--ink2)}.lp-all.on{border-color:var(--ink2)}
+.lp-0{background:#E8F4FD;color:#1A6FA8}
+.lp-1{background:var(--mist);color:var(--forest)}
+.lp-2{background:#FEE2E2;color:#991B1B}
+.lp-3{background:var(--gold-light);color:#7C5C10}
+.lp-sep{width:1px;height:18px;background:var(--border);margin:0 4px;flex-shrink:0}
+
+/* ── WRAP ── */
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+
+/* ── SECTION HEADERS ── */
+.sec-hd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
+.sec-h2{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.3px}
+.sec-link{font-size:13px;color:var(--moss);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px}
+.sec-link:hover{color:var(--forest)}
+
+/* ── SECTION: HERO ARTICLE + SIDE ── */
+.s-main{padding:44px 0 0}
+.main-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;margin-bottom:56px}
+
+/* BIG FEATURED */
+.big-feat{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:box-shadow .2s}
+.big-feat:hover{box-shadow:var(--shadow-lg)}
+.bf-img{height:280px;position:relative;overflow:hidden;background:linear-gradient(135deg,#D8F3DC 0%,#B7E4C7 50%,#95D5B2 100%);display:flex;align-items:center;justify-content:center}
+.bf-emoji{font-size:80px;opacity:.7}
+.bf-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,27,18,.55) 0%,transparent 60%)}
+.bf-cats{position:absolute;top:18px;left:18px;display:flex;gap:6px}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+.badge-1{background:rgba(255,255,255,.9);color:var(--forest)}
+.badge-new{background:var(--gold);color:var(--forest)}
+.badge-0{background:rgba(26,111,168,.85);color:#fff;backdrop-filter:blur(4px)}
+.badge-2{background:rgba(153,27,27,.85);color:#fff;backdrop-filter:blur(4px)}
+.badge-3{background:rgba(124,92,16,.85);color:#fff;backdrop-filter:blur(4px)}
+.badge-cmp{background:rgba(91,33,182,.85);color:#fff;backdrop-filter:blur(4px)}
+.badge-sol{background:rgba(21,128,61,.85);color:#fff;backdrop-filter:blur(4px)}
+.badge-tool{background:rgba(6,78,59,.85);color:#fff;backdrop-filter:blur(4px)}
+.bf-body{padding:24px 26px}
+.solve-strip{background:var(--cream);border-left:3px solid var(--sage);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;color:var(--forest)}
+.solve-strip strong{font-weight:700}
+.bf-title{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:10px;letter-spacing:-.3px}
+.bf-excerpt{font-size:14.5px;color:var(--ink3);line-height:1.65;margin-bottom:16px}
+.bf-foot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--ink3)}
+.read-pill{display:inline-flex;align-items:center;gap:5px;background:var(--cream);border:1px solid var(--border);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:500;color:var(--ink3)}
+
+/* SIDE STACK */
+.side-stack{display:flex;flex-direction:column;gap:14px}
+.side-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .2s;display:flex;flex-direction:column}
+.side-card:hover{box-shadow:var(--shadow);border-color:var(--mint)}
+.sc-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:40px;flex-shrink:0}
+.sc-i1{background:linear-gradient(135deg,#E8F4FD,#BFDBFE)}
+.sc-i2{background:linear-gradient(135deg,#FEF9C3,#FDE68A)}
+.sc-i3{background:linear-gradient(135deg,#FCE7F3,#FBCFE8)}
+.sc-body{padding:14px 16px;flex:1}
+.sc-cats{display:flex;gap:5px;margin-bottom:7px;flex-wrap:wrap}
+.sc-title{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:4px}
+.sc-excerpt{font-size:12px;color:var(--ink3);line-height:1.45}
+
+/* ── SECTION: PROBLEM SOLVER BAND ── */
+.problem-band{background:var(--forest);padding:52px 0;margin-bottom:0}
+.pb-inner{max-width:1320px;margin:0 auto;padding:0 28px}
+.pb-hd{text-align:center;margin-bottom:36px}
+.pb-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.pb-h2{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:#fff;letter-spacing:-.3px}
+.pb-sub{font-size:15px;color:rgba(255,255,255,.55);margin-top:6px}
+.pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pb-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.pb-card:hover{background:rgba(255,255,255,.13);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.pb-ico{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.pb-problem{font-size:15px;font-weight:600;color:#fff;line-height:1.35;margin-bottom:6px}
+.pb-arrow{font-size:12.5px;color:var(--sage);font-weight:600}
+.pb-arrow-icon{position:absolute;bottom:18px;right:18px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--sage);transition:all .2s}
+.pb-card:hover .pb-arrow-icon{background:var(--sage);color:var(--forest)}
+
+/* ── SECTION: RECENT — masonry-style mixed grid ── */
+.s-recent{padding:52px 0}
+.mixed-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:18px}
+
+.art{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .22s;display:flex;flex-direction:column}
+.art:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--mint)}
+
+/* SLOTS */
+.art-wide{grid-column:span 8}
+.art-side{grid-column:span 4}
+.art-third{grid-column:span 4}
+.art-half{grid-column:span 6}
+
+.art-img{display:flex;align-items:center;justify-content:center;font-size:44px;flex-shrink:0}
+.art-img-lg{height:200px}
+.art-img-md{height:150px}
+.art-img-sm{height:110px}
+
+.ai-1{background:linear-gradient(135deg,#ECFDF5,#A7F3D0)}
+.ai-2{background:linear-gradient(135deg,#EFF6FF,#BFDBFE)}
+.ai-3{background:linear-gradient(135deg,#FFF7ED,#FED7AA)}
+.ai-4{background:linear-gradient(135deg,#F5F3FF,#DDD6FE)}
+.ai-5{background:linear-gradient(135deg,#FFF1F2,#FECDD3)}
+.ai-6{background:linear-gradient(135deg,#ECFDF5,#D1FAE5)}
+.ai-7{background:linear-gradient(135deg,#FFFBEB,#FDE68A)}
+.ai-8{background:linear-gradient(135deg,#F0FDF4,#BBEED1)}
+
+.art-body{padding:18px 20px;flex:1;display:flex;flex-direction:column}
+.art-body-sm{padding:14px 16px}
+.art-cats{display:flex;gap:6px;margin-bottom:9px;flex-wrap:wrap}
+.art-title{font-family:'Fraunces',serif;font-weight:700;color:var(--ink);line-height:1.28;margin-bottom:7px;letter-spacing:-.2px;flex:1}
+.art-title-lg{font-size:20px}
+.art-title-md{font-size:17px}
+.art-title-sm{font-size:14.5px}
+.art:hover .art-title{color:var(--moss)}
+.art-excerpt{font-size:13px;color:var(--ink3);line-height:1.55;margin-bottom:12px}
+.art-foot{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--ink3);margin-top:auto}
+
+/* ── SECTION: TOOLS ── */
+.s-tools{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:52px 0}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tool-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.tool-card:hover{border-color:var(--sage);box-shadow:var(--shadow);transform:translateY(-2px)}
+.tool-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sage),var(--mint));opacity:0;transition:opacity .2s}
+.tool-card:hover::after{opacity:1}
+.tc-ico{width:48px;height:48px;border-radius:12px;background:var(--mist);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+.tc-name{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.2px}
+.tc-desc{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:14px}
+.tc-cta{font-size:12.5px;font-weight:600;color:var(--moss);display:flex;align-items:center;gap:4px}
+
+/* ── SECTION: COMPARE ── */
+.s-compare{padding:52px 0}
+.compare-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.compare-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cc-left{padding:36px 40px;background:var(--forest);color:#fff;display:flex;flex-direction:column;justify-content:center}
+.cc-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:12px}
+.cc-title{font-family:'Fraunces',serif;font-size:28px;font-weight:700;line-height:1.25;margin-bottom:10px}
+.cc-desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:20px}
+.cc-note{font-size:12px;color:rgba(255,255,255,.4);font-style:italic}
+.cc-right{padding:36px 40px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.cc-row{display:flex;align-items:center;gap:14px;padding:14px;background:var(--cream);border:1px solid var(--border);border-radius:12px}
+.cc-rank{font-family:'Fraunces',serif;font-size:20px;font-weight:900;color:var(--border);width:24px;flex-shrink:0}
+.cc-name{font-size:15px;font-weight:700;color:var(--ink);flex:1}
+.cc-val{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--moss)}
+.cc-sub{font-size:11px;color:var(--ink3)}
+.cc-bar{height:6px;border-radius:99px;background:var(--mist);margin-top:5px;overflow:hidden}
+.cc-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--sage),var(--mint))}
+
+/* ── SECTION: NEWSLETTER ── */
+.s-newsletter{padding:60px 0}
+.nl-wrap{background:linear-gradient(135deg,var(--forest) 0%,#1A4D35 50%,#0D3320 100%);border-radius:24px;overflow:hidden;position:relative}
+.nl-wrap::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(82,183,136,.2),transparent 70%);pointer-events:none}
+.nl-wrap::after{content:'';position:absolute;bottom:-60px;left:20%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(184,150,62,.15),transparent 70%);pointer-events:none}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1}
+.nl-left{padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+.nl-kicker{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.nl-kicker::before{content:'';display:block;width:20px;height:1px;background:var(--sage)}
+.nl-h2{font-family:'Fraunces',serif;font-size:36px;font-weight:900;color:#fff;line-height:1.18;letter-spacing:-.5px;margin-bottom:10px}
+.nl-h2 em{font-style:italic;color:var(--mint)}
+.nl-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:28px}
+.nl-proof{display:flex;align-items:center;gap:10px;font-size:12.5px;color:rgba(255,255,255,.45)}
+.nl-proof strong{color:rgba(255,255,255,.75)}
+.nl-avatars{display:flex}
+.nl-av{width:28px;height:28px;border-radius:50%;border:2px solid var(--forest);background:var(--sage);font-size:12px;display:flex;align-items:center;justify-content:center;margin-right:-8px;flex-shrink:0}
+.nl-right{padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.nl-feature{display:flex;align-items:flex-start;gap:13px}
+.nl-ficon{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.nl-ftext-h{font-size:14px;font-weight:600;color:#fff;margin-bottom:2px}
+.nl-ftext-p{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.45}
+.nl-form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:24px;margin-top:4px}
+.nl-input{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:12px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;margin-bottom:10px;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(255,255,255,.35)}
+.nl-input:focus{border-color:var(--sage)}
+.nl-btn{width:100%;background:var(--gold);color:var(--forest);border:none;padding:13px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:filter .2s}
+.nl-btn:hover{filter:brightness(1.1)}
+.nl-small{font-size:11px;color:rgba(255,255,255,.3);text-align:center;margin-top:8px}
+
+/* ── SECTION: TRENDING TOPICS ── */
+.s-topics{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:52px 0}
+.topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.topic-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all .2s;position:relative}
+.topic-card:hover{border-color:var(--sage);transform:translateY(-3px);box-shadow:var(--shadow)}
+.topic-card::after{content:'→';position:absolute;top:18px;right:18px;font-size:15px;color:var(--border);transition:color .2s}
+.topic-card:hover::after{color:var(--sage)}
+.topic-ico{font-size:26px;margin-bottom:10px;display:block}
+.topic-name{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;letter-spacing:-.2px}
+.topic-desc{font-size:12.5px;color:var(--ink3);line-height:1.45;margin-bottom:10px}
+.topic-count{font-size:11px;color:var(--moss);font-weight:600}
+
+/* ── SECTION: DATA + FAQ BAND ── */
+.s-data{padding:52px 0}
+.data-faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+
+.data-block{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.db-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.db-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+.db-update{font-size:11px;color:var(--ink3)}
+.db-grid{display:grid;grid-template-columns:1fr 1fr}
+.db-cell{padding:18px 22px;border-right:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.db-cell:nth-child(even){border-right:none}
+.db-cell:nth-last-child(-n+2){border-bottom:none}
+.db-name{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);font-weight:600;margin-bottom:4px}
+.db-val{font-family:'Fraunces',serif;font-size:26px;font-weight:900;color:var(--ink);line-height:1}
+.db-chg{font-size:12px;font-weight:600;margin-top:4px}
+.up{color:#16A34A}.dn{color:#DC2626}
+
+.faq-block{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.faq-head{padding:18px 22px;border-bottom:1px solid var(--border)}
+.faq-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+.faq-item{padding:16px 22px;border-bottom:1px solid var(--border2);cursor:pointer;transition:background .15s}
+.faq-item:last-child{border-bottom:none}
+.faq-item:hover{background:var(--cream)}
+.faq-q{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.35}
+.faq-a{font-size:13px;color:var(--ink3);line-height:1.5}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:56px 0 0}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 28px 48px;display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px}
+.f-logo{font-family:'Fraunces',serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+.f-logo em{font-style:italic;color:var(--gold)}
+.f-tagline{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:20px}
+.f-col-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px}
+.f-list{list-style:none}
+.f-list li{margin-bottom:9px}
+.f-list a{font-size:13.5px;color:rgba(255,255,255,.5);transition:color .15s}
+.f-list a:hover{color:#fff}
+.footer-bar{max-width:1320px;margin:0 auto;padding:20px 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px}
+.footer-bar a{color:rgba(255,255,255,.35);transition:color .15s}.footer-bar a:hover{color:rgba(255,255,255,.7)}
+.footer-legal{background:rgba(0,0,0,.25);padding:16px 28px;font-size:11px;color:rgba(255,255,255,.2);line-height:1.6;text-align:center}
+
+/* ── UTILITY ── */
+.divider{height:1px;background:var(--border);margin:0}
+
+@media(max-width:1100px){
+  .hero-wrap{grid-template-columns:1fr}.hero-right{display:none}
+  .main-grid{grid-template-columns:1fr}
+  .nl-inner{grid-template-columns:1fr}.nl-right{display:none}
+  .compare-inner{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr 1fr}
+  .topics-grid{grid-template-columns:1fr 1fr}
+  .data-faq-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .pb-grid{grid-template-columns:1fr 1fr}
+  .mixed-grid{display:flex;flex-direction:column}
+}
+@media(max-width:680px){
+  .hero-h1{font-size:36px}
+  .tools-grid{grid-template-columns:1fr}
+  .topics-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .pb-grid{grid-template-columns:1fr}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-wrap">
+    <div class="nav-logo">Dinero <em>Futuro</em></div>
+    <div class="nav-links">
+      <a class="on">Inicio</a>
+      <a>Nivel 0 — Empezar</a>
+      <a>Nivel 1 — Ahorrar</a>
+      <a>Nivel 2 — Invertir</a>
+      <a>Nivel 3 — Cripto</a>
+      <a>Comparativas</a>
+      <a>Herramientas</a>
+      <a>Glosario</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-search">🔍 Busca tu problema…</div>
+      <button class="nav-cta">Suscribirme gratis</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-wrap">
+    <div class="hero-left fade-up">
+      <div class="hero-kicker">Educación financiera real</div>
+      <h1 class="hero-h1">Tu dinero necesita<br>un plan, no<br><em>un máster</em></h1>
+      <p class="hero-desc">Artículos prácticos para resolver problemas reales con tu dinero. Sin jerga, sin humo, sin venderte nada que no te sirva.</p>
+      <div class="hero-actions">
+        <button class="btn-gold">¿Por dónde empiezo? →</button>
+        <button class="btn-ghost">Ver herramientas gratis</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-num">4</div><div class="hs-label">niveles de aprendizaje</div></div>
+        <div class="hs"><div class="hs-num">+120</div><div class="hs-label">artículos resueltos</div></div>
+        <div class="hs"><div class="hs-num">0€</div><div class="hs-label">para empezar</div></div>
+      </div>
+    </div>
+    <div class="hero-right fade-up-2">
+      <div class="hp"><div class="hp-ico" style="background:rgba(99,179,237,.15)">💸</div><div><div class="hp-title">No me llega a fin de mes aunque gano bien</div><div class="hp-sub">→ Presupuesto en 20 min sin apps raras</div></div></div>
+      <div class="hp"><div class="hp-ico" style="background:rgba(82,183,136,.15)">📈</div><div><div class="hp-title">Tengo 5.000€ parados y no sé qué hacer</div><div class="hp-sub">→ Las 4 opciones según tu perfil de riesgo</div></div></div>
+      <div class="hp"><div class="hp-ico" style="background:rgba(184,150,62,.15)">🏠</div><div><div class="hp-title">¿Comprar o alquilar? No sé calcular cuál sale mejor</div><div class="hp-sub">→ Calculadora con tus números reales</div></div></div>
+      <div class="hp"><div class="hp-ico" style="background:rgba(251,191,36,.15)">₿</div><div><div class="hp-title">Todo el mundo habla de cripto y no entiendo nada</div><div class="hp-sub">→ Cripto explicado sin morir en el intento</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEVEL BAR -->
+<div class="level-bar">
+  <div class="level-inner">
+    <span class="l-label">Filtrar:</span>
+    <button class="lp lp-all on">Todos</button>
+    <button class="lp lp-0">🔵 Nivel 0 · Empezar</button>
+    <button class="lp lp-1">🟢 Nivel 1 · Ahorrar</button>
+    <button class="lp lp-2">🔴 Nivel 2 · Invertir</button>
+    <button class="lp lp-3">🟡 Nivel 3 · Cripto</button>
+    <div class="lp-sep"></div>
+    <button class="lp" style="background:#F5F3FF;color:#5B21B6">Comparativas</button>
+    <button class="lp" style="background:#ECFDF5;color:#065F46">Herramientas</button>
+  </div>
+</div>
+
+<!-- MAIN: FEATURED + SIDE -->
+<section class="s-main">
+  <div class="wrap">
+    <div class="sec-hd" style="padding-top:44px">
+      <h2 class="sec-h2">Artículo destacado</h2>
+      <span class="sec-link">Lo más leído →</span>
+    </div>
+    <div class="main-grid fade-up">
+      <!-- BIG FEATURED -->
+      <div class="big-feat">
+        <div class="bf-img">
+          <div class="bf-emoji">💰</div>
+          <div class="bf-overlay"></div>
+          <div class="bf-cats">
+            <span class="badge badge-1">Nivel 1</span>
+            <span class="badge badge-new">Nuevo</span>
+          </div>
+        </div>
+        <div class="bf-body">
+          <div class="solve-strip"><strong>Resuelve este problema:</strong> Tienes dinero en cuenta corriente y no sabes si moverlo, dónde ni cuánto riesgo asumir.</div>
+          <h2 class="bf-title">Tu dinero parado pierde valor cada mes. Esto es lo que puedes hacer hoy, sin ser experto en finanzas</h2>
+          <p class="bf-excerpt">La inflación no espera. Cada mes quieto en una cuenta al 0% es dinero que se evapora. Hay opciones seguras, sencillas y al alcance de cualquier persona con 500€ o más. Sin jerga.</p>
+          <div class="bf-foot">
+            <span class="read-pill">📖 5 min · Nivel principiante</span>
+            <span class="badge badge-sol">✓ Solución directa</span>
+          </div>
+        </div>
+      </div>
+      <!-- SIDE STACK -->
+      <div class="side-stack">
+        <div class="side-card">
+          <div class="sc-img sc-i1">📊</div>
+          <div class="sc-body">
+            <div class="sc-cats"><span class="badge badge-2">Nivel 2</span><span class="badge badge-sol">✓ Solución</span></div>
+            <div class="sc-title">ETF vs fondos indexados: cuál tiene menos comisiones ocultas en España</div>
+            <div class="sc-excerpt">La diferencia entre 0.08% y 1.5% en 20 años puede ser tu piso.</div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="sc-img sc-i2">🏦</div>
+          <div class="sc-body">
+            <div class="sc-cats"><span class="badge badge-1">Nivel 1</span></div>
+            <div class="sc-title">Mejores cuentas remuneradas 2026: ranking sin publicidad</div>
+            <div class="sc-excerpt">Datos reales. Sin patrocinadores. Las 8 cuentas que sí dan rentabilidad.</div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="sc-img sc-i3">📉</div>
+          <div class="sc-body">
+            <div class="sc-cats"><span class="badge badge-2">Nivel 2</span></div>
+            <div class="sc-title">Qué hacer cuando la bolsa cae 20%: el manual que nadie te da</div>
+            <div class="sc-excerpt">El error que destroza carteras no es comprar mal. Es entrar en pánico.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM SOLVER BAND — full width dark -->
+<section class="problem-band">
+  <div class="pb-inner">
+    <div class="pb-hd">
+      <div class="pb-eyebrow">Encuentra tu punto de partida</div>
+      <h2 class="pb-h2">¿Cuál es tu situación ahora mismo?</h2>
+      <p class="pb-sub">Selecciona y te llevamos al artículo exacto que necesitas</p>
+    </div>
+    <div class="pb-grid">
+      <div class="pb-card"><div class="pb-ico">💸</div><div class="pb-problem">Gasto más de lo que gano y no sé dónde se va el dinero</div><div class="pb-arrow">→ Presupuesto 50/30/20 en 10 min</div><div class="pb-arrow-icon">→</div></div>
+      <div class="pb-card"><div class="pb-ico">🎯</div><div class="pb-problem">Tengo ahorros parados y no sé qué hacer con ellos</div><div class="pb-arrow">→ Árbol de decisión según tu perfil</div><div class="pb-arrow-icon">→</div></div>
+      <div class="pb-card"><div class="pb-ico">😰</div><div class="pb-problem">Quiero invertir pero me da miedo perderlo todo</div><div class="pb-arrow">→ Inversión conservadora sin riesgo</div><div class="pb-arrow-icon">→</div></div>
+      <div class="pb-card"><div class="pb-ico">🏠</div><div class="pb-problem">No sé si me compensa comprar piso o seguir de alquiler</div><div class="pb-arrow">→ Calculadora con tus cifras reales</div><div class="pb-arrow-icon">→</div></div>
+      <div class="pb-card"><div class="pb-ico">₿</div><div class="pb-problem">Todo el mundo habla de cripto y no entiendo nada</div><div class="pb-arrow">→ Cripto nivel absoluto desde cero</div><div class="pb-arrow-icon">→</div></div>
+      <div class="pb-card"><div class="pb-ico">🧾</div><div class="pb-problem">Hice inversiones y no sé cómo declararlo en la renta</div><div class="pb-arrow">→ Guía fiscal sin tecnicismos</div><div class="pb-arrow-icon">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT — MIXED GRID -->
+<section class="s-recent">
+  <div class="wrap">
+    <div class="sec-hd">
+      <h2 class="sec-h2">Publicados esta semana</h2>
+      <span class="sec-link">Ver todos los artículos →</span>
+    </div>
+    <div class="mixed-grid">
+      <!-- WIDE -->
+      <div class="art art-wide">
+        <div class="art-img art-img-md ai-1">📊</div>
+        <div class="art-body">
+          <div class="art-cats"><span class="badge badge-2">Nivel 2</span><span class="badge badge-sol">✓ Solución directa</span></div>
+          <div class="art-title art-title-lg">Cómo elegir tu primer ETF sin equivocarte: los 5 criterios que importan de verdad</div>
+          <p class="art-excerpt">El 80% de los principiantes mira primero la rentabilidad pasada. Error. Esto es lo que hay que mirar antes de meter un solo euro.</p>
+          <div class="art-foot"><span class="read-pill">📖 7 min</span><span>Hace 2 días</span></div>
+        </div>
+      </div>
+      <!-- SIDE -->
+      <div class="art art-side">
+        <div class="art-img art-img-sm ai-2">🏦</div>
+        <div class="art-body art-body-sm">
+          <div class="art-cats"><span class="badge badge-1">Nivel 1</span></div>
+          <div class="art-title art-title-sm">Letras del Tesoro 2026: rentabilidad real y cómo comprarlas</div>
+          <div class="art-foot" style="margin-top:8px"><span>📖 5 min</span><span>Hace 3 días</span></div>
+        </div>
+      </div>
+      <!-- THIRDS -->
+      <div class="art art-third">
+        <div class="art-img art-img-sm ai-3">💡</div>
+        <div class="art-body art-body-sm">
+          <div class="art-cats"><span class="badge badge-0">Nivel 0</span><span class="badge badge-sol">✓</span></div>
+          <div class="art-title art-title-sm">Regla 50/30/20: el presupuesto más sencillo que existe</div>
+          <div class="art-foot" style="margin-top:8px"><span>📖 4 min</span><span>Hace 4 días</span></div>
+        </div>
+      </div>
+      <div class="art art-third">
+        <div class="art-img art-img-sm ai-4">₿</div>
+        <div class="art-body art-body-sm">
+          <div class="art-cats"><span class="badge badge-3">Nivel 3</span></div>
+          <div class="art-title art-title-sm">¿Qué es el halving de Bitcoin y qué puede pasar con el precio?</div>
+          <div class="art-foot" style="margin-top:8px"><span>📖 6 min</span><span>Hace 5 días</span></div>
+        </div>
+      </div>
+      <div class="art art-third">
+        <div class="art-img art-img-sm ai-5">🏠</div>
+        <div class="art-body art-body-sm">
+          <div class="art-cats"><span class="badge badge-cmp">Comparativa</span></div>
+          <div class="art-title art-title-sm">Hipoteca fija vs variable 2026: con el Euribor así, ¿qué conviene?</div>
+          <div class="art-foot" style="margin-top:8px"><span>📖 8 min</span><span>Hace 6 días</span></div>
+        </div>
+      </div>
+      <!-- HALVES -->
+      <div class="art art-half">
+        <div class="art-img art-img-md ai-6">🧾</div>
+        <div class="art-body">
+          <div class="art-cats"><span class="badge badge-2">Nivel 2</span><span class="badge badge-sol">✓ Solución directa</span></div>
+          <div class="art-title art-title-md">Cómo tributan los fondos indexados en España: la guía que no te dan los brókers</div>
+          <p class="art-excerpt">Hacienda tiene sus reglas. Aquí las explico sin tecnicismos para que no te lleves sorpresas en la declaración.</p>
+          <div class="art-foot"><span class="read-pill">📖 6 min</span><span>Hace 7 días</span></div>
+        </div>
+      </div>
+      <div class="art art-half">
+        <div class="art-img art-img-md ai-7">💰</div>
+        <div class="art-body">
+          <div class="art-cats"><span class="badge badge-1">Nivel 1</span><span class="badge badge-sol">✓ Solución directa</span></div>
+          <div class="art-title art-title-md">Fondo de emergencia: cuánto necesitas exactamente tú (no el que dicen todos)</div>
+          <p class="art-excerpt">No es lo mismo 3 meses de salario para un funcionario que para un autónomo. Calcula el tuyo con tu situación real.</p>
+          <div class="art-foot"><span class="read-pill">📖 5 min</span><span>Hace 8 días</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS — full width light -->
+<section class="s-tools">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <h2 class="sec-h2">Herramientas gratuitas</h2>
+        <p style="font-size:14px;color:var(--ink3);margin-top:4px">Calcula antes de decidir. Sin registro, sin email.</p>
+      </div>
+      <span class="sec-link">Ver todas →</span>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tc-ico">🧮</div>
+        <div class="tc-name">Interés compuesto</div>
+        <p class="tc-desc">¿Cuánto tendrás en 10, 20 o 30 años si inviertes 100€ al mes desde hoy?</p>
+        <div class="tc-cta">Calcular ahora →</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-ico">🏠</div>
+        <div class="tc-name">Compra vs alquiler</div>
+        <p class="tc-desc">Mete tus cifras reales y descubre qué te sale mejor en tu caso concreto.</p>
+        <div class="tc-cta">Usar calculadora →</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-ico">🛡️</div>
+        <div class="tc-name">Fondo de emergencia</div>
+        <p class="tc-desc">Cuánto necesitas exactamente según tu trabajo, gastos y situación familiar.</p>
+        <div class="tc-cta">Calcular el mío →</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-ico">📉</div>
+        <div class="tc-name">Simulador de cartera</div>
+        <p class="tc-desc">Construye tu cartera de inversión según tu perfil de riesgo y horizonte temporal.</p>
+        <div class="tc-cta">Simular cartera →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVA — full width split -->
+<section class="s-compare">
+  <div class="wrap">
+    <div class="sec-hd">
+      <h2 class="sec-h2">Comparativa del mes</h2>
+      <span class="sec-link">Ver todas las comparativas →</span>
+    </div>
+    <div class="compare-card">
+      <div class="compare-inner">
+        <div class="cc-left">
+          <div class="cc-eyebrow">Comparativa sin sesgo · Marzo 2026</div>
+          <div class="cc-title">Indexa vs MyInvestor vs Finizens — ¿Cuál cobra realmente menos?</div>
+          <p class="cc-desc">Analizamos comisiones reales, rentabilidad a 5 años, facilidad de uso y atención al cliente. Sin afiliados que nos paguen la posición.</p>
+          <div class="cc-note">📌 Actualizado con datos de marzo 2026. Sin patrocinadores.</div>
+        </div>
+        <div class="cc-right">
+          <div class="cc-row">
+            <div class="cc-rank">01</div>
+            <div style="flex:1">
+              <div class="cc-name">MyInvestor</div>
+              <div class="cc-bar"><div class="cc-fill" style="width:72%"></div></div>
+            </div>
+            <div style="text-align:right"><div class="cc-val">0.35%</div><div class="cc-sub">comisión total</div></div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-rank">02</div>
+            <div style="flex:1">
+              <div class="cc-name">Indexa Capital</div>
+              <div class="cc-bar"><div class="cc-fill" style="width:58%"></div></div>
+            </div>
+            <div style="text-align:right"><div class="cc-val">0.42%</div><div class="cc-sub">comisión total</div></div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-rank">03</div>
+            <div style="flex:1">
+              <div class="cc-name">Finizens</div>
+              <div class="cc-bar"><div class="cc-fill" style="width:38%"></div></div>
+            </div>
+            <div style="text-align:right"><div class="cc-val">0.55%</div><div class="cc-sub">comisión total</div></div>
+          </div>
+          <button class="btn-gold" style="margin-top:6px;width:100%;justify-content:center">Ver comparativa completa →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER — full width -->
+<section class="s-newsletter">
+  <div class="wrap">
+    <div class="nl-wrap">
+      <div class="nl-inner">
+        <div class="nl-left">
+          <div class="nl-kicker">Newsletter semanal</div>
+          <h2 class="nl-h2">Una idea financiera<br>cada <em>lunes</em></h2>
+          <p class="nl-desc">Sin spam. Sin jerga. Un concepto útil y una acción concreta cada semana. Para que tu dinero trabaje un poco más que la semana anterior.</p>
+          <div class="nl-proof">
+            <div class="nl-avatars">
+              <div class="nl-av">😊</div><div class="nl-av">🙂</div><div class="nl-av">😄</div><div class="nl-av">😀</div>
+            </div>
+            <span><strong>+12.400 personas</strong> ya la reciben cada lunes</span>
+          </div>
+        </div>
+        <div class="nl-right">
+          <div class="nl-feature"><div class="nl-ficon">📖</div><div><div class="nl-ftext-h">Un artículo a fondo por semana</div><div class="nl-ftext-p">Solo lo que necesitas saber. Sin relleno ni contenido de moda.</div></div></div>
+          <div class="nl-feature"><div class="nl-ficon">🎯</div><div><div class="nl-ftext-h">Una acción concreta</div><div class="nl-ftext-p">Cada email termina con algo que puedes hacer esta semana con tu dinero.</div></div></div>
+          <div class="nl-feature"><div class="nl-ficon">🚫</div><div><div class="nl-ftext-h">Cero publicidad, cero spam</div><div class="nl-ftext-p">No vendemos tus datos. No te bombardeamos. Solo valor real.</div></div></div>
+          <div class="nl-form">
+            <input class="nl-input" type="email" placeholder="tu@email.com">
+            <button class="nl-btn">Apuntarme gratis — sin tarjeta</button>
+            <div class="nl-small">Te puedes dar de baja en cualquier momento. Sin dramas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section class="s-topics">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <h2 class="sec-h2">Explora por tema</h2>
+        <p style="font-size:14px;color:var(--ink3);margin-top:4px">Cada sección va de menos a más difícil. Empieza donde estés.</p>
+      </div>
+    </div>
+    <div class="topics-grid">
+      <div class="topic-card"><span class="topic-ico">💸</span><div class="topic-name">Presupuesto y gasto</div><div class="topic-desc">Controla lo que sale antes de pensar en lo que entra.</div><div class="topic-count">18 artículos · Nivel 0–1</div></div>
+      <div class="topic-card"><span class="topic-ico">🏦</span><div class="topic-name">Ahorro inteligente</div><div class="topic-desc">Cuentas, depósitos y letras del Tesoro explicados sin complicaciones.</div><div class="topic-count">24 artículos · Nivel 1</div></div>
+      <div class="topic-card"><span class="topic-ico">📈</span><div class="topic-name">Inversión en bolsa</div><div class="topic-desc">ETFs, fondos indexados y cómo construir una cartera real.</div><div class="topic-count">32 artículos · Nivel 2</div></div>
+      <div class="topic-card"><span class="topic-ico">₿</span><div class="topic-name">Cripto sin humo</div><div class="topic-desc">Bitcoin, Ethereum y cómo no perder la cabeza ni el dinero.</div><div class="topic-count">21 artículos · Nivel 3</div></div>
+      <div class="topic-card"><span class="topic-ico">🏠</span><div class="topic-name">Vivienda e hipotecas</div><div class="topic-desc">Comprar, alquilar, Euribor. Con calculadoras incluidas.</div><div class="topic-count">15 artículos · Nivel 1–2</div></div>
+      <div class="topic-card"><span class="topic-ico">🧾</span><div class="topic-name">Impuestos</div><div class="topic-desc">Declara inversiones sin pagar de más. La guía que no te dan.</div><div class="topic-count">12 artículos · Nivel 2–3</div></div>
+      <div class="topic-card"><span class="topic-ico">🏥</span><div class="topic-name">Pensión y jubilación</div><div class="topic-desc">No depender solo del Estado. Las opciones que existen.</div><div class="topic-count">10 artículos · Nivel 2</div></div>
+      <div class="topic-card"><span class="topic-ico">📊</span><div class="topic-name">Comparativas</div><div class="topic-desc">Brókers, cuentas, roboadvisors. Sin sesgo ni patrocinios.</div><div class="topic-count">19 comparativas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA + FAQ -->
+<section class="s-data">
+  <div class="wrap">
+    <div class="data-faq-grid">
+      <div class="data-block">
+        <div class="db-head">
+          <div class="db-title">Datos del mercado hoy</div>
+          <div class="db-update">Actualizado 21 mar 2026</div>
+        </div>
+        <div class="db-grid">
+          <div class="db-cell"><div class="db-name">Euribor 12M</div><div class="db-val">2.43%</div><div class="db-chg dn">▼ −0.08 este mes</div></div>
+          <div class="db-cell"><div class="db-name">IPC España</div><div class="db-val">2.8%</div><div class="db-chg dn">▼ vs 3.1% anterior</div></div>
+          <div class="db-cell"><div class="db-name">S&amp;P 500</div><div class="db-val">5.847</div><div class="db-chg up">▲ +0.4% hoy</div></div>
+          <div class="db-cell"><div class="db-name">Bitcoin</div><div class="db-val">$84k</div><div class="db-chg up">▲ +1.2% 24h</div></div>
+        </div>
+      </div>
+      <div class="faq-block">
+        <div class="faq-head"><div class="faq-title">Preguntas frecuentes</div></div>
+        <div class="faq-item"><div class="faq-q">¿Con cuánto dinero puedo empezar a invertir?</div><div class="faq-a">Desde 1€ en algunos brókers. Lo importante es el hábito, no la cantidad inicial.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Es seguro invertir en bolsa sin experiencia?</div><div class="faq-a">Con fondos indexados, sí. Es el vehículo de menor riesgo para principiantes.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Qué es un ETF y para qué sirve?</div><div class="faq-a">Un fondo que cotiza en bolsa. Barato, diversificado y perfecto para empezar sin complicarse.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Vale la pena el cripto si soy principiante?</div><div class="faq-a">Solo si entiendes lo que compras. Nunca más del 5–10% de tu cartera total.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo">Dinero <em>Futuro</em></div>
+      <p class="f-tagline">Educación financiera práctica para personas normales del mundo hispanohablante. Sin jerga, sin humo, sin venderte lo que no necesitas.</p>
+      <button class="nav-cta" style="padding:10px 22px;font-size:13.5px">Suscribirme gratis</button>
+    </div>
+    <div><div class="f-col-h">Niveles</div><ul class="f-list"><li><a href="#">Nivel 0 — Empezar</a></li><li><a href="#">Nivel 1 — Ahorrar</a></li><li><a href="#">Nivel 2 — Invertir</a></li><li><a href="#">Nivel 3 — Cripto</a></li><li><a href="#">Glosario financiero</a></li></ul></div>
+    <div><div class="f-col-h">Herramientas</div><ul class="f-list"><li><a href="#">Interés compuesto</a></li><li><a href="#">Compra vs alquiler</a></li><li><a href="#">Fondo de emergencia</a></li><li><a href="#">Simulador cartera</a></li><li><a href="#">Comparativa brókers</a></li></ul></div>
+    <div><div class="f-col-h">Blog</div><ul class="f-list"><li><a href="#">Últimos artículos</a></li><li><a href="#">Comparativas</a></li><li><a href="#">Newsletter</a></li><li><a href="#">Sobre el proyecto</a></li><li><a href="#">Contacto</a></li></ul></div>
+  </div>
+  <div class="footer-bar">
+    <span>© 2026 Dinero Futuro</span>
+    <span><a href="#">Aviso legal</a> · <a href="#">Privacidad</a> · <a href="#">Cookies</a> · <a href="#">Afiliados</a></span>
+  </div>
+  <div class="footer-legal">
+    ⚠️ El contenido de Dinero Futuro es exclusivamente educativo e informativo. No constituye asesoramiento financiero personalizado. Consulta siempre con un profesional certificado antes de tomar decisiones de inversión.
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.lp').forEach(b=>{
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.lp').forEach(x=>x.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
