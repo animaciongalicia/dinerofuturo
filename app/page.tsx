@@ -87,7 +87,7 @@ export default function HomePage() {
         <div className="max-w-wrap mx-auto px-7">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="font-fraunces text-[24px] font-bold text-ink tracking-[-0.3px]">Publicados esta semana</h2>
-            <a href="#" className="text-[13px] text-moss font-semibold flex items-center gap-1 hover:text-forest">
+            <a href="/nivel/0" className="text-[13px] text-moss font-semibold flex items-center gap-1 hover:text-forest">
               Ver todos los artículos →
             </a>
           </div>

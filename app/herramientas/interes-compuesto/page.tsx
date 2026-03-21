@@ -1,10 +1,6 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { useState, useMemo } from 'react'
-
-// Note: metadata cannot be exported from a 'use client' component.
-// For SEO, add a generateMetadata in a server wrapper or use a separate layout.
 
 interface YearRow {
   year: number

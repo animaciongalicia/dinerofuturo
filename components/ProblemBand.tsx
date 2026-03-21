@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const problems = [
   {
     ico: '💸',
@@ -56,9 +58,10 @@ export default function ProblemBand() {
 
         {/* Grid */}
         <div className="grid grid-cols-3 gap-[14px] max-lg:grid-cols-2 max-sm:grid-cols-1">
-          {problems.map(({ ico, problem, arrow }) => (
-            <div
+          {problems.map(({ ico, problem, arrow, href }) => (
+            <Link
               key={problem}
+              href={href}
               className="bg-white/[.07] border border-white/10 rounded-2xl p-[22px] cursor-pointer group transition-all hover:bg-white/[.13] hover:-translate-y-[3px] hover:shadow-[0_12px_32px_rgba(0,0,0,.25)] relative overflow-hidden"
             >
               <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-[22px] mb-[14px]">
@@ -69,7 +72,7 @@ export default function ProblemBand() {
               <div className="absolute bottom-[18px] right-[18px] w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[13px] text-sage transition-all group-hover:bg-sage group-hover:text-forest">
                 →
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

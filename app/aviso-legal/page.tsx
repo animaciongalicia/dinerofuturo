@@ -54,7 +54,7 @@ export default function AvisoLegalPage() {
           El titular tampoco se responsabiliza del contenido de sitios externos a los que pueda enlazar el Sitio.
         </p>
 
-        <h2>5. Política de enlaces (afiliados)</h2>
+        <h2 id="politica-de-enlaces-afiliados">5. Política de enlaces (afiliados)</h2>
         <p>
           El Sitio puede incluir enlaces de afiliado a productos o servicios financieros. Cuando esto ocurra, se indicará expresamente. El titular puede percibir una comisión por las contrataciones realizadas a través de dichos enlaces, sin coste adicional para el usuario y sin que ello influya en la valoración del producto o servicio.
         </p>

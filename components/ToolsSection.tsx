@@ -6,28 +6,28 @@ const tools = [
     name: 'Interés compuesto',
     desc: '¿Cuánto tendrás en 10, 20 o 30 años si inviertes 100€ al mes desde hoy?',
     cta: 'Calcular ahora →',
-    href: '/herramientas#interes-compuesto',
+    href: '/herramientas/interes-compuesto',
   },
   {
     ico: '🏠',
     name: 'Compra vs alquiler',
     desc: 'Mete tus cifras reales y descubre qué te sale mejor en tu caso concreto.',
     cta: 'Usar calculadora →',
-    href: '/herramientas#compra-vs-alquiler',
+    href: '/herramientas',
   },
   {
     ico: '🛡️',
     name: 'Fondo de emergencia',
     desc: 'Cuánto necesitas exactamente según tu trabajo, gastos y situación familiar.',
     cta: 'Calcular el mío →',
-    href: '/herramientas#fondo-emergencia',
+    href: '/herramientas',
   },
   {
     ico: '📉',
     name: 'Simulador de cartera',
     desc: 'Construye tu cartera de inversión según tu perfil de riesgo y horizonte temporal.',
     cta: 'Simular cartera →',
-    href: '/herramientas#simulador-cartera',
+    href: '/herramientas',
   },
 ]
 
