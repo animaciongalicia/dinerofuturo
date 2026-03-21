@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Hero from '@/components/Hero'
 import LevelBar from '@/components/LevelBar'
 import FeaturedArticle from '@/components/FeaturedArticle'
@@ -87,9 +88,9 @@ export default function HomePage() {
         <div className="max-w-wrap mx-auto px-7">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="font-fraunces text-[24px] font-bold text-ink tracking-[-0.3px]">Publicados esta semana</h2>
-            <a href="/nivel/0" className="text-[13px] text-moss font-semibold flex items-center gap-1 hover:text-forest">
+            <Link href="/nivel/0" className="text-[13px] text-moss font-semibold flex items-center gap-1 hover:text-forest">
               Ver todos los artículos →
-            </a>
+            </Link>
           </div>
           <MixedGrid articles={recent} />
         </div>

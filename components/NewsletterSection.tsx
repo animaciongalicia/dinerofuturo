@@ -36,7 +36,7 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="bg-forest border-t border-white/10">
+    <section id="newsletter" className="bg-forest border-t border-white/10">
       <div className="max-w-wrap mx-auto px-7 py-5">
         {state === 'success' ? (
           <div className="flex items-center justify-center gap-3 py-1 text-white">

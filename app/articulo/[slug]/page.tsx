@@ -94,8 +94,14 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   const allByNivel = getArticlesByNivel(article.nivel)
   const related   = allByNivel.filter(a => a.slug !== article.slug).slice(0, 3)
 
-  // More articles at the bottom
-  const moreArticles = getAllArticles()
+  // Prev / next navigation (articles sorted newest first)
+  const allArticles  = getAllArticles()
+  const currentIndex = allArticles.findIndex(a => a.slug === article.slug)
+  const prevArticle  = currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : null
+  const nextArticle  = currentIndex > 0                      ? allArticles[currentIndex - 1] : null
+
+  // More articles at the bottom (same nivel, excludes current)
+  const moreArticles = allArticles
     .filter(a => a.slug !== article.slug && a.nivel === article.nivel)
     .slice(0, 3)
 
@@ -213,6 +219,34 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <div className="mt-10 pt-8 border-t border-border">
               <ShareButtons title={article.title} url={articleUrl} />
             </div>
+
+            {/* Prev / Next navigation */}
+            {(prevArticle || nextArticle) && (
+              <nav className="mt-8 grid grid-cols-2 gap-4 max-sm:grid-cols-1" aria-label="Navegación entre artículos">
+                {prevArticle ? (
+                  <Link
+                    href={`/articulo/${prevArticle.slug}`}
+                    className="group flex flex-col gap-1 bg-white border border-border rounded-xl p-4 hover:border-sage hover:shadow-card transition-all"
+                  >
+                    <span className="text-[11px] font-semibold uppercase tracking-[.08em] text-ink3">← Artículo anterior</span>
+                    <span className="font-fraunces text-[14px] font-bold text-ink leading-[1.3] group-hover:text-moss transition-colors line-clamp-2">
+                      {prevArticle.title}
+                    </span>
+                  </Link>
+                ) : <div />}
+                {nextArticle ? (
+                  <Link
+                    href={`/articulo/${nextArticle.slug}`}
+                    className="group flex flex-col gap-1 bg-white border border-border rounded-xl p-4 hover:border-sage hover:shadow-card transition-all text-right"
+                  >
+                    <span className="text-[11px] font-semibold uppercase tracking-[.08em] text-ink3">Artículo siguiente →</span>
+                    <span className="font-fraunces text-[14px] font-bold text-ink leading-[1.3] group-hover:text-moss transition-colors line-clamp-2">
+                      {nextArticle.title}
+                    </span>
+                  </Link>
+                ) : <div />}
+              </nav>
+            )}
 
             {/* More articles grid — mobile TOC + related */}
             {moreArticles.length > 0 && (

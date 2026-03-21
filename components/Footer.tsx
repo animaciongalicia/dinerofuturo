@@ -15,9 +15,9 @@ const columns = [
     title: 'Herramientas',
     links: [
       { label: 'Interés compuesto', href: '/herramientas/interes-compuesto' },
-      { label: 'Compra vs alquiler', href: '/herramientas#compra-vs-alquiler' },
-      { label: 'Fondo de emergencia', href: '/herramientas#fondo-emergencia' },
-      { label: 'Simulador cartera', href: '/herramientas#simulador-cartera' },
+      { label: 'Compra vs alquiler', href: '/herramientas' },
+      { label: 'Fondo de emergencia', href: '/herramientas' },
+      { label: 'Simulador cartera', href: '/herramientas' },
       { label: 'Comparativa brókers', href: '/categoria/comparativa' },
     ],
   },
@@ -45,9 +45,9 @@ export default function Footer() {
           <p className="text-[13.5px] text-white/45 leading-[1.65] mb-5">
             Educación financiera práctica para personas normales del mundo hispanohablante. Sin jerga, sin humo, sin venderte lo que no necesitas.
           </p>
-          <button className="bg-forest text-white border-none px-[22px] py-[10px] rounded-lg text-[13.5px] font-semibold cursor-pointer hover:bg-moss transition-colors">
+          <Link href="/#newsletter" className="inline-block bg-forest text-white px-[22px] py-[10px] rounded-lg text-[13.5px] font-semibold hover:bg-moss transition-colors">
             Suscribirme gratis
-          </button>
+          </Link>
         </div>
 
         {/* Columns */}
