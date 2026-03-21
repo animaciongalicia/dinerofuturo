@@ -6,6 +6,9 @@ import type { Article } from './types'
 const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articulos')
 const WORDS_PER_MINUTE = 200
 
+// Module-level cache so getAllArticles() only reads disk once per build
+let _cache: Article[] | null = null
+
 function calcReadingTime(content: string): number {
   const clean = content
     .replace(/```[\s\S]*?```/g, '')  // code blocks
@@ -39,20 +42,19 @@ function readArticle(filename: string): Article {
 }
 
 export function getAllArticles(): Article[] {
+  if (_cache) return _cache
   const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.mdx'))
-  return files
+  _cache = files
     .map(f => readArticle(f))
     .sort((a, b) => (a.fecha > b.fecha ? -1 : 1))
+  return _cache
 }
 
 export function getArticleBySlug(slug: string): Article {
-  const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.mdx'))
-  const filename = files.find(f => {
-    const raw = fs.readFileSync(path.join(ARTICLES_DIR, f), 'utf-8')
-    const { data } = matter(raw)
-    return data.slug === slug
-  })
-  if (!filename) throw new Error(`Article not found: ${slug}`)
+  // filename === slug + '.mdx' by convention — direct read, no scan
+  const filename = `${slug}.mdx`
+  const fullPath = path.join(ARTICLES_DIR, filename)
+  if (!fs.existsSync(fullPath)) throw new Error(`Article not found: ${slug}`)
   return readArticle(filename)
 }
 

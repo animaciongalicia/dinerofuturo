@@ -1,5 +1,7 @@
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import rehypeSlug from 'rehype-slug'
+export const dynamic = 'force-static'
+export const revalidate = false
+
+import { marked } from 'marked'
 import { getAllArticles, getArticleBySlug, getArticlesByNivel } from '@/lib/articles'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -83,6 +85,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   let article
   try { article = getArticleBySlug(params.slug) }
   catch { notFound() }
+
+  // Render MDX → HTML synchronously with marked (no timeout risk)
+  const contentHtml = marked(article.content ?? '') as string
 
   // Sidebar data
   const headings  = extractHeadings(article.content ?? '')
@@ -186,25 +191,23 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               </p>
             </div>
 
-            {/* MDX Content */}
-            <article className="prose prose-base max-w-none
-              prose-headings:font-fraunces prose-headings:text-ink prose-headings:tracking-tight
-              prose-h2:text-[26px] prose-h2:font-black prose-h2:mt-10 prose-h2:mb-4
-              prose-h3:text-[20px] prose-h3:font-bold prose-h3:mt-7 prose-h3:mb-3
-              prose-p:text-[15px] prose-p:leading-[1.75] prose-p:text-ink2
-              prose-a:text-moss prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-ink prose-strong:font-bold
-              prose-li:text-[15px] prose-li:leading-[1.7] prose-li:text-ink2
-              prose-ul:my-4 prose-ol:my-4
-              prose-blockquote:border-sage prose-blockquote:bg-cream prose-blockquote:rounded-r-xl prose-blockquote:py-1
-              prose-table:text-[14px] prose-th:bg-mist prose-th:text-forest
-              prose-code:text-moss prose-code:bg-mist prose-code:px-1 prose-code:rounded
-            ">
-              <MDXRemote
-                source={article.content ?? ''}
-                options={{ mdxOptions: { rehypePlugins: [rehypeSlug] } }}
-              />
-            </article>
+            {/* Article Content */}
+            <article
+              className="prose prose-base max-w-none
+                prose-headings:font-fraunces prose-headings:text-ink prose-headings:tracking-tight
+                prose-h2:text-[26px] prose-h2:font-black prose-h2:mt-10 prose-h2:mb-4
+                prose-h3:text-[20px] prose-h3:font-bold prose-h3:mt-7 prose-h3:mb-3
+                prose-p:text-[15px] prose-p:leading-[1.75] prose-p:text-ink2
+                prose-a:text-moss prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-ink prose-strong:font-bold
+                prose-li:text-[15px] prose-li:leading-[1.7] prose-li:text-ink2
+                prose-ul:my-4 prose-ol:my-4
+                prose-blockquote:border-sage prose-blockquote:bg-cream prose-blockquote:rounded-r-xl prose-blockquote:py-1
+                prose-table:text-[14px] prose-th:bg-mist prose-th:text-forest
+                prose-code:text-moss prose-code:bg-mist prose-code:px-1 prose-code:rounded
+              "
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
 
             {/* Share buttons */}
             <div className="mt-10 pt-8 border-t border-border">
