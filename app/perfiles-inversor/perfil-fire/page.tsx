@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
   title: 'Perfil FIRE: independencia financiera y retiro anticipado en España | Dinero Futuro',
@@ -71,7 +72,8 @@ export default function PerfilFirePage() {
         <span className="text-ink font-medium">Perfil FIRE</span>
       </nav>
 
-      <div className="max-w-[760px]">
+      <div className="flex gap-10 items-start">
+        <main className="flex-1 min-w-0 max-w-[760px]">
 
         {/* Hero */}
         <div className="bg-[#FFF7ED] border border-[#FDBA74] rounded-2xl p-8 mb-10">
@@ -410,6 +412,8 @@ export default function PerfilFirePage() {
           </Link>
         </div>
 
+        </main>
+        <Sidebar />
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
   title: 'Perfil inversor dinámico: máximo crecimiento a largo plazo | Dinero Futuro',
@@ -68,7 +69,8 @@ export default function InversorDinamicoPage() {
         <span className="text-ink font-medium">Inversor dinámico</span>
       </nav>
 
-      <div className="max-w-[760px]">
+      <div className="flex gap-10 items-start">
+        <main className="flex-1 min-w-0 max-w-[760px]">
 
         {/* Hero */}
         <div className="bg-[#F5F3FF] border border-[#C4B5FD] rounded-2xl p-8 mb-10">
@@ -305,6 +307,8 @@ export default function InversorDinamicoPage() {
           </Link>
         </div>
 
+        </main>
+        <Sidebar />
       </div>
     </div>
   )

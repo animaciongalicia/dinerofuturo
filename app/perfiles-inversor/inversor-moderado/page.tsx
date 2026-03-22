@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
   title: 'Perfil inversor moderado: la cartera 60/40 explicada | Dinero Futuro',
@@ -85,7 +86,8 @@ export default function InversorModeradoPage() {
         <span className="text-ink font-medium">Inversor moderado</span>
       </nav>
 
-      <div className="max-w-[760px]">
+      <div className="flex gap-10 items-start">
+        <main className="flex-1 min-w-0 max-w-[760px]">
 
         {/* Hero */}
         <div className="bg-[#FFFBEB] border border-[#FCD34D] rounded-2xl p-8 mb-10">
@@ -333,6 +335,8 @@ export default function InversorModeradoPage() {
           </Link>
         </div>
 
+        </main>
+        <Sidebar />
       </div>
     </div>
   )

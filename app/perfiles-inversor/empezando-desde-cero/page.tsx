@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
   title: 'Perfil inversor: Empezando desde cero | Dinero Futuro',
@@ -71,7 +72,8 @@ export default function EmpezandoDesdeCeroPage() {
         <span className="text-ink font-medium">Empezando desde cero</span>
       </nav>
 
-      <div className="max-w-[760px]">
+      <div className="flex gap-10 items-start">
+        <main className="flex-1 min-w-0 max-w-[760px]">
 
         {/* Hero */}
         <div className="bg-[#EBF5EF] border border-[#A3D4B4] rounded-2xl p-8 mb-10">
@@ -349,6 +351,8 @@ export default function EmpezandoDesdeCeroPage() {
           </Link>
         </div>
 
+        </main>
+        <Sidebar />
       </div>
     </div>
   )
