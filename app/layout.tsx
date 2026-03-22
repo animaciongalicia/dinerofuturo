@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
-import { Fraunces, Instrument_Sans } from 'next/font/google'
+import { Playfair_Display, Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { siteUrl } from '@/lib/utils'
 
-const fraunces = Fraunces({
+const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-fraunces',
   display: 'swap',
-  axes: ['opsz'],
+  weight: ['700', '800', '900'],
 })
 
-const instrumentSans = Instrument_Sans({
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-instrument',
   display: 'swap',
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${fraunces.variable} ${instrumentSans.variable}`}>
-      <body className="bg-paper text-ink text-[15px] leading-[1.6] font-sans">
+    <html lang="es" className={`${playfairDisplay.variable} ${inter.variable}`}>
+      <body className="bg-paper text-ink text-[16px] leading-[1.7] font-sans">
         <Nav />
         <main>{children}</main>
         <Footer />

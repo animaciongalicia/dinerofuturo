@@ -10,7 +10,7 @@ export default function Nav() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-fraunces text-[20px] font-black text-forest tracking-[-0.5px] mr-8 whitespace-nowrap flex-shrink-0"
+          className="font-fraunces text-[20px] font-black text-forest mr-8 whitespace-nowrap flex-shrink-0"
         >
           Dinero <em className="not-italic text-gold">Futuro</em>
         </Link>

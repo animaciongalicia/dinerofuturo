@@ -49,7 +49,7 @@ export default function Hero() {
           <div className="text-[11px] font-semibold tracking-[.14em] uppercase text-sage mb-[18px] flex items-center gap-2 before:content-[''] before:block before:w-6 before:h-px before:bg-sage">
             Educación financiera real
           </div>
-          <h1 className="font-fraunces text-[54px] max-sm:text-[36px] font-black text-white leading-[1.1] tracking-[-0.5px] mb-4">
+          <h1 className="font-fraunces text-[52px] max-sm:text-[34px] font-black text-white leading-[1.1] tracking-[-0.5px] mb-4">
             Tu dinero necesita<br />un plan, no<br />
             <em className="not-italic font-bold text-mint">un máster</em>
           </h1>

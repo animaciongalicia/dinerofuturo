@@ -26,7 +26,7 @@ const config: Config = {
       },
       fontFamily: {
         fraunces: ['var(--font-fraunces)', 'Georgia', 'serif'],
-        sans:     ['var(--font-instrument)', 'system-ui', 'sans-serif'],
+        sans:     ['var(--font-instrument)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         wrap: '1320px',

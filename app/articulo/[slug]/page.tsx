@@ -172,7 +172,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             </div>
 
             {/* Title */}
-            <h1 className="font-fraunces text-[40px] font-black text-ink leading-[1.12] tracking-[-0.5px] mb-4 max-sm:text-[30px]">
+            <h1 className="font-fraunces text-[40px] font-black text-ink leading-[1.12] mb-4 max-sm:text-[28px]">
               {article.title}
             </h1>
 
@@ -204,10 +204,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 prose-headings:font-fraunces prose-headings:text-ink prose-headings:tracking-tight
                 prose-h2:text-[26px] prose-h2:font-black prose-h2:mt-10 prose-h2:mb-4
                 prose-h3:text-[20px] prose-h3:font-bold prose-h3:mt-7 prose-h3:mb-3
-                prose-p:text-[15px] prose-p:leading-[1.75] prose-p:text-ink2
+                prose-p:text-[16px] prose-p:leading-[1.8] prose-p:text-ink2
                 prose-a:text-moss prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-ink prose-strong:font-bold
-                prose-li:text-[15px] prose-li:leading-[1.7] prose-li:text-ink2
+                prose-li:text-[16px] prose-li:leading-[1.75] prose-li:text-ink2
                 prose-ul:my-4 prose-ol:my-4
                 prose-blockquote:border-sage prose-blockquote:bg-cream prose-blockquote:rounded-r-xl prose-blockquote:py-1
                 prose-table:text-[14px] prose-th:bg-mist prose-th:text-forest
