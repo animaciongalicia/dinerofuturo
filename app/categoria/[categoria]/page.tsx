@@ -118,7 +118,7 @@ export default function CategoriaPage({ params }: { params: { categoria: string 
         <h1 className="font-fraunces text-[40px] font-black text-ink tracking-[-0.5px] mb-4 leading-tight max-sm:text-[30px]">
           {meta.h1}
         </h1>
-        <p className="text-[16px] text-ink2 leading-[1.75] max-w-[640px] mb-6">
+        <p className="text-[16px] text-ink2 leading-[1.75] max-w-[1200px] mb-6">
           {meta.body}
         </p>
 
