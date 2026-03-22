@@ -5,7 +5,7 @@ const problems = [
     ico: '💸',
     problem: 'Gasto más de lo que gano y no sé dónde se va el dinero',
     arrow: '→ Presupuesto 50/30/20 en 10 min',
-    href: '/articulo/regla-50-30-20-presupuesto',
+    href: '/articulo/como-hacer-un-presupuesto-personal-que-funcione',
   },
   {
     ico: '🎯',
@@ -22,8 +22,8 @@ const problems = [
   {
     ico: '🏠',
     problem: 'No sé si me compensa comprar piso o seguir de alquiler',
-    arrow: '→ Calculadora con tus cifras reales',
-    href: '/herramientas',
+    arrow: '→ Calculadora de hipoteca con tus cifras',
+    href: '/herramientas/calculadora-hipoteca',
   },
   {
     ico: '₿',
