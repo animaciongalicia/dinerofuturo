@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: '/categoria/banca',      label: 'Neobancos' },
   { href: '/que-hacer-con-mi-dinero', label: '¿Qué hago?' },
   { href: '/finanzas-personales',  label: 'Finanzas' },
+  { href: '/perfiles-inversor',     label: 'Perfiles' },
   { href: '/categoria/comparativa',label: 'Comparativas' },
 ]
 
