@@ -3,6 +3,7 @@ import { getArticlesByNivel } from '@/lib/articles'
 import ArticleCard from '@/components/ArticleCard'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Sidebar from '@/components/Sidebar'
 import { siteUrl } from '@/lib/utils'
 
 const NIVEL_META: Record<string, {
@@ -88,63 +89,59 @@ export default function NivelPage({ params }: { params: { nivel: string } }) {
 
   return (
     <div className="max-w-wrap mx-auto px-7 py-12">
-      {/* Hero */}
-      <div className="mb-10">
-        {/* Level switcher pills */}
-        <div className="flex gap-2 flex-wrap mb-6">
-          {ALL_NIVELES.map(n => (
-            <Link
-              key={n}
-              href={`/nivel/${n}`}
-              className={`px-4 py-[6px] rounded-full text-[12.5px] font-semibold border-[1.5px] transition-all hover:-translate-y-px ${
-                n === params.nivel
-                  ? `${NIVEL_COLORS[n].badge} border-current font-bold`
-                  : 'bg-cream border-border text-ink3 hover:border-sage'
-              }`}
-            >
-              {NIVEL_META[n].emoji} Nivel {n}
-            </Link>
-          ))}
-        </div>
-
-        {/* Accent bar */}
-        <div className={`w-12 h-1 rounded-full mb-4 ${colors.bar}`} />
-
-        <h1 className="font-fraunces text-[40px] font-black text-ink tracking-[-0.5px] mb-4 leading-tight max-sm:text-[30px]">
-          {meta.h1}
-        </h1>
-        <p className="text-[16px] text-ink2 leading-[1.75] max-w-[900px] mb-6">
-          {meta.body}
-        </p>
-
-        {/* Resuelve strip */}
-        <div className="inline-flex items-center gap-3 bg-cream border-l-[3px] border-sage rounded-r-xl px-5 py-3">
-          <span className="text-[11px] font-bold uppercase tracking-[.08em] text-sage whitespace-nowrap">Resuelve</span>
-          <span className="text-[15px] font-semibold text-forest">{meta.resuelve}</span>
-        </div>
+      <div className="flex gap-10 items-start">
+        <main className="flex-1 min-w-0">
+          {/* Hero */}
+          <div className="mb-10">
+            {/* Level switcher pills */}
+            <div className="flex gap-2 flex-wrap mb-6">
+              {ALL_NIVELES.map(n => (
+                <Link
+                  key={n}
+                  href={`/nivel/${n}`}
+                  className={`px-4 py-[6px] rounded-full text-[12.5px] font-semibold border-[1.5px] transition-all hover:-translate-y-px ${
+                    n === params.nivel
+                      ? `${NIVEL_COLORS[n].badge} border-current font-bold`
+                      : 'bg-cream border-border text-ink3 hover:border-sage'
+                  }`}
+                >
+                  {NIVEL_META[n].emoji} Nivel {n}
+                </Link>
+              ))}
+            </div>
+            <div className={`w-12 h-1 rounded-full mb-4 ${colors.bar}`} />
+            <h1 className="font-fraunces text-[40px] font-black text-ink tracking-[-0.5px] mb-4 leading-tight max-sm:text-[30px]">
+              {meta.h1}
+            </h1>
+            <p className="text-[16px] text-ink2 leading-[1.75] max-w-[900px] mb-6">
+              {meta.body}
+            </p>
+            <div className="inline-flex items-center gap-3 bg-cream border-l-[3px] border-sage rounded-r-xl px-5 py-3">
+              <span className="text-[11px] font-bold uppercase tracking-[.08em] text-sage whitespace-nowrap">Resuelve</span>
+              <span className="text-[15px] font-semibold text-forest">{meta.resuelve}</span>
+            </div>
+          </div>
+          {articles.length > 0 && (
+            <p className="text-[13px] text-ink3 mb-6">
+              {articles.length} artículo{articles.length !== 1 ? 's' : ''} en este nivel
+            </p>
+          )}
+          {articles.length === 0 ? (
+            <div className="bg-cream border border-border rounded-2xl p-12 text-center">
+              <div className="text-[48px] mb-4">{meta.emoji}</div>
+              <p className="font-fraunces text-[20px] font-bold text-ink mb-2">Próximamente</p>
+              <p className="text-ink3">Estamos preparando el contenido de este nivel.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 gap-[18px] max-lg:grid-cols-2 max-sm:grid-cols-1">
+              {articles.map((article, i) => (
+                <ArticleCard key={article.slug} article={article} variant="third" gradientIndex={i} />
+              ))}
+            </div>
+          )}
+        </main>
+        <Sidebar />
       </div>
-
-      {/* Count */}
-      {articles.length > 0 && (
-        <p className="text-[13px] text-ink3 mb-6">
-          {articles.length} artículo{articles.length !== 1 ? 's' : ''} en este nivel
-        </p>
-      )}
-
-      {/* Grid */}
-      {articles.length === 0 ? (
-        <div className="bg-cream border border-border rounded-2xl p-12 text-center">
-          <div className="text-[48px] mb-4">{meta.emoji}</div>
-          <p className="font-fraunces text-[20px] font-bold text-ink mb-2">Próximamente</p>
-          <p className="text-ink3">Estamos preparando el contenido de este nivel.</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-3 gap-[18px] max-lg:grid-cols-2 max-sm:grid-cols-1">
-          {articles.map((article, i) => (
-            <ArticleCard key={article.slug} article={article} variant="third" gradientIndex={i} />
-          ))}
-        </div>
-      )}
     </div>
   )
 }

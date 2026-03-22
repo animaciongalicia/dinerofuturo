@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
   title: 'Herramientas financieras gratuitas',
@@ -71,6 +72,8 @@ const TOOLS = [
 export default function HerramientasPage() {
   return (
     <div className="max-w-wrap mx-auto px-7 py-12">
+      <div className="flex gap-10 items-start">
+      <main className="flex-1 min-w-0">
       {/* Header */}
       <div className="mb-12">
         <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">
@@ -130,6 +133,9 @@ export default function HerramientasPage() {
       <p className="text-[13px] text-ink3 text-center mt-10">
         Todas las calculadoras son orientativas. Los resultados no constituyen asesoramiento financiero.
       </p>
+      </main>
+      <Sidebar hideTools />
+      </div>
     </div>
   )
 }

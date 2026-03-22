@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import type { Article } from '@/lib/types'
 import { siteUrl } from '@/lib/utils'
 import { notFound } from 'next/navigation'
+import Sidebar from '@/components/Sidebar'
+import { getRecentArticles } from '@/lib/articles'
 
 const CATEGORIAS: Record<Article['categoria'], {
   label: string
@@ -133,28 +135,30 @@ export default function CategoriaPage({ params }: { params: { categoria: string 
 
   const articles = getArticlesByCategoria(cat)
 
+  const related = getRecentArticles(4).filter(a => a.categoria !== cat).slice(0, 3)
+
   return (
     <div className="max-w-wrap mx-auto px-7 py-12">
-      {/* Hero */}
-      <div className="mb-10">
-        <div className="text-[44px] mb-3">{meta.emoji}</div>
-
-        <h1 className="font-fraunces text-[40px] font-black text-ink tracking-[-0.5px] mb-4 leading-tight max-sm:text-[30px]">
-          {meta.h1}
-        </h1>
-        <p className="text-[16px] text-ink2 leading-[1.75] max-w-[1200px] mb-6">
-          {meta.body}
-        </p>
-
-        {/* Resuelve strip */}
-        <div className="inline-flex items-center gap-3 bg-cream border-l-[3px] border-sage rounded-r-xl px-5 py-3">
-          <span className="text-[11px] font-bold uppercase tracking-[.08em] text-sage whitespace-nowrap">Resuelve</span>
-          <span className="text-[15px] font-semibold text-forest">{meta.resuelve}</span>
-        </div>
+      <div className="flex gap-10 items-start">
+        <main className="flex-1 min-w-0">
+          {/* Hero */}
+          <div className="mb-10">
+            <div className="text-[44px] mb-3">{meta.emoji}</div>
+            <h1 className="font-fraunces text-[40px] font-black text-ink tracking-[-0.5px] mb-4 leading-tight max-sm:text-[30px]">
+              {meta.h1}
+            </h1>
+            <p className="text-[16px] text-ink2 leading-[1.75] mb-6">
+              {meta.body}
+            </p>
+            <div className="inline-flex items-center gap-3 bg-cream border-l-[3px] border-sage rounded-r-xl px-5 py-3">
+              <span className="text-[11px] font-bold uppercase tracking-[.08em] text-sage whitespace-nowrap">Resuelve</span>
+              <span className="text-[15px] font-semibold text-forest">{meta.resuelve}</span>
+            </div>
+          </div>
+          <CategoriaContent articles={articles} />
+        </main>
+        <Sidebar related={related} />
       </div>
-
-      {/* Client component handles filter + grid */}
-      <CategoriaContent articles={articles} />
     </div>
   )
 }

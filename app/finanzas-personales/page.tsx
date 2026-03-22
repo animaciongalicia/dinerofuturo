@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
+import { getAllArticles } from '@/lib/articles'
 
 export const metadata: Metadata = {
   title: 'Finanzas personales: pareja, autónomos e ingresos irregulares | Dinero Futuro',
@@ -55,87 +57,72 @@ const OTRAS_GUIAS = [
 ]
 
 export default function FinanzasPersonalesPage() {
+  const related = getAllArticles()
+    .filter(a => a.categoria === 'presupuesto' || a.categoria === 'ahorro')
+    .slice(0, 4)
+
   return (
     <div className="max-w-wrap mx-auto px-7 py-12">
+      <div className="flex gap-10 items-start">
 
-      {/* Hero */}
-      <div className="mb-12">
-        <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">
-          Guías prácticas
-        </p>
-        <h1 className="font-fraunces text-[42px] font-black text-ink leading-tight mb-4 max-sm:text-[30px]">
-          Finanzas personales
-        </h1>
-        <p className="text-[17px] text-ink2 leading-[1.7] max-w-[620px]">
-          Las finanzas personales no son solo ahorrar e invertir. A veces tu situación
-          no encaja en los consejos genéricos: tienes pareja con sueldo distinto, eres
-          autónomo, o tus ingresos cambian cada mes. Estas guías van al grano.
-        </p>
-      </div>
+        {/* MAIN */}
+        <main className="flex-1 min-w-0">
+          {/* Hero */}
+          <div className="mb-10">
+            <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">Guías prácticas</p>
+            <h1 className="font-fraunces text-[42px] font-black text-ink leading-tight mb-4 max-sm:text-[30px]">
+              Finanzas personales
+            </h1>
+            <p className="text-[17px] text-ink2 leading-[1.7] max-w-[620px]">
+              Las finanzas personales no son solo ahorrar e invertir. A veces tu situación
+              no encaja en los consejos genéricos: tienes pareja con sueldo distinto, eres
+              autónomo, o tus ingresos cambian cada mes. Estas guías van al grano.
+            </p>
+          </div>
 
-      {/* Articles grid */}
-      <div className="grid grid-cols-1 gap-6 mb-14">
-        {ARTICULOS.map((art) => (
-          <Link
-            key={art.href}
-            href={art.href}
-            className={`group flex gap-6 border rounded-2xl p-7 transition-all hover:shadow-card-lg hover:-translate-y-[2px] max-sm:flex-col max-sm:gap-4 ${art.color}`}
-          >
-            {/* Icon */}
-            <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-[28px] flex-shrink-0 ${art.icoColor}`}>
-              {art.ico}
-            </div>
-
-            {/* Content */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <h2 className="font-fraunces text-[22px] font-black text-ink leading-tight">
-                  {art.name}
-                </h2>
-                <span className="text-moss font-semibold text-[14px] whitespace-nowrap flex-shrink-0 group-hover:translate-x-1 transition-transform">
-                  Leer →
-                </span>
-              </div>
-
-              <p className="text-[14px] font-semibold text-forest mb-2 italic">
-                "{art.resuelve}"
-              </p>
-
-              <p className="text-[14px] text-ink2 leading-[1.65]">
-                {art.desc}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {/* Divider */}
-      <hr className="border-border mb-10" />
-
-      {/* Otras guías útiles */}
-      <div>
-        <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-5">
-          Otras guías útiles
-        </p>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {OTRAS_GUIAS.map((g) => (
-            <li key={g.href}>
+          {/* Articles */}
+          <div className="grid grid-cols-1 gap-6 mb-12">
+            {ARTICULOS.map((art) => (
               <Link
-                href={g.href}
-                className="flex items-center gap-3 px-4 py-3 bg-paper border border-border rounded-xl text-[14px] text-ink2 hover:text-forest hover:border-sage hover:shadow-card transition-all"
+                key={art.href}
+                href={art.href}
+                className={`group flex gap-6 border rounded-2xl p-7 transition-all hover:shadow-card-lg hover:-translate-y-[2px] max-sm:flex-col max-sm:gap-4 ${art.color}`}
               >
-                <span className="text-border text-[16px] leading-none">→</span>
-                {g.label}
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-[28px] flex-shrink-0 ${art.icoColor}`}>
+                  {art.ico}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-4 mb-2">
+                    <h2 className="font-fraunces text-[22px] font-black text-ink leading-tight">{art.name}</h2>
+                    <span className="text-moss font-semibold text-[14px] whitespace-nowrap flex-shrink-0 group-hover:translate-x-1 transition-transform">Leer →</span>
+                  </div>
+                  <p className="text-[14px] font-semibold text-forest mb-2 italic">"{art.resuelve}"</p>
+                  <p className="text-[14px] text-ink2 leading-[1.65]">{art.desc}</p>
+                </div>
               </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+            ))}
+          </div>
 
-      {/* Footer note */}
-      <p className="text-[13px] text-ink3 text-center mt-12">
-        Los artículos son orientativos. Los ejemplos con números son ilustrativos y no constituyen asesoramiento financiero personalizado.
-      </p>
+          <hr className="border-border mb-8" />
+
+          <div>
+            <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-5">Otras guías útiles</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {OTRAS_GUIAS.map((g) => (
+                <li key={g.href}>
+                  <Link href={g.href} className="flex items-center gap-3 px-4 py-3 bg-paper border border-border rounded-xl text-[14px] text-ink2 hover:text-forest hover:border-sage hover:shadow-card transition-all">
+                    <span className="text-border text-[16px] leading-none">→</span>
+                    {g.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </main>
+
+        {/* SIDEBAR */}
+        <Sidebar related={related} />
+      </div>
     </div>
   )
 }

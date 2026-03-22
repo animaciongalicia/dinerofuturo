@@ -4,10 +4,10 @@ import Link from 'next/link'
 import Search from './Search'
 
 const NAV_LINKS = [
-  { href: '/nivel/0',              label: 'Empezar' },
-  { href: '/nivel/1',              label: 'Ahorrar' },
-  { href: '/nivel/2',              label: 'Invertir' },
-  { href: '/nivel/3',              label: 'Cripto' },
+  { href: '/nivel/0',              label: 'Nivel 0 — Empezar' },
+  { href: '/nivel/1',              label: 'Nivel 1 — Ahorrar' },
+  { href: '/nivel/2',              label: 'Nivel 2 — Invertir' },
+  { href: '/nivel/3',              label: 'Nivel 3 — Cripto' },
   { href: '/herramientas',         label: 'Herramientas',  sep: true },
   { href: '/categoria/hipotecas',  label: 'Hipotecas' },
   { href: '/categoria/banca',      label: 'Neobancos' },
