@@ -1,40 +1,18 @@
 import Link from 'next/link'
+import { getAllArticles } from '@/lib/articles'
 
 const problems = [
-  {
-    ico: '💸',
-    bg: 'rgba(99,179,237,.15)',
-    title: 'No me llega a fin de mes aunque gano bien',
-    sub: '→ Presupuesto en 20 min sin apps raras',
-    href: '/categoria/presupuesto',
-  },
-  {
-    ico: '📈',
-    bg: 'rgba(82,183,136,.15)',
-    title: 'Tengo 5.000€ parados y no sé qué hacer',
-    sub: '→ Las 4 opciones según tu perfil de riesgo',
-    href: '/articulo/como-empezar-a-invertir-desde-cero',
-  },
-  {
-    ico: '🏠',
-    bg: 'rgba(184,150,62,.15)',
-    title: '¿Comprar o alquilar? No sé calcular cuál sale mejor',
-    sub: '→ Calculadora con tus números reales',
-    href: '/herramientas',
-  },
-  {
-    ico: '₿',
-    bg: 'rgba(251,191,36,.15)',
-    title: 'Todo el mundo habla de cripto y no entiendo nada',
-    sub: '→ Cripto explicado sin morir en el intento',
-    href: '/nivel/3',
-  },
+  { ico: '💸', bg: 'rgba(99,179,237,.15)',  title: 'No me llega a fin de mes aunque gano bien',       sub: '→ Presupuesto en 20 min sin apps raras',            href: '/categoria/presupuesto' },
+  { ico: '📈', bg: 'rgba(82,183,136,.15)',  title: 'Tengo 5.000€ parados y no sé qué hacer',          sub: '→ Las 4 opciones según tu perfil de riesgo',        href: '/articulo/como-empezar-a-invertir-desde-cero' },
+  { ico: '🏠', bg: 'rgba(184,150,62,.15)',  title: '¿Comprar o alquilar? No sé calcular cuál sale mejor', sub: '→ Calculadora con tus números reales',           href: '/herramientas/calculadora-hipoteca' },
+  { ico: '₿',  bg: 'rgba(251,191,36,.15)',  title: 'Todo el mundo habla de cripto y no entiendo nada', sub: '→ Cripto explicado sin morir en el intento',        href: '/nivel/3' },
 ]
 
 export default function Hero() {
+  const articleCount = getAllArticles().length
+
   return (
     <section className="bg-forest overflow-hidden relative">
-      {/* Texture */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -72,9 +50,9 @@ export default function Hero() {
           </div>
           <div className="flex gap-8">
             {[
-              { num: '4', label: 'niveles de aprendizaje' },
-              { num: '+120', label: 'artículos resueltos' },
-              { num: '0€', label: 'para empezar' },
+              { num: '4',                     label: 'niveles de aprendizaje' },
+              { num: `+${articleCount}`,      label: 'artículos publicados'   },
+              { num: '0€',                    label: 'para empezar'            },
             ].map(({ num, label }) => (
               <div key={label} className="border-l border-white/[.12] pl-5">
                 <div className="font-fraunces text-[28px] font-black text-white leading-none">{num}</div>

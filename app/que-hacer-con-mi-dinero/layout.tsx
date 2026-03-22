@@ -2,16 +2,21 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: '¿Qué hago con mi dinero? — Plan personalizado | Dinero Futuro',
-  description:
-    'Responde 5 preguntas y descubre exactamente qué hacer con tu dinero ahora mismo: deudas, fondo de emergencia, inversión.',
+  title: '¿Qué hago con mi dinero? Diagnóstico financiero personalizado | Dinero Futuro',
+  description: 'Responde 7 preguntas y recibe un plan financiero adaptado a tu situación: deudas, fondo de emergencia, inversión y más. Gratis, sin registro.',
   alternates: { canonical: siteUrl('/que-hacer-con-mi-dinero') },
   openGraph: {
-    title: '¿Qué hago con mi dinero? — Plan personalizado | Dinero Futuro',
-    description:
-      'Responde 5 preguntas y descubre exactamente qué hacer con tu dinero ahora mismo: deudas, fondo de emergencia, inversión.',
+    title: '¿Qué hago con mi dinero? — Diagnóstico gratuito',
+    description: '7 preguntas, un plan personalizado. Descubre tus prioridades financieras reales.',
     type: 'website',
     url: siteUrl('/que-hacer-con-mi-dinero'),
+    locale: 'es_ES',
+    siteName: 'Dinero Futuro',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '¿Qué hago con mi dinero? — Diagnóstico gratuito',
+    description: '7 preguntas, un plan personalizado. Gratis y sin registro.',
   },
 }
 

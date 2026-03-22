@@ -1,0 +1,57 @@
+# Dinero Futuro
+
+> Educación financiera práctica para personas normales en España. Sin jerga, sin humo, sin venderte nada que no te sirva.
+
+Dinero Futuro es un blog de finanzas personales en español orientado a personas sin formación financiera previa. Contenido estructurado en 4 niveles de dificultad progresiva: ahorro, inversión, hipotecas, neobancos, criptomonedas y finanzas personales.
+
+## Secciones principales
+
+- [Inicio](https://dinerofuturo.com/)
+- [¿Qué hago con mi dinero? — Diagnóstico interactivo](https://dinerofuturo.com/que-hacer-con-mi-dinero)
+- [Herramientas financieras gratuitas](https://dinerofuturo.com/herramientas)
+- [Perfiles de inversor](https://dinerofuturo.com/perfiles-inversor)
+- [Finanzas personales](https://dinerofuturo.com/finanzas-personales)
+- [Glosario financiero](https://dinerofuturo.com/glosario)
+
+## Niveles de contenido
+
+- [Nivel 0 — Empezar desde cero](https://dinerofuturo.com/nivel/0)
+- [Nivel 1 — Ahorrar](https://dinerofuturo.com/nivel/1)
+- [Nivel 2 — Invertir](https://dinerofuturo.com/nivel/2)
+- [Nivel 3 — Cripto y avanzado](https://dinerofuturo.com/nivel/3)
+
+## Categorías
+
+- [Ahorro](https://dinerofuturo.com/categoria/ahorro)
+- [Inversión](https://dinerofuturo.com/categoria/inversion)
+- [Hipotecas](https://dinerofuturo.com/categoria/hipotecas)
+- [Neobancos](https://dinerofuturo.com/categoria/banca)
+- [Criptomonedas](https://dinerofuturo.com/categoria/cripto)
+- [Presupuesto](https://dinerofuturo.com/categoria/presupuesto)
+- [Comparativas](https://dinerofuturo.com/categoria/comparativa)
+- [Finanzas personales](https://dinerofuturo.com/categoria/finanzas)
+
+## Herramientas (calculadoras gratuitas, sin registro)
+
+- [Calculadora de interés compuesto](https://dinerofuturo.com/herramientas/interes-compuesto)
+- [Calculadora fondo de emergencia](https://dinerofuturo.com/herramientas/fondo-emergencia)
+- [Calculadora de hipoteca](https://dinerofuturo.com/herramientas/calculadora-hipoteca)
+- [Calculadora objetivo de ahorro](https://dinerofuturo.com/herramientas/objetivo-ahorro)
+- [Calculadora número FIRE](https://dinerofuturo.com/herramientas/numero-fire)
+
+## Perfiles de inversor
+
+- [Empezando desde cero](https://dinerofuturo.com/perfiles-inversor/empezando-desde-cero)
+- [Perfil conservador](https://dinerofuturo.com/perfiles-inversor/inversor-conservador)
+- [Perfil moderado](https://dinerofuturo.com/perfiles-inversor/inversor-moderado)
+- [Perfil dinámico](https://dinerofuturo.com/perfiles-inversor/inversor-dinamico)
+- [Perfil FIRE](https://dinerofuturo.com/perfiles-inversor/perfil-fire)
+
+## Información
+
+- Artículos publicados: 41
+- Idioma: Español (España)
+- Público: personas sin formación financiera, residentes en España
+- Enfoque: educativo, sin afiliados encubiertos, sin asesoramiento financiero personalizado
+- Tecnología: Next.js 14 App Router, MDX
+- Sitemap: https://dinerofuturo.com/sitemap.xml
