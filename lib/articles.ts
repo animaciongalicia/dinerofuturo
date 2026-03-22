@@ -58,6 +58,12 @@ export function getArticleBySlug(slug: string): Article {
   return readArticle(filename)
 }
 
+export function getFeaturedArticles(n = 2): Article[] {
+  const all = getAllArticles()
+  const featured = all.filter(a => a.destacado)
+  return featured.length >= n ? featured.slice(0, n) : all.slice(0, n)
+}
+
 export function getFeaturedArticle(): Article {
   const all = getAllArticles()
   return all.find(a => a.destacado) ?? all[0]

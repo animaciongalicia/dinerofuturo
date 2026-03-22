@@ -28,6 +28,9 @@ const EMOJIS: Record<Article['categoria'], string> = {
   impuestos: '🧾',
   jubilacion: '🏥',
   comparativa: '📊',
+  hipotecas: '🏠',
+  banca: '📱',
+  finanzas: '💡',
 }
 
 type Variant = 'wide' | 'side' | 'third' | 'half'

@@ -10,7 +10,7 @@ import CompareSection from '@/components/CompareSection'
 import NewsletterSection from '@/components/NewsletterSection'
 import TopicsSection from '@/components/TopicsSection'
 import {
-  getFeaturedArticle,
+  getFeaturedArticles,
   getAllArticles,
   getRecentArticles,
 } from '@/lib/articles'
@@ -74,16 +74,16 @@ function DataFAQSection() {
 }
 
 export default function HomePage() {
-  const featured  = getFeaturedArticle()
+  const featuredList = getFeaturedArticles(2)
   const all       = getAllArticles()
   const recent    = getRecentArticles(7)
-  const sideCards = all.filter(a => a.slug !== featured.slug).slice(0, 3)
+
 
   return (
     <>
       <Hero />
       <LevelBar />
-      <FeaturedArticle featured={featured} side={sideCards} />
+      <FeaturedArticle articles={featuredList} />
       <ProblemBand />
 
       {/* Ad — horizontal between ProblemBand and recent articles */}
