@@ -77,6 +77,30 @@ const CATEGORIAS: Record<Article['categoria'], {
     body: 'En internet hay miles de comparativas de brókers y cuentas de ahorro. La mayoría están pagadas o reciben comisión por cada registro. Las nuestras no. Comparamos comisiones reales, tiempos de respuesta del soporte, facilidad de uso y qué pasa si una plataforma quiebra. Para que elijas con información real, no con la que le conviene al que escribe.',
     resuelve: 'No sé qué bróker o cuenta elegir',
   },
+  hipotecas: {
+    label: 'Hipotecas',
+    h1: 'Hipotecas: euríbor, tipos y todo lo que nadie te explica',
+    emoji: '🏠',
+    desc: 'Guías prácticas sobre hipotecas fijas, variables y mixtas. Cuánto necesitas, qué gastos hay y cómo afecta el euríbor.',
+    body: 'Pedir una hipoteca es la decisión financiera más grande de tu vida y los bancos no tienen incentivos para explicártela bien. Aquí encontrarás todo lo que necesitas saber: cómo funciona el euríbor y por qué sube tu cuota, la diferencia real entre hipoteca fija y variable, cuánto dinero necesitas ahorrar antes de comprar y todos los gastos que nadie te menciona hasta que firmas.',
+    resuelve: 'No entiendo cómo funcionan las hipotecas ni si me conviene comprar',
+  },
+  banca: {
+    label: 'Neobancos',
+    h1: 'Neobancos: Revolut, Trade Republic, Wise y más',
+    emoji: '📱',
+    desc: 'Comparativa honesta de los mejores neobancos en España. Cuál usar para el día a día, para ahorrar o para viajar.',
+    body: 'Los neobancos han cambiado la banca para siempre: sin comisiones, con aplicaciones que funcionan y con mejores condiciones que los bancos tradicionales en casi todo. Pero no todos son iguales ni sirven para lo mismo. Revolut es ideal para viajes, Trade Republic para ahorrar con rentabilidad, Wise para transferencias internacionales. Aquí te explicamos cuál usar según lo que necesitas.',
+    resuelve: 'No sé si merece la pena cambiarme a un neobanco',
+  },
+  finanzas: {
+    label: 'Finanzas personales',
+    h1: 'Finanzas personales: pareja, autónomos e ingresos variables',
+    emoji: '💡',
+    desc: 'Guías para situaciones financieras reales: organizar el dinero en pareja, gestionar las finanzas como autónomo o presupuestar con ingresos irregulares.',
+    body: 'Las finanzas personales no son solo ahorro e inversión. Son también cómo organizarte con tu pareja sin que el dinero sea fuente de conflicto, cómo gestionar los impuestos si eres autónomo sin que te pille el toro, y cómo presupuestar cuando tu sueldo cambia cada mes. Aquí tienes las guías para esas situaciones que los libros de finanzas suelen ignorar.',
+    resuelve: 'Mi situación financiera no encaja en los consejos estándar',
+  },
 }
 
 export function generateStaticParams() {
