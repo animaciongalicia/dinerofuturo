@@ -7,7 +7,7 @@ import { getAllArticles, getArticleBySlug, getArticlesByNivel } from '@/lib/arti
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { extractHeadings, siteUrl } from '@/lib/utils'
+import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
 import ArticleCard from '@/components/ArticleCard'
@@ -87,8 +87,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   try { article = getArticleBySlug(params.slug) }
   catch { notFound() }
 
-  // Render MDX → HTML synchronously with marked (no timeout risk)
-  const contentHtml = marked(article.content ?? '') as string
+  // Render MDX → HTML and inject id attrs into h2/h3 so sidebar TOC links work
+  const rawHtml = marked(article.content ?? '') as string
+  const contentHtml = rawHtml.replace(
+    /<(h[23])>([\s\S]*?)<\/h[23]>/g,
+    (_, tag, inner) => {
+      const id = headingToId(inner.replace(/<[^>]+>/g, '').trim())
+      return `<${tag} id="${id}">${inner}</${tag}>`
+    },
+  )
 
   // Sidebar data
   const headings  = extractHeadings(article.content ?? '')
