@@ -15,9 +15,9 @@ const columns = [
     title: 'Herramientas',
     links: [
       { label: 'Interés compuesto', href: '/herramientas/interes-compuesto' },
-      { label: 'Compra vs alquiler', href: '/herramientas' },
-      { label: 'Fondo de emergencia', href: '/herramientas' },
-      { label: 'Simulador cartera', href: '/herramientas' },
+      { label: 'Calculadora hipoteca', href: '/herramientas/calculadora-hipoteca' },
+      { label: 'Fondo de emergencia', href: '/herramientas/fondo-emergencia' },
+      { label: 'Número FIRE', href: '/herramientas/numero-fire' },
       { label: 'Comparativa brókers', href: '/categoria/comparativa' },
     ],
   },
