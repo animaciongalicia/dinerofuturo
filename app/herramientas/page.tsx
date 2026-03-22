@@ -1,181 +1,135 @@
-'use client'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 
-import { useState } from 'react'
-
-// ── Compound Interest Calculator ──────────────────────────────────────────────
-function CompoundCalculator() {
-  const [initial, setInitial]   = useState(1000)
-  const [monthly, setMonthly]   = useState(100)
-  const [rate, setRate]         = useState(7)
-  const [years, setYears]       = useState(20)
-
-  const months = years * 12
-  const r = rate / 100 / 12
-  const futureInitial = initial * Math.pow(1 + r, months)
-  const futureMonthly = r > 0 ? monthly * ((Math.pow(1 + r, months) - 1) / r) : monthly * months
-  const total = Math.round(futureInitial + futureMonthly)
-  const invested = initial + monthly * months
-
-  return (
-    <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-1">
-      <div className="flex flex-col gap-4">
-        {[
-          { label: 'Capital inicial (€)', value: initial, setter: setInitial, min: 0, max: 100000, step: 500 },
-          { label: 'Aportación mensual (€)', value: monthly, setter: setMonthly, min: 0, max: 5000, step: 50 },
-          { label: 'Rentabilidad anual (%)', value: rate, setter: setRate, min: 0.1, max: 20, step: 0.1 },
-          { label: 'Años de inversión', value: years, setter: setYears, min: 1, max: 40, step: 1 },
-        ].map(({ label, value, setter, min, max, step }) => (
-          <div key={label}>
-            <div className="flex justify-between text-[13px] font-semibold text-ink mb-1">
-              <span>{label}</span>
-              <span className="text-moss">{value}{label.includes('%') ? '%' : label.includes('años') ? ' años' : '€'}</span>
-            </div>
-            <input
-              type="range"
-              min={min} max={max} step={step}
-              value={value}
-              onChange={e => setter(Number(e.target.value))}
-              className="w-full accent-sage"
-            />
-          </div>
-        ))}
-      </div>
-      <div className="bg-forest rounded-2xl p-8 text-white flex flex-col justify-center gap-4">
-        <div>
-          <div className="text-[12px] font-semibold uppercase tracking-[.1em] text-sage mb-1">Capital final en {years} años</div>
-          <div className="font-fraunces text-[48px] font-black leading-none">{total.toLocaleString('es-ES')}€</div>
-        </div>
-        <div className="h-px bg-white/10" />
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <div className="text-[11px] text-white/50 mb-1">Total aportado</div>
-            <div className="font-fraunces text-[22px] font-bold">{invested.toLocaleString('es-ES')}€</div>
-          </div>
-          <div>
-            <div className="text-[11px] text-white/50 mb-1">Intereses generados</div>
-            <div className="font-fraunces text-[22px] font-bold text-mint">{(total - invested).toLocaleString('es-ES')}€</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+export const metadata: Metadata = {
+  title: 'Herramientas financieras gratuitas',
+  description:
+    'Calculadoras gratuitas de interés compuesto, hipoteca, fondo de emergencia, número FIRE y objetivo de ahorro. Sin registro. Sin email. Resultados al instante.',
+  alternates: { canonical: siteUrl('/herramientas') },
+  openGraph: {
+    title: 'Herramientas financieras gratuitas — Dinero Futuro',
+    description: 'Calcula antes de decidir. Sin registro, sin email.',
+    type: 'website',
+    url: siteUrl('/herramientas'),
+  },
 }
 
-// ── Emergency Fund Calculator ─────────────────────────────────────────────────
-function EmergencyFundCalculator() {
-  const [expenses, setExpenses]   = useState(1500)
-  const [jobType, setJobType]     = useState<'funcionario' | 'empleado' | 'autonomo'>('empleado')
-  const [dependents, setDependents] = useState(0)
-
-  const baseMonths = jobType === 'funcionario' ? 3 : jobType === 'empleado' ? 4 : 6
-  const extraMonths = dependents > 0 ? 1 : 0
-  const totalMonths = baseMonths + extraMonths
-  const fund = expenses * totalMonths
-
-  return (
-    <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-1">
-      <div className="flex flex-col gap-5">
-        <div>
-          <label className="text-[13px] font-semibold text-ink mb-2 block">Gastos mensuales fijos (€)</label>
-          <div className="flex justify-between text-[13px] text-moss font-semibold mb-1">
-            <span>€{expenses}</span>
-          </div>
-          <input type="range" min={500} max={5000} step={100} value={expenses}
-            onChange={e => setExpenses(Number(e.target.value))}
-            className="w-full accent-sage" />
-        </div>
-        <div>
-          <label className="text-[13px] font-semibold text-ink mb-2 block">Tipo de trabajo</label>
-          <div className="grid grid-cols-3 gap-2">
-            {([['funcionario', '🏛️ Funcionario'], ['empleado', '👔 Empleado'], ['autonomo', '🧑‍💻 Autónomo']] as const).map(([val, label]) => (
-              <button key={val} onClick={() => setJobType(val)}
-                className={`py-2 px-3 rounded-lg text-[12px] font-medium border-[1.5px] transition-all ${jobType === val ? 'bg-forest text-white border-forest' : 'bg-cream border-border text-ink3 hover:border-sage'}`}>
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div>
-          <label className="text-[13px] font-semibold text-ink mb-2 block">Personas a tu cargo</label>
-          <div className="flex gap-2">
-            {[0, 1, 2, 3].map(n => (
-              <button key={n} onClick={() => setDependents(n)}
-                className={`w-10 h-10 rounded-lg text-[14px] font-bold border-[1.5px] transition-all ${dependents === n ? 'bg-forest text-white border-forest' : 'bg-cream border-border text-ink3 hover:border-sage'}`}>
-                {n}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="bg-forest rounded-2xl p-8 text-white flex flex-col justify-center gap-4">
-        <div>
-          <div className="text-[12px] font-semibold uppercase tracking-[.1em] text-sage mb-1">Tu fondo de emergencia</div>
-          <div className="font-fraunces text-[48px] font-black leading-none">{fund.toLocaleString('es-ES')}€</div>
-        </div>
-        <div className="h-px bg-white/10" />
-        <div>
-          <div className="text-[11px] text-white/50 mb-1">Equivale a</div>
-          <div className="font-fraunces text-[22px] font-bold">{totalMonths} meses de gastos</div>
-          <div className="text-[13px] text-white/60 mt-1">
-            {baseMonths} base {extraMonths > 0 ? `+ ${extraMonths} por dependientes` : ''}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── Tool wrapper ──────────────────────────────────────────────────────────────
-const tools = [
+const TOOLS = [
   {
-    id: 'interes-compuesto',
+    href: '/herramientas/interes-compuesto',
     ico: '🧮',
     name: 'Interés compuesto',
-    desc: 'Calcula cuánto crecerá tu dinero con aportaciones periódicas.',
-    Component: CompoundCalculator,
+    resuelve: '¿Cuánto valdrá mi dinero si lo invierto ahora?',
+    desc: 'Introduce un capital inicial, una aportación mensual, los años y la rentabilidad esperada. La calculadora te muestra cuánto creció tu dinero y, lo más importante, cuánto de ese total son intereses que generó el mercado por ti.',
+    cuando: 'Antes de decidir si invertir, para ver el coste real de esperar un año más, o para comparar distintas rentabilidades.',
+    color: 'bg-[#EBF5EF] border-sage/30',
+    icoColor: 'bg-sage/20',
   },
   {
-    id: 'fondo-emergencia',
+    href: '/herramientas/fondo-emergencia',
     ico: '🛡️',
     name: 'Fondo de emergencia',
-    desc: 'Descubre cuánto necesitas según tu situación laboral y familiar.',
-    Component: EmergencyFundCalculator,
+    resuelve: '¿Cuánto dinero necesito guardado para imprevistos?',
+    desc: 'No es lo mismo ser funcionario que autónomo. Esta calculadora ajusta la cantidad que necesitas según tu tipo de empleo y las personas a tu cargo, para que tu colchón sea el adecuado — ni demasiado pequeño ni dinero inmovilizado de más.',
+    cuando: 'Si estás construyendo tu primer colchón de seguridad o quieres saber si el que tienes es suficiente.',
+    color: 'bg-[#EEF2FF] border-indigo-200',
+    icoColor: 'bg-indigo-100',
+  },
+  {
+    href: '/herramientas/calculadora-hipoteca',
+    ico: '🏠',
+    name: 'Calculadora de hipoteca',
+    resuelve: '¿Cuánto pagaré al mes y cuánto cuesta realmente el piso?',
+    desc: 'Calcula la cuota mensual de tu hipoteca según el precio, la entrada, el plazo y el tipo de interés. También muestra el total que pagarás al banco — la cifra que casi nadie conoce antes de firmar — y cuánto ahorras amortizando anticipadamente.',
+    cuando: 'Antes de pedir una hipoteca, para comparar ofertas de distintos bancos o para calcular el impacto de amortizar cuando tengas un extra.',
+    color: 'bg-gold-light border-gold/30',
+    icoColor: 'bg-gold/20',
+  },
+  {
+    href: '/herramientas/objetivo-ahorro',
+    ico: '🎯',
+    name: 'Objetivo de ahorro',
+    resuelve: '¿Cuánto tengo que ahorrar cada mes para llegar a mi meta?',
+    desc: 'Pon tu meta en euros, tu plazo y lo que ya tienes ahorrado. La calculadora te dice cuánto necesitas apartar al mes, con y sin rentabilidad por invertirlo. Sirve para cualquier objetivo: colchón de emergencia, entrada de piso, viaje, jubilación anticipada.',
+    cuando: 'Cuando tienes un objetivo concreto en mente y quieres saber si es alcanzable con tu presupuesto actual.',
+    color: 'bg-[#FFF7ED] border-orange-200',
+    icoColor: 'bg-orange-100',
+  },
+  {
+    href: '/herramientas/numero-fire',
+    ico: '🔥',
+    name: 'Número FIRE',
+    resuelve: '¿Cuánto dinero necesito para no tener que trabajar más?',
+    desc: 'El movimiento FIRE (Financial Independence, Retire Early) se basa en la regla del 4%: si tienes 25 veces tus gastos anuales invertidos, puedes vivir de las rentas indefinidamente. Esta calculadora te muestra tu número exacto y cuántos años necesitas para alcanzarlo.',
+    cuando: 'Si quieres explorar la independencia financiera o simplemente entender a qué distancia estás de no depender de un sueldo.',
+    color: 'bg-[#FEF2F2] border-red-200',
+    icoColor: 'bg-red-100',
   },
 ]
 
 export default function HerramientasPage() {
-  const [active, setActive] = useState(tools[0].id)
-  const current = tools.find(t => t.id === active) ?? tools[0]
-  const { Component } = current
-
   return (
     <div className="max-w-wrap mx-auto px-7 py-12">
-      <div className="mb-10">
-        <h1 className="font-fraunces text-[40px] font-black text-ink tracking-[-0.5px] mb-2">
+      {/* Header */}
+      <div className="mb-12">
+        <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">
           Herramientas gratuitas
+        </p>
+        <h1 className="font-fraunces text-[42px] font-black text-ink leading-tight mb-4 max-sm:text-[30px]">
+          Calcula antes de decidir
         </h1>
-        <p className="text-[16px] text-ink3">Calcula antes de decidir. Sin registro, sin email.</p>
+        <p className="text-[17px] text-ink2 leading-[1.7] max-w-[600px]">
+          Cinco calculadoras para tomar decisiones financieras con números reales.
+          Sin registro. Sin email. Sin publicidad intrusiva.
+        </p>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-3 flex-wrap mb-8">
-        {tools.map(({ id, ico, name }) => (
-          <button
-            key={id}
-            onClick={() => setActive(id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[14px] font-semibold border-[1.5px] transition-all ${active === id ? 'bg-forest text-white border-forest' : 'bg-white border-border text-ink3 hover:border-sage'}`}
+      {/* Tools grid */}
+      <div className="grid grid-cols-1 gap-6">
+        {TOOLS.map((tool) => (
+          <Link
+            key={tool.href}
+            href={tool.href}
+            className={`group flex gap-6 border rounded-2xl p-7 transition-all hover:shadow-card-lg hover:-translate-y-[2px] max-sm:flex-col max-sm:gap-4 ${tool.color}`}
           >
-            {ico} {name}
-          </button>
+            {/* Icon */}
+            <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-[28px] flex-shrink-0 ${tool.icoColor}`}>
+              {tool.ico}
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-4 mb-2">
+                <h2 className="font-fraunces text-[22px] font-black text-ink leading-tight">
+                  {tool.name}
+                </h2>
+                <span className="text-moss font-semibold text-[14px] whitespace-nowrap flex-shrink-0 group-hover:translate-x-1 transition-transform">
+                  Abrir →
+                </span>
+              </div>
+
+              <p className="text-[14px] font-semibold text-forest mb-2 italic">
+                "{tool.resuelve}"
+              </p>
+
+              <p className="text-[14px] text-ink2 leading-[1.65] mb-3">
+                {tool.desc}
+              </p>
+
+              <div className="inline-flex items-center gap-2 text-[12.5px] text-ink3">
+                <span className="font-semibold text-ink3">Útil cuando:</span>
+                <span>{tool.cuando}</span>
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
 
-      {/* Calculator */}
-      <div className="bg-white border border-border rounded-2xl p-8">
-        <h2 className="font-fraunces text-[24px] font-bold text-ink mb-1">{current.name}</h2>
-        <p className="text-[14px] text-ink3 mb-6">{current.desc}</p>
-        <Component />
-      </div>
+      {/* Footer note */}
+      <p className="text-[13px] text-ink3 text-center mt-10">
+        Todas las calculadoras son orientativas. Los resultados no constituyen asesoramiento financiero.
+      </p>
     </div>
   )
 }
