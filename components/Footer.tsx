@@ -31,12 +31,22 @@ const columns = [
       { label: 'Contacto', href: '/contacto' },
     ],
   },
+  {
+    title: 'Por país',
+    links: [
+      { label: '🇲🇽 México', href: '/pais/mexico' },
+      { label: '🇨🇴 Colombia', href: '/pais/colombia' },
+      { label: '🇦🇷 Argentina', href: '/pais/argentina' },
+      { label: '🇨🇱 Chile', href: '/pais/chile' },
+      { label: 'Ver todos los países', href: '/pais' },
+    ],
+  },
 ]
 
 export default function Footer() {
   return (
     <footer className="bg-ink text-white/60 pt-14">
-      <div className="max-w-wrap mx-auto px-7 pb-12 grid grid-cols-[2.5fr_1fr_1fr_1fr] gap-12 max-lg:grid-cols-2 max-lg:gap-8 max-sm:grid-cols-1 max-sm:gap-6">
+      <div className="max-w-wrap mx-auto px-7 pb-12 grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10 max-xl:grid-cols-[2fr_1fr_1fr_1fr_1fr] max-lg:grid-cols-3 max-lg:gap-8 max-sm:grid-cols-2 max-sm:gap-6">
         {/* Brand */}
         <div>
           <div className="font-fraunces text-[24px] font-black text-white mb-[10px] tracking-[-0.5px]">
