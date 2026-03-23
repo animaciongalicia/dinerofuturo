@@ -28,7 +28,7 @@ const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articulos')
 const NIVELES    = [0, 1, 2, 3]
 const CATEGORIAS = [
   'ahorro', 'inversion', 'cripto', 'presupuesto',
-  'vivienda', 'impuestos', 'jubilacion', 'comparativa',
+  'hipotecas', 'banca', 'finanzas', 'comparativa',
 ]
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
@@ -81,7 +81,14 @@ function calcNextNivelCategoria(articles) {
 async function generateWithClaude({ nivel, categoria, existingTitles }) {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-  const systemPrompt = `Eres un escritor experto en educación financiera para toda la hispanosfera: España, México, Argentina, Colombia, Chile.
+  const systemPrompt = `Eres un escritor experto en educación financiera para toda la hispanosfera: España, México, Argentina, Colombia, Chile y el resto de América Latina.
+
+AUDIENCIA Y GEOGRAFÍA:
+- Escribe en español neutro, válido para TODA la hispanosfera
+- Evita referencias exclusivas a un solo país (no pongas solo Euríbor, Hacienda española, AFORE mexicana, etc.)
+- Cuando hagas referencia a productos o normativas locales, menciona alternativas de otros países o indica "en tu país puede llamarse diferente"
+- Ejemplos numéricos con moneda genérica (ej: "si ganas 2.000 al mes") sin símbolo de moneda específico
+- Los dolores financieros son universales: deudas, ahorro, inversión, vivienda, jubilación
 
 ESTILO OBLIGATORIO:
 - Lenguaje de la calle, como si se lo explicaras a un amigo en un bar
@@ -141,7 +148,7 @@ No incluyas nada antes del --- inicial ni después del contenido.`
   console.log(`\n🤖 Llamando a Claude (nivel ${nivel}, categoría ${categoria})…`)
 
   const message = await client.messages.create({
-    model:      'claude-opus-4-6',
+    model:      'claude-opus-4-5',
     max_tokens: 4096,
     messages: [{ role: 'user', content: userPrompt }],
     system: systemPrompt,
