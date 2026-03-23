@@ -24,9 +24,9 @@ const columns = [
   {
     title: 'Blog',
     links: [
+      { label: '👋 Empieza aquí', href: '/empieza-aqui' },
       { label: 'Últimos artículos', href: '/' },
       { label: 'Comparativas', href: '/categoria/comparativa' },
-      { label: 'Newsletter', href: '/#newsletter' },
       { label: 'Sobre el proyecto', href: '/sobre' },
       { label: 'Contacto', href: '/contacto' },
     ],

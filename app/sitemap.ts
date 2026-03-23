@@ -38,6 +38,7 @@ const PERFILES = [
 const ESTATICAS = [
   { url: '/',                          priority: 1.0, freq: 'daily'   },
   { url: '/que-hacer-con-mi-dinero',   priority: 0.9, freq: 'monthly' },
+  { url: '/empieza-aqui',              priority: 0.9, freq: 'monthly' },
   { url: '/finanzas-personales',       priority: 0.8, freq: 'monthly' },
   { url: '/glosario',                  priority: 0.7, freq: 'monthly' },
   { url: '/sobre',                     priority: 0.5, freq: 'yearly'  },
