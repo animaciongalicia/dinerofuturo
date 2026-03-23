@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de objetivo de ahorro: cuánto ahorrar cada mes | Dinero Futuro',
+  title: 'Calculadora de objetivo de ahorro: cuánto ahorrar cada mes',
   description: 'Cuánto tienes que ahorrar cada mes para alcanzar tu meta financiera, con y sin rentabilidad.',
   alternates: { canonical: siteUrl('/herramientas/objetivo-ahorro') },
   openGraph: {

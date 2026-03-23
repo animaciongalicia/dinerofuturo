@@ -110,7 +110,7 @@ export function generateMetadata({ params }: { params: { nivel: string } }): Met
   if (!meta) return {}
   const canonical = siteUrl(`/nivel/${params.nivel}`)
   return {
-    title: `${meta.h1} — ${meta.label} | Dinero Futuro`,
+    title: `${meta.h1} — ${meta.label}`,
     description: meta.body,
     alternates: { canonical, languages: { es: canonical, 'x-default': canonical } },
     openGraph: {

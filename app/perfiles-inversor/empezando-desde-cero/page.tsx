@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  title: 'Perfil inversor: Empezando desde cero | Dinero Futuro',
+  title: 'Perfil inversor: Empezando desde cero',
   description:
     'Guía completa para quienes aún no invierten o acaban de empezar. Qué hacer primero, qué productos usar y cómo construir tu base financiera paso a paso.',
   alternates: { canonical: siteUrl('/perfiles-inversor/empezando-desde-cero') },

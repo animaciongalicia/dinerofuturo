@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  title: 'Perfil inversor dinámico: máximo crecimiento a largo plazo | Dinero Futuro',
+  title: 'Perfil inversor dinámico: máximo crecimiento a largo plazo',
   description:
     'Guía del inversor dinámico o de crecimiento. Cartera 90% renta variable, cómo gestionar la volatilidad, el efecto del tiempo y errores a evitar.',
   alternates: { canonical: siteUrl('/perfiles-inversor/inversor-dinamico') },

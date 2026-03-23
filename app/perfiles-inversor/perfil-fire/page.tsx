@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  title: 'Perfil FIRE: independencia financiera y retiro anticipado en España | Dinero Futuro',
+  title: 'Perfil FIRE: independencia financiera y retiro anticipado en España',
   description:
     'Guía completa del movimiento FIRE en España. Los 4 tipos de FIRE, la regla del 4%, tu número FIRE, tasa de ahorro y cómo funciona con los impuestos españoles.',
   alternates: { canonical: siteUrl('/perfiles-inversor/perfil-fire') },

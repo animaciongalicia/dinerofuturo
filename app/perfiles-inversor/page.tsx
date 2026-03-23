@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  title: 'Perfiles de inversor: ¿cuál eres tú? | Dinero Futuro',
+  title: 'Perfiles de inversor: ¿cuál eres tú?',
   description:
     'Descubre tu perfil de inversor: conservador, moderado, dinámico o FIRE. Cada perfil con cartera recomendada, productos adecuados y estrategia a seguir.',
   alternates: { canonical: siteUrl('/perfiles-inversor') },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora número FIRE: años hasta la independencia financiera | Dinero Futuro',
+  title: 'Calculadora número FIRE: años hasta la independencia financiera',
   description: 'Calcula tu número FIRE, años que te faltan y edad de jubilación anticipada con la regla del 4%.',
   alternates: { canonical: siteUrl('/herramientas/numero-fire') },
   openGraph: {

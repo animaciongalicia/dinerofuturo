@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de interés compuesto: simula cómo crece tu dinero | Dinero Futuro',
+  title: 'Calculadora de interés compuesto: simula cómo crece tu dinero',
   description: 'Calcula cuánto crece tu inversión con el interés compuesto. Capital, rentabilidad anual y años para ver el resultado al instante.',
   alternates: { canonical: siteUrl('/herramientas/interes-compuesto') },
   openGraph: {

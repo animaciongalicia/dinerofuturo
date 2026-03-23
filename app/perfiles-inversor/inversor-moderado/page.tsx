@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  title: 'Perfil inversor moderado: la cartera 60/40 explicada | Dinero Futuro',
+  title: 'Perfil inversor moderado: la cartera 60/40 explicada',
   description:
     'Guía del inversor moderado en España. Cartera 60/40, ETFs recomendados, brókers, rentabilidad histórica y los errores más comunes del inversor equilibrado.',
   alternates: { canonical: siteUrl('/perfiles-inversor/inversor-moderado') },

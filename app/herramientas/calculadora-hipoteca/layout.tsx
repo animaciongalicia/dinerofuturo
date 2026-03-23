@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de hipoteca: cuota mensual y coste total real | Dinero Futuro',
+  title: 'Calculadora de hipoteca: cuota mensual y coste total real',
   description: 'Calcula tu cuota hipotecaria, total de intereses y ahorro por amortización anticipada. Gratis y sin registro.',
   alternates: { canonical: siteUrl('/herramientas/calculadora-hipoteca') },
   openGraph: {

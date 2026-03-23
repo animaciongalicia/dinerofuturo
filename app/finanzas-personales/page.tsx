@@ -5,7 +5,7 @@ import Sidebar from '@/components/Sidebar'
 import { getAllArticles } from '@/lib/articles'
 
 export const metadata: Metadata = {
-  title: 'Finanzas personales: pareja, autónomos e ingresos irregulares | Dinero Futuro',
+  title: 'Finanzas personales: pareja, autónomos e ingresos irregulares',
   description:
     'Guías prácticas de finanzas personales para situaciones reales: finanzas en pareja, gestión como autónomo e ingresos variables.',
   alternates: { canonical: siteUrl('/finanzas-personales') },

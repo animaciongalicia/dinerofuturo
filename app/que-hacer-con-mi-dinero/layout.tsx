@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: '¿Qué hago con mi dinero? Diagnóstico financiero personalizado | Dinero Futuro',
+  title: '¿Qué hago con mi dinero? Diagnóstico financiero personalizado',
   description: 'Responde 7 preguntas y recibe un plan financiero adaptado a tu situación: deudas, fondo de emergencia, inversión y más. Gratis, sin registro.',
   alternates: { canonical: siteUrl('/que-hacer-con-mi-dinero') },
   openGraph: {

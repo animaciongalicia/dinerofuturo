@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Glosario financiero: términos explicados en lenguaje claro | Dinero Futuro',
+  title: 'Glosario financiero: términos explicados en lenguaje claro',
   description: 'Diccionario de más de 40 términos financieros explicados sin jerga. ETF, euríbor, interés compuesto, IRPF y mucho más.',
   alternates: { canonical: siteUrl('/glosario') },
 }

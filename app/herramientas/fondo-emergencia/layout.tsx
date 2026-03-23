@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora del fondo de emergencia: cuánto necesitas exactamente | Dinero Futuro',
+  title: 'Calculadora del fondo de emergencia: cuánto necesitas exactamente',
   description: 'Calcula tu fondo de emergencia según tus gastos reales y situación laboral. Sin fórmulas genéricas.',
   alternates: { canonical: siteUrl('/herramientas/fondo-emergencia') },
   openGraph: {

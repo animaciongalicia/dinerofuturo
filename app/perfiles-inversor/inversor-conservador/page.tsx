@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  title: 'Perfil inversor conservador: cartera y productos recomendados | Dinero Futuro',
+  title: 'Perfil inversor conservador: cartera y productos recomendados',
   description:
     'Guía completa para el inversor conservador en España. Cartera recomendada, productos concretos (Letras del Tesoro, ETF, cuentas remuneradas) y rentabilidad esperada.',
   alternates: { canonical: siteUrl('/perfiles-inversor/inversor-conservador') },
