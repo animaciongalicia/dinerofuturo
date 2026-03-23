@@ -57,6 +57,10 @@ export const metadata: Metadata = {
     images: [siteUrl('/og-default.png')],
   },
 
+  verification: {
+    google: 'CXoD1QrFE8OInkgJKfym88j5d_AmoHon19j89kUO8Jo',
+  },
+
   robots: {
     index: true,
     follow: true,
