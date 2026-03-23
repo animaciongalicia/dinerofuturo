@@ -2,15 +2,21 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de Fondo de Emergencia — Dinero Futuro',
-  description:
-    'Calcula exactamente cuánto dinero necesitas en tu fondo de emergencia según tu trabajo, gastos y personas a cargo. Funcionario, empleado o autónomo.',
+  title: 'Calculadora del fondo de emergencia: cuánto necesitas exactamente | Dinero Futuro',
+  description: 'Calcula tu fondo de emergencia según tus gastos reales y situación laboral. Sin fórmulas genéricas.',
   alternates: { canonical: siteUrl('/herramientas/fondo-emergencia') },
   openGraph: {
-    title: 'Calculadora de Fondo de Emergencia',
-    description: 'Cuánto necesitas guardado según tu situación real. No el consejo genérico de los 3 meses.',
+    title: 'Calculadora del fondo de emergencia: cuánto necesitas exactamente',
+    description: 'Calcula tu fondo de emergencia según tus gastos reales y situación laboral. Sin fórmulas genéricas.',
     type: 'website',
     url: siteUrl('/herramientas/fondo-emergencia'),
+    locale: 'es_ES',
+    siteName: 'Dinero Futuro',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Calculadora del fondo de emergencia: cuánto necesitas exactamente',
+    description: 'Calcula tu fondo de emergencia según tus gastos reales y situación laboral. Sin fórmulas genéricas.',
   },
 }
 

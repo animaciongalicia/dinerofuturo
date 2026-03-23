@@ -2,15 +2,21 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de Objetivo de Ahorro — ¿Cuánto necesito ahorrar al mes?',
-  description:
-    'Calcula cuánto tienes que ahorrar cada mes para alcanzar tu meta en el plazo que necesitas. Con y sin rentabilidad por invertirlo. Gratis.',
+  title: 'Calculadora de objetivo de ahorro: cuánto ahorrar cada mes | Dinero Futuro',
+  description: 'Cuánto tienes que ahorrar cada mes para alcanzar tu meta financiera, con y sin rentabilidad.',
   alternates: { canonical: siteUrl('/herramientas/objetivo-ahorro') },
   openGraph: {
-    title: 'Calculadora de Objetivo de Ahorro — Dinero Futuro',
-    description: 'Tu meta, tu plazo, cuánto ahorrar al mes. Simple y al instante.',
+    title: 'Calculadora de objetivo de ahorro: cuánto ahorrar cada mes',
+    description: 'Cuánto tienes que ahorrar cada mes para alcanzar tu meta financiera, con y sin rentabilidad.',
     type: 'website',
     url: siteUrl('/herramientas/objetivo-ahorro'),
+    locale: 'es_ES',
+    siteName: 'Dinero Futuro',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Calculadora de objetivo de ahorro: cuánto ahorrar cada mes',
+    description: 'Cuánto tienes que ahorrar cada mes para alcanzar tu meta financiera, con y sin rentabilidad.',
   },
 }
 

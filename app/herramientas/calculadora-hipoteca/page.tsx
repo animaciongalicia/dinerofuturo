@@ -227,10 +227,10 @@ export default function CalculadoraHipotecaPage() {
         </div>
 
         <div className="flex gap-4 flex-wrap">
-          <Link href="/articulo/cuanto-dinero-necesito-para-comprar-piso" className="inline-flex items-center gap-2 bg-forest text-white px-5 py-3 rounded-xl text-[14px] font-semibold hover:bg-moss transition-colors">
+          <Link href="/articulo/cuanto-necesito-para-comprar-un-piso" className="inline-flex items-center gap-2 bg-forest text-white px-5 py-3 rounded-xl text-[14px] font-semibold hover:bg-moss transition-colors">
             Guía completa: comprar piso →
           </Link>
-          <Link href="/articulo/hipoteca-fija-vs-variable-cual-elegir-2026" className="inline-flex items-center gap-2 bg-cream border border-border text-ink px-5 py-3 rounded-xl text-[14px] font-medium hover:border-sage transition-colors">
+          <Link href="/articulo/hipoteca-fija-vs-variable-cual-elegir" className="inline-flex items-center gap-2 bg-cream border border-border text-ink px-5 py-3 rounded-xl text-[14px] font-medium hover:border-sage transition-colors">
             Fija vs variable en 2026
           </Link>
         </div>

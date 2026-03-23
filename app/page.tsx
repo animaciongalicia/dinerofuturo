@@ -14,6 +14,7 @@ import {
   getAllArticles,
   getRecentArticles,
 } from '@/lib/articles'
+import { siteUrl } from '@/lib/utils'
 
 // Datos de mercado estáticos (actualiza manualmente o via API)
 export default function HomePage() {
@@ -22,8 +23,26 @@ export default function HomePage() {
   const recent    = getRecentArticles(7)
 
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Dinero Futuro',
+    description: 'Educación financiera práctica para personas normales en España.',
+    url: siteUrl('/'),
+    inLanguage: 'es-ES',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: siteUrl('/') + '?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Hero />
       <LevelBar />
       <FeaturedArticle articles={featuredList} />

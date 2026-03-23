@@ -1,17 +1,22 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de Interés Compuesto — Dinero Futuro',
-  description:
-    'Calcula cuánto crecerá tu inversión con el tiempo. Introduce capital inicial, aportación mensual, años y rentabilidad. Gráfico año a año incluido. Gratuita.',
-  alternates: {
-    canonical: '/herramientas/interes-compuesto',
-  },
+  title: 'Calculadora de interés compuesto: simula cómo crece tu dinero | Dinero Futuro',
+  description: 'Calcula cuánto crece tu inversión con el interés compuesto. Capital, rentabilidad anual y años para ver el resultado al instante.',
+  alternates: { canonical: siteUrl('/herramientas/interes-compuesto') },
   openGraph: {
-    title: 'Calculadora de Interés Compuesto',
-    description:
-      'Descubre el poder del interés compuesto. Calcula el crecimiento de tu inversión con aportaciones mensuales, gráfico incluido.',
+    title: 'Calculadora de interés compuesto: simula cómo crece tu dinero',
+    description: 'Calcula cuánto crece tu inversión con el interés compuesto. Capital, rentabilidad anual y años para ver el resultado al instante.',
     type: 'website',
+    url: siteUrl('/herramientas/interes-compuesto'),
+    locale: 'es_ES',
+    siteName: 'Dinero Futuro',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Calculadora de interés compuesto: simula cómo crece tu dinero',
+    description: 'Calcula cuánto crece tu inversión con el interés compuesto. Capital, rentabilidad anual y años para ver el resultado al instante.',
   },
 }
 

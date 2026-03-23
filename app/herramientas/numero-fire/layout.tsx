@@ -2,15 +2,21 @@ import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Calculadora Número FIRE — ¿Cuánto necesito para no trabajar más?',
-  description:
-    'Calcula tu número FIRE: el capital necesario para vivir de las rentas sin trabajar. Basado en la regla del 4%. Gratis y sin registro.',
+  title: 'Calculadora número FIRE: años hasta la independencia financiera | Dinero Futuro',
+  description: 'Calcula tu número FIRE, años que te faltan y edad de jubilación anticipada con la regla del 4%.',
   alternates: { canonical: siteUrl('/herramientas/numero-fire') },
   openGraph: {
-    title: 'Calculadora Número FIRE — Dinero Futuro',
-    description: 'Cuánto necesitas para la independencia financiera y cuántos años te faltan.',
+    title: 'Calculadora número FIRE: años hasta la independencia financiera',
+    description: 'Calcula tu número FIRE, años que te faltan y edad de jubilación anticipada con la regla del 4%.',
     type: 'website',
     url: siteUrl('/herramientas/numero-fire'),
+    locale: 'es_ES',
+    siteName: 'Dinero Futuro',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Calculadora número FIRE: años hasta la independencia financiera',
+    description: 'Calcula tu número FIRE, años que te faltan y edad de jubilación anticipada con la regla del 4%.',
   },
 }
 
