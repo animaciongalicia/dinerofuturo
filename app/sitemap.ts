@@ -9,6 +9,14 @@ const ALL_CATEGORIAS: Array<Article['categoria']> = [
   'hipotecas', 'banca', 'finanzas',
 ]
 
+const PAISES = [
+  '/pais',
+  '/pais/mexico',
+  '/pais/colombia',
+  '/pais/argentina',
+  '/pais/chile',
+]
+
 const HERRAMIENTAS = [
   '/herramientas',
   '/herramientas/interes-compuesto',
@@ -78,6 +86,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
+    })),
+
+    // Hubs por país
+    ...PAISES.map(p => ({
+      url: siteUrl(p),
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
     })),
 
     // Artículos

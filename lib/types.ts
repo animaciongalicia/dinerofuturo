@@ -11,5 +11,6 @@ export type Article = {
   lectura: number         // minutos de lectura
   destacado?: boolean
   nuevo?: boolean
+  pais?: 'mexico' | 'colombia' | 'argentina' | 'chile' | 'espana'
   content?: string
 }

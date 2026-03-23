@@ -87,7 +87,7 @@ export default function InversorModeradoPage() {
       </nav>
 
       <div className="flex gap-10 items-start">
-        <main className="flex-1 min-w-0 max-w-[760px]">
+        <main className="flex-1 min-w-0">
 
         {/* Hero */}
         <div className="bg-[#FFFBEB] border border-[#FCD34D] rounded-2xl p-8 mb-10">
