@@ -36,7 +36,7 @@ export async function GET() {
       <description>${escapeXml(a.extracto)}</description>
       <pubDate>${pubDate}</pubDate>
       <category>${escapeXml(a.categoria)}</category>
-      <author>hola@dinerofuturo.com (Dinero Futuro)</author>
+      <author>hola@dinerofuturo.online (Dinero Futuro)</author>
     </item>`
     })
     .join('\n')

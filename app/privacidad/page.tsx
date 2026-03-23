@@ -18,7 +18,7 @@ export default function PrivacidadPage() {
           <li><strong>Nombre:</strong> [NOMBRE DEL TITULAR]</li>
           <li><strong>NIF:</strong> [NIF]</li>
           <li><strong>Dirección:</strong> [DIRECCIÓN]</li>
-          <li><strong>Email:</strong> hola@dinerofuturo.com</li>
+          <li><strong>Email:</strong> hola@dinerofuturo.online</li>
         </ul>
 
         <h2>2. Qué datos recogemos y para qué</h2>
@@ -55,7 +55,7 @@ export default function PrivacidadPage() {
           <li><strong>Limitación:</strong> restringir el tratamiento en determinados casos</li>
         </ul>
         <p>
-          Para ejercer cualquiera de estos derechos envía un email a <strong>hola@dinerofuturo.com</strong> con el asunto "Derechos RGPD". Responderemos en el plazo máximo de 30 días.
+          Para ejercer cualquiera de estos derechos envía un email a <strong>hola@dinerofuturo.online</strong> con el asunto "Derechos RGPD". Responderemos en el plazo máximo de 30 días.
         </p>
         <p>
           También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD): <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>
@@ -63,7 +63,7 @@ export default function PrivacidadPage() {
 
         <h2>4. Darte de baja del newsletter</h2>
         <p>
-          Puedes darte de baja en cualquier momento enviando un email a hola@dinerofuturo.com con el asunto "Baja newsletter". Tramitaremos la baja en 24 horas.
+          Puedes darte de baja en cualquier momento enviando un email a hola@dinerofuturo.online con el asunto "Baja newsletter". Tramitaremos la baja en 24 horas.
         </p>
 
         <h2>5. Seguridad</h2>

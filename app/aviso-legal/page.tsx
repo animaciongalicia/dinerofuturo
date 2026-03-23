@@ -15,13 +15,13 @@ export default function AvisoLegalPage() {
 
         <h2>1. Datos del titular</h2>
         <p>
-          En cumplimiento de lo establecido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que este sitio web, accesible bajo el dominio <strong>dinerofuturo.com</strong> (en adelante, "el Sitio"), es titularidad de:
+          En cumplimiento de lo establecido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que este sitio web, accesible bajo el dominio <strong>dinerofuturo.online</strong> (en adelante, "el Sitio"), es titularidad de:
         </p>
         <ul>
           <li><strong>Nombre / Razón social:</strong> [NOMBRE DEL TITULAR]</li>
           <li><strong>NIF/CIF:</strong> [NIF]</li>
           <li><strong>Domicilio:</strong> [DIRECCIÓN]</li>
-          <li><strong>Email de contacto:</strong> hola@dinerofuturo.com</li>
+          <li><strong>Email de contacto:</strong> hola@dinerofuturo.online</li>
         </ul>
         <p className="text-[13px] text-ink3 italic">
           Completa estos datos antes de publicar el sitio. Son obligatorios por la LSSI-CE española.

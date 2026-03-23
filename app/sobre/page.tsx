@@ -46,7 +46,7 @@ export default function SobrePage() {
 
         <h2>Contacto</h2>
         <p>
-          Para cualquier consulta, corrección o sugerencia: <strong>hola@dinerofuturo.com</strong>
+          Para cualquier consulta, corrección o sugerencia: <strong>hola@dinerofuturo.online</strong>
         </p>
         <p>
           También puedes usar el{' '}

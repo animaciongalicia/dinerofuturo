@@ -36,6 +36,6 @@ export function readingTime(source: string): number {
 
 /** Absolute site URL helper */
 export function siteUrl(path = ''): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dinerofuturo.com'
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dinerofuturo.online'
   return base.replace(/\/$/, '') + (path.startsWith('/') ? path : `/${path}`)
 }

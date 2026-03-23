@@ -54,8 +54,8 @@ export default function ContactoPage() {
 
       <p className="text-[14px] text-ink3 text-center">
         O escríbenos directamente a{' '}
-        <a href="mailto:hola@dinerofuturo.com" className="text-moss font-semibold hover:text-forest">
-          hola@dinerofuturo.com
+        <a href="mailto:hola@dinerofuturo.online" className="text-moss font-semibold hover:text-forest">
+          hola@dinerofuturo.online
         </a>
       </p>
     </div>

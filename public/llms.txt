@@ -6,46 +6,46 @@ Dinero Futuro es un blog de finanzas personales en español orientado a personas
 
 ## Secciones principales
 
-- [Inicio](https://dinerofuturo.com/)
-- [¿Qué hago con mi dinero? — Diagnóstico interactivo](https://dinerofuturo.com/que-hacer-con-mi-dinero)
-- [Herramientas financieras gratuitas](https://dinerofuturo.com/herramientas)
-- [Perfiles de inversor](https://dinerofuturo.com/perfiles-inversor)
-- [Finanzas personales](https://dinerofuturo.com/finanzas-personales)
-- [Glosario financiero](https://dinerofuturo.com/glosario)
+- [Inicio](https://dinerofuturo.online/)
+- [¿Qué hago con mi dinero? — Diagnóstico interactivo](https://dinerofuturo.online/que-hacer-con-mi-dinero)
+- [Herramientas financieras gratuitas](https://dinerofuturo.online/herramientas)
+- [Perfiles de inversor](https://dinerofuturo.online/perfiles-inversor)
+- [Finanzas personales](https://dinerofuturo.online/finanzas-personales)
+- [Glosario financiero](https://dinerofuturo.online/glosario)
 
 ## Niveles de contenido
 
-- [Nivel 0 — Empezar desde cero](https://dinerofuturo.com/nivel/0)
-- [Nivel 1 — Ahorrar](https://dinerofuturo.com/nivel/1)
-- [Nivel 2 — Invertir](https://dinerofuturo.com/nivel/2)
-- [Nivel 3 — Cripto y avanzado](https://dinerofuturo.com/nivel/3)
+- [Nivel 0 — Empezar desde cero](https://dinerofuturo.online/nivel/0)
+- [Nivel 1 — Ahorrar](https://dinerofuturo.online/nivel/1)
+- [Nivel 2 — Invertir](https://dinerofuturo.online/nivel/2)
+- [Nivel 3 — Cripto y avanzado](https://dinerofuturo.online/nivel/3)
 
 ## Categorías
 
-- [Ahorro](https://dinerofuturo.com/categoria/ahorro)
-- [Inversión](https://dinerofuturo.com/categoria/inversion)
-- [Hipotecas](https://dinerofuturo.com/categoria/hipotecas)
-- [Neobancos](https://dinerofuturo.com/categoria/banca)
-- [Criptomonedas](https://dinerofuturo.com/categoria/cripto)
-- [Presupuesto](https://dinerofuturo.com/categoria/presupuesto)
-- [Comparativas](https://dinerofuturo.com/categoria/comparativa)
-- [Finanzas personales](https://dinerofuturo.com/categoria/finanzas)
+- [Ahorro](https://dinerofuturo.online/categoria/ahorro)
+- [Inversión](https://dinerofuturo.online/categoria/inversion)
+- [Hipotecas](https://dinerofuturo.online/categoria/hipotecas)
+- [Neobancos](https://dinerofuturo.online/categoria/banca)
+- [Criptomonedas](https://dinerofuturo.online/categoria/cripto)
+- [Presupuesto](https://dinerofuturo.online/categoria/presupuesto)
+- [Comparativas](https://dinerofuturo.online/categoria/comparativa)
+- [Finanzas personales](https://dinerofuturo.online/categoria/finanzas)
 
 ## Herramientas (calculadoras gratuitas, sin registro)
 
-- [Calculadora de interés compuesto](https://dinerofuturo.com/herramientas/interes-compuesto)
-- [Calculadora fondo de emergencia](https://dinerofuturo.com/herramientas/fondo-emergencia)
-- [Calculadora de hipoteca](https://dinerofuturo.com/herramientas/calculadora-hipoteca)
-- [Calculadora objetivo de ahorro](https://dinerofuturo.com/herramientas/objetivo-ahorro)
-- [Calculadora número FIRE](https://dinerofuturo.com/herramientas/numero-fire)
+- [Calculadora de interés compuesto](https://dinerofuturo.online/herramientas/interes-compuesto)
+- [Calculadora fondo de emergencia](https://dinerofuturo.online/herramientas/fondo-emergencia)
+- [Calculadora de hipoteca](https://dinerofuturo.online/herramientas/calculadora-hipoteca)
+- [Calculadora objetivo de ahorro](https://dinerofuturo.online/herramientas/objetivo-ahorro)
+- [Calculadora número FIRE](https://dinerofuturo.online/herramientas/numero-fire)
 
 ## Perfiles de inversor
 
-- [Empezando desde cero](https://dinerofuturo.com/perfiles-inversor/empezando-desde-cero)
-- [Perfil conservador](https://dinerofuturo.com/perfiles-inversor/inversor-conservador)
-- [Perfil moderado](https://dinerofuturo.com/perfiles-inversor/inversor-moderado)
-- [Perfil dinámico](https://dinerofuturo.com/perfiles-inversor/inversor-dinamico)
-- [Perfil FIRE](https://dinerofuturo.com/perfiles-inversor/perfil-fire)
+- [Empezando desde cero](https://dinerofuturo.online/perfiles-inversor/empezando-desde-cero)
+- [Perfil conservador](https://dinerofuturo.online/perfiles-inversor/inversor-conservador)
+- [Perfil moderado](https://dinerofuturo.online/perfiles-inversor/inversor-moderado)
+- [Perfil dinámico](https://dinerofuturo.online/perfiles-inversor/inversor-dinamico)
+- [Perfil FIRE](https://dinerofuturo.online/perfiles-inversor/perfil-fire)
 
 ## Información
 
@@ -54,4 +54,4 @@ Dinero Futuro es un blog de finanzas personales en español orientado a personas
 - Público: personas sin formación financiera, residentes en España
 - Enfoque: educativo, sin afiliados encubiertos, sin asesoramiento financiero personalizado
 - Tecnología: Next.js 14 App Router, MDX
-- Sitemap: https://dinerofuturo.com/sitemap.xml
+- Sitemap: https://dinerofuturo.online/sitemap.xml

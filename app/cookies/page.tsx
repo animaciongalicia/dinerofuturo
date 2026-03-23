@@ -94,7 +94,7 @@ export default function CookiesPage() {
         </p>
 
         <p>
-          Para cualquier consulta sobre cookies, contacta en <strong>hola@dinerofuturo.com</strong>.
+          Para cualquier consulta sobre cookies, contacta en <strong>hola@dinerofuturo.online</strong>.
         </p>
       </div>
     </div>
