@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Sidebar from '@/components/Sidebar'
 
 function formatEur(n: number) {
   return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)
@@ -62,7 +63,7 @@ export default function CalculadoraHipotecaPage() {
   const ahorro = totalIntereses - interesesAmort
 
   return (
-    <div className="max-w-[900px] mx-auto px-7 py-14">
+    <div className="max-w-wrap mx-auto px-7 py-12">
 
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-[13px] text-ink3 mb-8">
@@ -71,13 +72,17 @@ export default function CalculadoraHipotecaPage() {
         <span className="text-ink">Calculadora de hipoteca</span>
       </nav>
 
-      {/* Header */}
-      <div className="mb-10">
-        <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">Herramienta gratuita</p>
-        <h1 className="font-fraunces text-[38px] font-black text-ink leading-tight mb-3 max-sm:text-[28px]">
+      <div className="flex gap-10 items-start">
+      <main className="flex-1 min-w-0">
+
+      {/* Hero visual */}
+      <div className="bg-[#1e3a5f] rounded-2xl px-8 py-8 mb-8 text-white relative overflow-hidden">
+        <div className="absolute right-0 top-0 bottom-0 w-[200px] bg-gradient-to-l from-white/5 to-transparent pointer-events-none" />
+        <p className="text-[12px] font-bold uppercase tracking-[.15em] text-blue-300 mb-2">Herramienta gratuita</p>
+        <h1 className="font-fraunces text-[36px] font-black leading-tight mb-3 max-sm:text-[26px]">
           Calculadora de hipoteca
         </h1>
-        <p className="text-[16px] text-ink2 leading-[1.7] max-w-[600px]">
+        <p className="text-[16px] text-blue-100 leading-[1.65] max-w-[520px]">
           Cuánto pagas al mes, cuánto pagas en total al banco y cuánto ahorras si amortizas antes. La cifra que casi nadie conoce antes de firmar.
         </p>
       </div>
@@ -234,6 +239,10 @@ export default function CalculadoraHipotecaPage() {
             Fija vs variable en 2026
           </Link>
         </div>
+      </div>
+
+      </main>
+      <Sidebar />
       </div>
     </div>
   )

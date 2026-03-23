@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Sidebar from '@/components/Sidebar'
 
 function formatEur(n: number) {
   return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)
@@ -43,7 +44,7 @@ export default function NumeroFirePage() {
   const progreso    = Math.min(100, Math.round((ahorroActual / fireNumber) * 100))
 
   return (
-    <div className="max-w-[860px] mx-auto px-7 py-14">
+    <div className="max-w-wrap mx-auto px-7 py-12">
 
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-[13px] text-ink3 mb-8">
@@ -52,14 +53,17 @@ export default function NumeroFirePage() {
         <span className="text-ink">Número FIRE</span>
       </nav>
 
-      {/* Header */}
-      <div className="mb-10">
-        <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">Herramienta gratuita</p>
-        <h1 className="font-fraunces text-[38px] font-black text-ink leading-tight mb-3 max-sm:text-[28px]">
+      <div className="flex gap-10 items-start">
+      <main className="flex-1 min-w-0">
+
+      {/* Hero */}
+      <div className="bg-[#7c3aed] rounded-2xl px-8 py-8 mb-8 text-white relative overflow-hidden">
+        <p className="text-[12px] font-bold uppercase tracking-[.15em] text-violet-200 mb-2">Herramienta gratuita</p>
+        <h1 className="font-fraunces text-[36px] font-black leading-tight mb-3 max-sm:text-[26px]">
           Tu número FIRE
         </h1>
-        <p className="text-[16px] text-ink2 leading-[1.7] max-w-[600px]">
-          FIRE significa Financial Independence, Retire Early. Tu número FIRE es el capital que necesitas acumular para vivir de las rentas sin necesitar un sueldo. Esta calculadora te dice cuál es y cuánto tiempo te falta para alcanzarlo.
+        <p className="text-[16px] text-violet-100 leading-[1.65] max-w-[520px]">
+          FIRE significa Financial Independence, Retire Early. Tu número FIRE es el capital que necesitas acumular para vivir de las rentas sin trabajar. Esta calculadora te dice cuál es y cuánto tiempo te falta.
         </p>
       </div>
 
@@ -148,7 +152,7 @@ export default function NumeroFirePage() {
       </div>
 
       {/* Educational content */}
-      <div className="mt-16 border-t border-border pt-12 space-y-8 max-w-[720px]">
+      <div className="mt-12 border-t border-border pt-10 space-y-6">
         <div>
           <h2 className="font-fraunces text-[24px] font-bold text-ink mb-3">Qué es el movimiento FIRE</h2>
           <p className="text-[15px] text-ink2 leading-[1.75]">
@@ -183,6 +187,10 @@ export default function NumeroFirePage() {
             Calculadora interés compuesto
           </Link>
         </div>
+      </div>
+
+      </main>
+      <Sidebar />
       </div>
     </div>
   )

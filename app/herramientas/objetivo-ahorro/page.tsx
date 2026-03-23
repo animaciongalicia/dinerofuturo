@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Sidebar from '@/components/Sidebar'
 
 function formatEur(n: number) {
   return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)
@@ -42,7 +43,7 @@ export default function ObjetivoAhorroPage() {
   const yaAlcanzo = actual >= meta
 
   return (
-    <div className="max-w-[860px] mx-auto px-7 py-14">
+    <div className="max-w-wrap mx-auto px-7 py-12">
 
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-[13px] text-ink3 mb-8">
@@ -51,14 +52,17 @@ export default function ObjetivoAhorroPage() {
         <span className="text-ink">Objetivo de ahorro</span>
       </nav>
 
-      {/* Header */}
-      <div className="mb-10">
-        <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-3">Herramienta gratuita</p>
-        <h1 className="font-fraunces text-[38px] font-black text-ink leading-tight mb-3 max-sm:text-[28px]">
+      <div className="flex gap-10 items-start">
+      <main className="flex-1 min-w-0">
+
+      {/* Hero */}
+      <div className="bg-amber-700 rounded-2xl px-8 py-8 mb-8 text-white relative overflow-hidden">
+        <p className="text-[12px] font-bold uppercase tracking-[.15em] text-amber-200 mb-2">Herramienta gratuita</p>
+        <h1 className="font-fraunces text-[36px] font-black leading-tight mb-3 max-sm:text-[26px]">
           ¿Cuánto necesito ahorrar al mes?
         </h1>
-        <p className="text-[16px] text-ink2 leading-[1.7] max-w-[600px]">
-          Pon tu meta, cuánto tienes ya y en cuánto tiempo la quieres alcanzar. La calculadora te muestra la cuota mensual necesaria — y cuánto te ahorras si ese dinero genera algo de rentabilidad mientras tanto.
+        <p className="text-[16px] text-amber-100 leading-[1.65] max-w-[520px]">
+          Pon tu meta, cuánto tienes ya y en cuánto tiempo la quieres alcanzar. La calculadora te muestra la cuota mensual necesaria — y cuánto ahorras si el dinero genera rentabilidad mientras tanto.
         </p>
       </div>
 
@@ -135,7 +139,7 @@ export default function ObjetivoAhorroPage() {
       </div>
 
       {/* Educational content */}
-      <div className="mt-16 border-t border-border pt-12 space-y-8 max-w-[720px]">
+      <div className="mt-12 border-t border-border pt-10 space-y-6">
         <div>
           <h2 className="font-fraunces text-[24px] font-bold text-ink mb-3">Por qué importa la rentabilidad del ahorro</h2>
           <p className="text-[15px] text-ink2 leading-[1.75]">
@@ -158,6 +162,10 @@ export default function ObjetivoAhorroPage() {
             Ahorrar vs invertir
           </Link>
         </div>
+      </div>
+
+      </main>
+      <Sidebar />
       </div>
     </div>
   )
