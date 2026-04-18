@@ -76,9 +76,17 @@ const NIVEL_CLASS: Record<number, string> = {
 }
 
 const CATEGORIA_LABEL: Record<string, string> = {
-  ahorro: 'Ahorro', inversion: 'Inversión', cripto: 'Cripto',
-  presupuesto: 'Presupuesto', vivienda: 'Vivienda', impuestos: 'Impuestos',
-  jubilacion: 'Jubilación', comparativa: 'Comparativa',
+  ahorro:      'Ahorro',
+  inversion:   'Inversión',
+  cripto:      'Cripto',
+  presupuesto: 'Presupuesto',
+  hipotecas:   'Hipotecas',
+  banca:       'Neobancos',
+  jubilacion:  'Jubilación',
+  comparativa: 'Comparativas',
+  finanzas:    'Finanzas',
+  impuestos:   'Impuestos',
+  vivienda:    'Vivienda',
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -138,12 +146,26 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
   const articleUrl = siteUrl(`/articulo/${article.slug}`)
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio',               item: siteUrl('/') },
+      { '@type': 'ListItem', position: 2, name: NIVEL_LABEL[article.nivel], item: siteUrl(`/nivel/${article.nivel}`) },
+      { '@type': 'ListItem', position: 3, name: article.title,          item: articleUrl },
+    ],
+  }
+
   return (
     <>
       {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <div className="max-w-wrap mx-auto px-7 py-10">

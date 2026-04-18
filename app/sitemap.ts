@@ -3,10 +3,10 @@ import { getAllArticles } from '@/lib/articles'
 import { siteUrl } from '@/lib/utils'
 import type { Article } from '@/lib/types'
 
+// Only include categories that have articles and are in the nav
 const ALL_CATEGORIAS: Array<Article['categoria']> = [
   'ahorro', 'inversion', 'cripto', 'presupuesto',
-  'vivienda', 'impuestos', 'jubilacion', 'comparativa',
-  'hipotecas', 'banca', 'finanzas',
+  'hipotecas', 'banca', 'jubilacion', 'comparativa',
 ]
 
 const PAISES = [
@@ -37,6 +37,7 @@ const PERFILES = [
 
 const ESTATICAS = [
   { url: '/',                          priority: 1.0, freq: 'daily'   },
+  { url: '/articulos',                 priority: 0.9, freq: 'daily'   },
   { url: '/que-hacer-con-mi-dinero',   priority: 0.9, freq: 'monthly' },
   { url: '/empieza-aqui',              priority: 0.9, freq: 'monthly' },
   { url: '/finanzas-personales',       priority: 0.8, freq: 'monthly' },

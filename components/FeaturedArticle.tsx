@@ -63,7 +63,7 @@ export default function FeaturedArticle({ articles }: Props) {
       <div className="max-w-wrap mx-auto px-7 pt-10 pb-2">
         <div className="flex items-baseline justify-between mb-5">
           <h2 className="font-fraunces text-[22px] font-bold text-ink tracking-[-0.3px]">Artículos destacados</h2>
-          <Link href="/nivel/0" className="text-[13px] text-moss font-semibold hover:text-forest">
+          <Link href="/articulos" className="text-[13px] text-moss font-semibold hover:text-forest">
             Ver todos →
           </Link>
         </div>

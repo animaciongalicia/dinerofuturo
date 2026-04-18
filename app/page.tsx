@@ -18,7 +18,7 @@ import { siteUrl } from '@/lib/utils'
 
 // Datos de mercado estáticos (actualiza manualmente o via API)
 export default function HomePage() {
-  const featuredList = getFeaturedArticles(2)
+  const featuredList = getFeaturedArticles(4)
   const all       = getAllArticles()
   const recent    = getRecentArticles(7)
 
@@ -27,7 +27,7 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Dinero Futuro',
-    description: 'Educación financiera práctica para personas normales en España.',
+    description: 'Educación financiera práctica para personas normales en toda la hispanosfera.',
     url: siteUrl('/'),
     inLanguage: 'es-ES',
     potentialAction: {
@@ -58,7 +58,7 @@ export default function HomePage() {
         <div className="max-w-wrap mx-auto px-7">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="font-fraunces text-[24px] font-bold text-ink tracking-[-0.3px]">Publicados esta semana</h2>
-            <Link href="/nivel/0" className="text-[13px] text-moss font-semibold flex items-center gap-1 hover:text-forest">
+            <Link href="/articulos" className="text-[13px] text-moss font-semibold flex items-center gap-1 hover:text-forest">
               Ver todos los artículos →
             </Link>
           </div>

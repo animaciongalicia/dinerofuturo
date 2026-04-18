@@ -36,16 +36,16 @@ export default function Hero() {
           </p>
           <div className="flex gap-3 flex-wrap mb-10">
             <Link
-              href="/nivel/0"
+              href="/que-hacer-con-mi-dinero"
               className="bg-gold text-forest px-[26px] py-[14px] rounded-[10px] text-[14px] font-bold hover:brightness-110 transition-all inline-flex items-center gap-[7px]"
             >
-              ¿Por dónde empiezo? →
+              🧭 ¿Por dónde empiezo? →
             </Link>
             <Link
-              href="/herramientas"
+              href="/nivel/0"
               className="bg-white/[.08] text-white border-[1.5px] border-white/[.22] px-[26px] py-[14px] rounded-[10px] text-[14px] font-medium hover:bg-white/[.15] transition-all inline-flex items-center"
             >
-              Ver herramientas gratis
+              Empezar desde el Nivel 0
             </Link>
           </div>
           <div className="flex gap-8">
