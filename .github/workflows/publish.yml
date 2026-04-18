@@ -1,24 +1,27 @@
-name: Artículo diario
+name: Artículo diario (cola SEO)
 
 on:
   schedule:
     # Cada día a las 07:00 UTC (09:00 España, 02:00 CDMX)
     - cron: '0 7 * * *'
-  # También se puede lanzar a mano desde Actions → Run workflow
+  # Lanzar a mano desde Actions → Run workflow
   workflow_dispatch:
+    inputs:
+      force_slug:
+        description: 'Forzar un slug concreto de la cola (opcional)'
+        required: false
+        default: ''
 
 jobs:
   publish:
-    name: Generar y publicar artículo
+    name: Generar artículo desde cola SEO
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # El token con permiso de escritura permite el git push final
           token: ${{ secrets.GH_TOKEN }}
-          # Traemos todo el historial para que gray-matter pueda leer los archivos
           fetch-depth: 0
 
       - name: Setup Node
@@ -27,10 +30,20 @@ jobs:
           node-version: '20'
 
       - name: Instalar dependencias del script
-        # Solo instalamos lo que necesita el script — no el proyecto completo
         run: npm install @anthropic-ai/sdk gray-matter
 
-      - name: Generar artículo con Claude
+      - name: Generar artículo desde cola SEO
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node scripts/generate-article.mjs
+          FORCE_SLUG: ${{ github.event.inputs.force_slug }}
+        run: node scripts/generate-from-queue.mjs
+
+      - name: Resumen de cola restante
+        run: |
+          PENDING=$(node -e "
+            const q = JSON.parse(require('fs').readFileSync('content/queue.json','utf-8'));
+            const p = q.queue.filter(i=>i.status==='pending');
+            console.log(p.length + ' artículos pendientes en cola');
+            if(p.length>0) console.log('Próximo: ' + p.sort((a,b)=>b.prioridad-a.prioridad)[0].keyword_principal);
+          ")
+          echo "$PENDING"
