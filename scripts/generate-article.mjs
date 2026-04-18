@@ -24,6 +24,23 @@ import matter from 'gray-matter'
 
 const __dirname    = path.dirname(fileURLToPath(import.meta.url))
 const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articulos')
+const QUEUE_FILE   = path.join(__dirname, '..', 'content', 'queue.json')
+
+// ── Cola SEO: si existe queue.json, delega en generate-from-queue.mjs ─────────
+if (fs.existsSync(QUEUE_FILE)) {
+  const { createRequire } = await import('module')
+  const queueData = JSON.parse(fs.readFileSync(QUEUE_FILE, 'utf-8'))
+  const pending   = queueData.queue.filter(i => i.status === 'pending')
+  if (pending.length > 0) {
+    console.log(`📋 Cola SEO encontrada — ${pending.length} artículos pendientes`)
+    console.log('🔀 Delegando en generate-from-queue.mjs…')
+    const { execSync: exec } = await import('child_process')
+    exec('node scripts/generate-from-queue.mjs', { stdio: 'inherit', cwd: path.join(__dirname, '..') })
+    process.exit(0)
+  } else {
+    console.log('📋 Cola SEO vacía — usando generación aleatoria de respaldo')
+  }
+}
 
 const NIVELES    = [0, 1, 2, 3]
 const CATEGORIAS = [

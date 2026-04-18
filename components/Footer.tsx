@@ -88,7 +88,7 @@ export default function Footer() {
             { label: 'Aviso legal', href: '/aviso-legal' },
             { label: 'Privacidad',  href: '/privacidad' },
             { label: 'Cookies',     href: '/cookies' },
-            { label: 'Afiliados',   href: '/aviso-legal#politica-de-enlaces-afiliados' },
+            { label: 'Afiliados',   href: '/afiliados' },
           ].map(({ label, href }) => (
             <Link key={label} href={href} className="text-white/35 hover:text-white/70 transition-colors">
               {label}

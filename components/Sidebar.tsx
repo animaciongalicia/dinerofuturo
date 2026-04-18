@@ -10,11 +10,14 @@ const TOOLS = [
 ]
 
 const SECCIONES = [
-  { href: '/categoria/hipotecas',    label: 'Hipotecas',           ico: '🏠' },
-  { href: '/categoria/banca',        label: 'Neobancos',           ico: '📱' },
-  { href: '/finanzas-personales',    label: 'Finanzas personales', ico: '💡' },
-  { href: '/categoria/inversion',    label: 'Inversión',           ico: '📈' },
-  { href: '/categoria/cripto',       label: 'Cripto',              ico: '₿'  },
+  { href: '/categoria/inversion',   label: 'Inversión',    ico: '📈' },
+  { href: '/categoria/ahorro',      label: 'Ahorro',       ico: '💰' },
+  { href: '/categoria/presupuesto', label: 'Presupuesto',  ico: '📋' },
+  { href: '/categoria/hipotecas',   label: 'Hipotecas',    ico: '🏠' },
+  { href: '/categoria/banca',       label: 'Neobancos',    ico: '📱' },
+  { href: '/categoria/cripto',      label: 'Cripto',       ico: '₿'  },
+  { href: '/categoria/comparativa', label: 'Comparativas', ico: '📊' },
+  { href: '/categoria/jubilacion',  label: 'Jubilación',   ico: '🏖️' },
 ]
 
 interface Props {

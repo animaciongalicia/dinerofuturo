@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
 const TOPICS = [
-  { label: '🧭 ¿Qué hago con mi dinero?', href: '/que-hacer-con-mi-dinero', className: 'bg-[#EEF2FF] text-[#3730A3]' },
-  { label: '🧮 Calculadoras',             href: '/herramientas',             className: 'bg-[#ECFDF5] text-[#065F46]' },
-  { label: '🏠 Hipotecas',               href: '/categoria/hipotecas',      className: 'bg-[#FFF7ED] text-[#9A3412]' },
-  { label: '📱 Neobancos',               href: '/categoria/banca',          className: 'bg-[#EFF6FF] text-[#1D4ED8]' },
-  { label: '💡 Finanzas personales',      href: '/finanzas-personales',      className: 'bg-[#FDF4FF] text-[#7E22CE]' },
-  { label: '📊 Comparativas',            href: '/categoria/comparativa',    className: 'bg-[#F5F3FF] text-[#5B21B6]' },
+  { label: '🧮 Calculadoras',           href: '/herramientas',              className: 'bg-[#ECFDF5] text-[#065F46]' },
+  { label: '🎯 Perfiles de inversor',   href: '/perfiles-inversor',         className: 'bg-[#EEF2FF] text-[#3730A3]' },
+  { label: '🌍 Por país',              href: '/pais',                      className: 'bg-[#EFF6FF] text-[#1D4ED8]' },
+  { label: '💡 Finanzas personales',    href: '/finanzas-personales',       className: 'bg-[#FDF4FF] text-[#7E22CE]' },
+  { label: '🧭 ¿Qué hago con mi dinero?', href: '/que-hacer-con-mi-dinero', className: 'bg-[#FFF7ED] text-[#9A3412]' },
+  { label: '📚 Glosario',              href: '/glosario',                  className: 'bg-[#F5F3FF] text-[#5B21B6]' },
 ]
 
 export default function LevelBar() {

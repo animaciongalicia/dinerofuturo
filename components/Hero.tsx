@@ -23,7 +23,7 @@ export default function Hero() {
 
       <div className="max-w-wrap mx-auto px-7 pt-[60px] grid grid-cols-2 gap-0 min-h-[520px] max-lg:grid-cols-1">
         {/* Left */}
-        <div className="pb-[60px] flex flex-col justify-center animate-fade-up">
+        <div className="pb-[60px] flex flex-col justify-center">
           <div className="text-[11px] font-semibold tracking-[.14em] uppercase text-sage mb-[18px] flex items-center gap-2 before:content-[''] before:block before:w-6 before:h-px before:bg-sage">
             Educación financiera real
           </div>
