@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-04-19",
-    "pending": 39
+    "ultima_actualizacion": "2026-04-20",
+    "pending": 38
   },
   "queue": [
     {
@@ -64,8 +64,10 @@
       ],
       "palabras_min": 1600,
       "prioridad": 10,
-      "status": "pending",
-      "notas": "Keyword de altísimo volumen. Conecta con calculadora FIRE y perfil FIRE."
+      "status": "published",
+      "notas": "Keyword de altísimo volumen. Conecta con calculadora FIRE y perfil FIRE.",
+      "fecha_publicado": "2026-04-20",
+      "slug_real": "independencia-financiera-que-es-como-lograrla"
     },
     {
       "id": 3,
