@@ -11,6 +11,7 @@ const ALL_CATEGORIAS: Array<Article['categoria']> = [
 
 const PAISES = [
   '/pais',
+  '/pais/espana',
   '/pais/mexico',
   '/pais/colombia',
   '/pais/argentina',
