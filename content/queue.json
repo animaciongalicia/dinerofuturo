@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-04-20",
-    "pending": 38
+    "ultima_actualizacion": "2026-04-21",
+    "pending": 37
   },
   "queue": [
     {
@@ -94,8 +94,10 @@
       ],
       "palabras_min": 1500,
       "prioridad": 10,
-      "status": "pending",
-      "notas": "Keyword estacional muy buscado a principios de año. Alta intención."
+      "status": "published",
+      "notas": "Keyword estacional muy buscado a principios de año. Alta intención.",
+      "fecha_publicado": "2026-04-21",
+      "slug_real": "mejores-inversiones-2026-sin-riesgo"
     },
     {
       "id": 4,
