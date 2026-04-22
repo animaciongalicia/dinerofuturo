@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-04-21",
-    "pending": 37
+    "ultima_actualizacion": "2026-04-22",
+    "pending": 36
   },
   "queue": [
     {
@@ -124,8 +124,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 10,
-      "status": "pending",
-      "notas": "Búsqueda de alto volumen y alta intención. Latam + España."
+      "status": "published",
+      "notas": "Búsqueda de alto volumen y alta intención. Latam + España.",
+      "fecha_publicado": "2026-04-22",
+      "slug_real": "como-salir-de-deudas-rapido-plan-paso-a-paso"
     },
     {
       "id": 5,
