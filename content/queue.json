@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-04-28",
-    "pending": 31
+    "ultima_actualizacion": "2026-04-29",
+    "pending": 30
   },
   "queue": [
     {
@@ -305,8 +305,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 9,
-      "status": "pending",
-      "notas": "Keyword muy buscado en Colombia. Conecta con hub Colombia."
+      "status": "published",
+      "notas": "Keyword muy buscado en Colombia. Conecta con hub Colombia.",
+      "fecha_publicado": "2026-04-29",
+      "slug_real": "cdt-colombia-que-es-donde-conseguir-mejor-tasa"
     },
     {
       "id": 11,
