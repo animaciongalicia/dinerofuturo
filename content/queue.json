@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-04-30",
-    "pending": 29
+    "ultima_actualizacion": "2026-05-01",
+    "pending": 28
   },
   "queue": [
     {
@@ -365,8 +365,10 @@
       ],
       "palabras_min": 1500,
       "prioridad": 9,
-      "status": "pending",
-      "notas": "Keyword exclusivo Argentina. Alto volumen. Contexto inflación."
+      "status": "published",
+      "notas": "Keyword exclusivo Argentina. Alto volumen. Contexto inflación.",
+      "fecha_publicado": "2026-05-01",
+      "slug_real": "cedears-para-principiantes-argentina"
     },
     {
       "id": 13,
