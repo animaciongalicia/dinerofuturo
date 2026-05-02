@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-01",
-    "pending": 28
+    "ultima_actualizacion": "2026-05-02",
+    "pending": 27
   },
   "queue": [
     {
@@ -395,8 +395,10 @@
       ],
       "palabras_min": 1500,
       "prioridad": 8,
-      "status": "pending",
-      "notas": "Muy buscado en temporada de renta (abril-junio). Alta intención."
+      "status": "published",
+      "notas": "Muy buscado en temporada de renta (abril-junio). Alta intención.",
+      "fecha_publicado": "2026-05-02",
+      "slug_real": "declaracion-renta-inversiones-como-tributar"
     },
     {
       "id": 14,
