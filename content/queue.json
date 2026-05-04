@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-03",
-    "pending": 26
+    "ultima_actualizacion": "2026-05-04",
+    "pending": 25
   },
   "queue": [
     {
@@ -456,8 +456,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 8,
-      "status": "pending",
-      "notas": "Comparativa directa muy buscada en Chile."
+      "status": "published",
+      "notas": "Comparativa directa muy buscada en Chile.",
+      "fecha_publicado": "2026-05-04",
+      "slug_real": "fintual-vs-afp-chile"
     },
     {
       "id": 16,
