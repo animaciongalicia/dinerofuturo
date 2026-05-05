@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-04",
-    "pending": 25
+    "ultima_actualizacion": "2026-05-05",
+    "pending": 24
   },
   "queue": [
     {
@@ -485,8 +485,10 @@
       ],
       "palabras_min": 1200,
       "prioridad": 8,
-      "status": "pending",
-      "notas": "Keyword de volumen medio pero muy educativo. Fácil de posicionar."
+      "status": "published",
+      "notas": "Keyword de volumen medio pero muy educativo. Fácil de posicionar.",
+      "fecha_publicado": "2026-05-05",
+      "slug_real": "regla-del-72-explicada"
     },
     {
       "id": 17,
