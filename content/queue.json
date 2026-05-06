@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-05",
-    "pending": 24
+    "ultima_actualizacion": "2026-05-06",
+    "pending": 23
   },
   "queue": [
     {
@@ -515,8 +515,10 @@
       ],
       "palabras_min": 1300,
       "prioridad": 8,
-      "status": "pending",
-      "notas": "Muy compartido en redes. Fácil de entender para cualquier nivel."
+      "status": "published",
+      "notas": "Muy compartido en redes. Fácil de entender para cualquier nivel.",
+      "fecha_publicado": "2026-05-06",
+      "slug_real": "gastos-hormiga-cuanto-pierdes-sin-darte-cuenta"
     },
     {
       "id": 18,
