@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-06",
-    "pending": 23
+    "ultima_actualizacion": "2026-05-07",
+    "pending": 22
   },
   "queue": [
     {
@@ -545,8 +545,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 8,
-      "status": "pending",
-      "notas": "Keyword educativo. Complementa bien la sección de inversión."
+      "status": "published",
+      "notas": "Keyword educativo. Complementa bien la sección de inversión.",
+      "fecha_publicado": "2026-05-07",
+      "slug_real": "renta-fija-que-es-como-invertir"
     },
     {
       "id": 19,
