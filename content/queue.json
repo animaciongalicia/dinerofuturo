@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-09",
-    "pending": 20
+    "ultima_actualizacion": "2026-05-10",
+    "pending": 19
   },
   "queue": [
     {
@@ -635,8 +635,10 @@
       ],
       "palabras_min": 1300,
       "prioridad": 7,
-      "status": "pending",
-      "notas": "Alta empatía. Buen para SEO y compartir en redes."
+      "status": "published",
+      "notas": "Alta empatía. Buen para SEO y compartir en redes.",
+      "fecha_publicado": "2026-05-10",
+      "slug_real": "como-vivir-con-menos-dinero-sin-sufrir"
     },
     {
       "id": 22,
