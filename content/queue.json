@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-10",
-    "pending": 19
+    "ultima_actualizacion": "2026-05-11",
+    "pending": 18
   },
   "queue": [
     {
@@ -664,8 +664,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 7,
-      "status": "pending",
-      "notas": "Keyword de muy alto volumen. Nivel 0 ideal para SEO top of funnel."
+      "status": "published",
+      "notas": "Keyword de muy alto volumen. Nivel 0 ideal para SEO top of funnel.",
+      "fecha_publicado": "2026-05-11",
+      "slug_real": "que-es-la-bolsa-como-funciona"
     },
     {
       "id": 23,
