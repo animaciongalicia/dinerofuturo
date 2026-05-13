@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-12",
-    "pending": 17
+    "ultima_actualizacion": "2026-05-13",
+    "pending": 16
   },
   "queue": [
     {
@@ -724,8 +724,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 7,
-      "status": "pending",
-      "notas": "Keyword guía para Colombia. Latam de alta demanda."
+      "status": "published",
+      "notas": "Keyword guía para Colombia. Latam de alta demanda.",
+      "fecha_publicado": "2026-05-13",
+      "slug_real": "como-empezar-a-invertir-en-colombia"
     },
     {
       "id": 25,
