@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-14",
-    "pending": 15
+    "ultima_actualizacion": "2026-05-15",
+    "pending": 14
   },
   "queue": [
     {
@@ -784,8 +784,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 7,
-      "status": "pending",
-      "notas": "Keyword de alta intención. Conecta con calculadora hipoteca."
+      "status": "published",
+      "notas": "Keyword de alta intención. Conecta con calculadora hipoteca.",
+      "fecha_publicado": "2026-05-15",
+      "slug_real": "hipoteca-cuanto-puedo-pagar"
     },
     {
       "id": 27,
