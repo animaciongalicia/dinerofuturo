@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-16",
-    "pending": 13
+    "ultima_actualizacion": "2026-05-17",
+    "pending": 12
   },
   "queue": [
     {
@@ -844,8 +844,10 @@
       ],
       "palabras_min": 1300,
       "prioridad": 7,
-      "status": "pending",
-      "notas": "Muy buscado en Latam donde el uso de tarjetas es frecuente."
+      "status": "published",
+      "notas": "Muy buscado en Latam donde el uso de tarjetas es frecuente.",
+      "fecha_publicado": "2026-05-17",
+      "slug_real": "tarjeta-credito-trampa-o-herramienta"
     },
     {
       "id": 29,
