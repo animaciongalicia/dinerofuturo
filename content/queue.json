@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-18",
-    "pending": 11
+    "ultima_actualizacion": "2026-05-19",
+    "pending": 10
   },
   "queue": [
     {
@@ -903,8 +903,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 6,
-      "status": "pending",
-      "notas": "Keyword estacional. Búsquedas suben en épocas de incertidumbre."
+      "status": "published",
+      "notas": "Keyword estacional. Búsquedas suben en épocas de incertidumbre.",
+      "fecha_publicado": "2026-05-19",
+      "slug_real": "invertir-en-oro-merece-la-pena"
     },
     {
       "id": 31,
