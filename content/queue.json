@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-19",
-    "pending": 10
+    "ultima_actualizacion": "2026-05-20",
+    "pending": 9
   },
   "queue": [
     {
@@ -933,8 +933,10 @@
       ],
       "palabras_min": 1200,
       "prioridad": 6,
-      "status": "pending",
-      "notas": "Alta estacionalidad (diciembre-enero y mayo-julio). Compartible."
+      "status": "published",
+      "notas": "Alta estacionalidad (diciembre-enero y mayo-julio). Compartible.",
+      "fecha_publicado": "2026-05-20",
+      "slug_real": "como-ahorrar-para-viajar"
     },
     {
       "id": 32,
