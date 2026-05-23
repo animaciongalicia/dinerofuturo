@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-22",
-    "pending": 7
+    "ultima_actualizacion": "2026-05-23",
+    "pending": 6
   },
   "queue": [
     {
@@ -1022,8 +1022,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 6,
-      "status": "pending",
-      "notas": "Keyword estacional. Búsquedas altas cuando el precio sube."
+      "status": "published",
+      "notas": "Keyword estacional. Búsquedas altas cuando el precio sube.",
+      "fecha_publicado": "2026-05-23",
+      "slug_real": "bitcoin-vale-la-pena-invertir-2026"
     },
     {
       "id": 35,
