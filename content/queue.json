@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "1 artículo por día vía GitHub Actions",
-    "ultima_actualizacion": "2026-05-27",
-    "pending": 3
+    "ultima_actualizacion": "2026-05-28",
+    "pending": 2
   },
   "queue": [
     {
@@ -1138,8 +1138,10 @@
       ],
       "palabras_min": 1300,
       "prioridad": 5,
-      "status": "pending",
-      "notas": "Keyword educativo de alto volumen. Complementa bien la sección inversión."
+      "status": "published",
+      "notas": "Keyword educativo de alto volumen. Complementa bien la sección inversión.",
+      "fecha_publicado": "2026-05-28",
+      "slug_real": "que-es-un-fondo-de-inversion"
     },
     {
       "id": 39,
