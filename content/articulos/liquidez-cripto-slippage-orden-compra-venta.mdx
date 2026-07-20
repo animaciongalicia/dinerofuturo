@@ -1,0 +1,182 @@
+---
+title: "Liquidez en cripto: cómo evitar que tu orden mueva el precio en tu contra"
+slug: "liquidez-cripto-slippage-orden-compra-venta"
+fecha: "2026-07-20"
+nivel: 3
+categoria: "inversion"
+resuelve: "Cómo comprar o vender cripto sin perder dinero por falta de liquidez o slippage"
+extracto: "Lanzas una orden de 5.000 y acabas comprando un 3% más caro. Te explico por qué pasa y cómo evitarlo."
+lectura: 6
+destacado: false
+nuevo: true
+---
+
+## El problema que nadie te explica hasta que lo sufres
+
+Quieres comprar 5.000 de una cripto. Miras el precio: 1,50. Haces cuentas: deberían darte unas 3.333 monedas.
+
+Lanzas la orden. Te confirman la compra.
+
+Miras tu cartera: solo tienes 3.200 monedas. Te han cobrado un precio medio de 1,56.
+
+¿Qué acaba de pasar? Acabas de pagar el "impuesto invisible" de la liquidez. Y nadie te avisó.
+
+Esto le pasa a todo el mundo. A mí me pasó. Y si operas con cantidades de cierto tamaño o en criptos menos conocidas, te va a pasar a ti también.
+
+---
+
+## Qué es la liquidez (y por qué es tu mejor amiga o tu peor enemiga)
+
+La liquidez es la cantidad de órdenes de compra y venta que hay esperando en un exchange a diferentes precios.
+
+Imagina una frutería. Si tiene 500 kilos de manzanas, puedes comprar 10 kilos sin problema. El precio no cambia.
+
+Pero si solo tiene 5 kilos y quieres 10, tendrás que esperar al próximo camión o pagar más al vecino.
+
+En cripto funciona igual:
+
+- **Alta liquidez**: hay muchas órdenes esperando. Puedes comprar o vender grandes cantidades sin mover el precio.
+- **Baja liquidez**: hay pocas órdenes. Tu compra "se come" las ofertas disponibles y acabas pagando precios peores.
+
+El libro de órdenes (order book) es literalmente una lista de gente dispuesta a comprar a X precio y gente dispuesta a vender a Y precio. Cuando no hay suficiente volumen a tu precio deseado, tu orden va "subiendo" por ese libro hasta completarse.
+
+---
+
+## El slippage: el precio real vs el precio que creías pagar
+
+El **slippage** es la diferencia entre el precio que esperabas y el precio que realmente pagas.
+
+Es como ir al cajero pensando que el euro está a 1,05 dólares y descubrir que te lo cambiaron a 1,08.
+
+### Ejemplo real con números
+
+Quieres comprar 10.000 de una altcoin que cotiza a 2,00.
+
+El libro de órdenes tiene esto:
+
+| Precio | Cantidad disponible |
+|--------|---------------------|
+| 2,00   | 2.000 monedas       |
+| 2,02   | 1.500 monedas       |
+| 2,05   | 2.000 monedas       |
+| 2,10   | 5.000 monedas       |
+
+Si lanzas una orden de mercado por 10.000:
+
+- Compras 2.000 a 2,00 = 4.000 gastados
+- Compras 1.500 a 2,02 = 3.030 gastados
+- Compras 1.238 a 2,05 = 2.538 gastados (ya gastaste 9.568)
+- Te quedan 432 para comprar a 2,10 = 206 monedas más
+
+**Total**: 4.944 monedas por tus 10.000. Precio medio: 2,02.
+
+Pensabas que ibas a conseguir 5.000 monedas. Te llevas un 1,1% menos.
+
+En una inversión pequeña da igual. En 50.000 o 100.000, son cientos o miles evaporados.
+
+---
+
+## Cómo medir la liquidez antes de operar
+
+### El spread: tu primer indicador
+
+El **spread** es la diferencia entre el mejor precio de compra (bid) y el mejor precio de venta (ask).
+
+- Bitcoin en Binance: spread del 0,01%. Buena liquidez.
+- Una altcoin rara en un exchange pequeño: spread del 2%. Mala liquidez.
+
+Si el spread es mayor al 0,5%, enciende las alarmas.
+
+### La profundidad del libro de órdenes
+
+No basta con mirar el mejor precio. Tienes que ver **cuánto volumen hay en los siguientes niveles**.
+
+La mayoría de exchanges te muestran esto gráficamente. Busca la pestaña "Depth" o "Profundidad".
+
+Si ves que con 5.000 ya "atraviesas" varios niveles de precios, tu orden va a sufrir slippage.
+
+### El volumen de 24 horas
+
+Regla práctica: **tu orden no debería superar el 1% del volumen diario** de ese par de trading.
+
+Si una cripto mueve 100.000 al día, no lances órdenes de 10.000 de golpe.
+
+---
+
+## 5 formas de evitar que la liquidez te robe dinero
+
+### 1. Usa órdenes límite, no órdenes de mercado
+
+La orden de mercado dice: "cómprame al precio que sea".
+
+La orden límite dice: "solo cómprame si el precio es este o mejor".
+
+Con una orden límite de 2,02, si el precio sube a 2,05, tu orden no se ejecuta. Proteges tu precio máximo.
+
+**Desventaja**: puede que no se ejecute todo o nada. Pero prefiero no comprar a comprar perdiendo un 3%.
+
+### 2. Trocea tus órdenes grandes
+
+En lugar de lanzar 10.000 de golpe, divide en 5 órdenes de 2.000 espaciadas en el tiempo.
+
+Cada orden pequeña no mueve tanto el precio. Y si alguien más añade liquidez mientras tanto, te beneficias.
+
+Esto se llama **dollar-cost averaging intradiario**. No es el DCA de invertir cada mes, es repartir una compra grande en trozos pequeños durante horas o días.
+
+### 3. Opera en los exchanges con más liquidez para esa cripto
+
+No todas las criptos tienen la misma liquidez en todos los exchanges.
+
+Antes de comprar, compara:
+
+- El spread en cada plataforma
+- La profundidad del libro de órdenes
+- El volumen de 24h del par concreto
+
+A veces merece la pena mover fondos a otro exchange solo por la liquidez.
+
+### 4. Usa agregadores de liquidez en DeFi
+
+Si operas en exchanges descentralizados (DEX), el slippage puede ser brutal.
+
+Los agregadores como 1inch, Paraswap o Cowswap dividen tu orden entre varias fuentes de liquidez para conseguirte el mejor precio posible.
+
+**Siempre configura el slippage máximo** que aceptas. Un 0,5% es razonable. Un 5% es regalar dinero.
+
+### 5. Evita operar en momentos de volatilidad extrema
+
+Cuando Bitcoin se mueve un 10% en una hora, la liquidez desaparece.
+
+Los creadores de mercado (market makers) retiran sus órdenes. El libro queda vacío. El slippage se dispara.
+
+Si no es urgente, espera a que el mercado se calme.
+
+---
+
+## Los errores que más dinero cuestan
+
+- **Lanzar órdenes de mercado en altcoins pequeñas**: el slippage puede ser del 5% o más.
+- **No mirar el libro de órdenes antes de operar**: es como comprar sin mirar el precio.
+- **Operar en exchanges con poca liquidez por ahorrarte comisiones**: la comisión del 0,1% que te ahorras se convierte en un 2% de slippage.
+- **Ignorar el slippage en DEX**: el "precio sin gas" que te muestra no incluye el deslizamiento real.
+- **Usar todo tu capital en una sola orden**: si algo sale mal, no tienes margen de maniobra.
+
+---
+
+## Puntos clave para recordar
+
+1. **La liquidez determina si pagas el precio que ves** o uno peor. Antes de operar, mira el spread y la profundidad del libro.
+
+2. **Las órdenes límite te protegen** de pagar precios que no aceptarías conscientemente. Úsalas siempre que puedas.
+
+3. **Trocea las órdenes grandes**. No regales dinero al mercado por impaciente.
+
+---
+
+## Tu acción para hoy
+
+Abre el exchange donde operas habitualmente. Busca una cripto que tengas en cartera y mira el libro de órdenes.
+
+Calcula: si quisieras vender todo lo que tienes de esa cripto ahora mismo con una orden de mercado, ¿cuántos niveles de precio "atravesarías"? ¿Cuál sería tu precio medio de venta?
+
+Si la respuesta te asusta, ya sabes por qué necesitabas leer esto.
