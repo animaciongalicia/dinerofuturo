@@ -1,0 +1,170 @@
+---
+title: "Gas en Ethereum: qué es y por qué te cobran más cuando la red está llena"
+slug: "gas-ethereum-que-es-comisiones"
+fecha: "2026-08-23"
+nivel: 0
+categoria: "cripto"
+resuelve: "Entender qué son las comisiones de gas en Ethereum y cómo pagar menos"
+extracto: "Cada vez que mueves cripto en Ethereum te cobran 'gas'. Te explico qué es exactamente, por qué a veces cuesta una fortuna y cómo evitar pagar de más."
+lectura: 6
+destacado: false
+nuevo: true
+---
+
+Intentaste enviar Ethereum a otra wallet y de repente te salió que la comisión era más cara que lo que querías mandar. O peor: pagaste una barbaridad y no entendiste por qué.
+
+Bienvenido al maravilloso mundo del gas en Ethereum.
+
+No te preocupes. Esto le pasa a todo el mundo al principio. Y una vez que entiendes cómo funciona, puedes ahorrarte bastante dinero.
+
+## Qué es el gas (explicado como si tuvieras 10 años)
+
+Imagina que Ethereum es una autopista llena de coches. Cada coche es una transacción: alguien enviando cripto, alguien comprando un NFT, alguien usando una aplicación.
+
+El **gas** es el combustible que necesita tu transacción para moverse por esa autopista.
+
+Pero aquí viene lo importante: la autopista tiene un número limitado de carriles. Cuando hay muchos coches queriendo pasar al mismo tiempo, tienes que pagar más para que te dejen entrar antes.
+
+Es como una subasta. El que paga más, pasa primero.
+
+Por eso a veces mandar 20 en Ethereum te puede costar 2 de comisión. Y otras veces, 50.
+
+## Por qué existe el gas (y no simplemente comisiones fijas)
+
+Ethereum no es un banco. No hay una oficina central que procese las transacciones.
+
+En su lugar, hay miles de ordenadores por todo el mundo (se llaman validadores) que hacen el trabajo de verificar que tu transacción es válida y añadirla a la blockchain.
+
+Estos validadores cobran por su trabajo. El gas es su pago.
+
+Y tiene sentido que sea variable:
+
+- **Transacciones simples** (enviar de una wallet a otra) requieren poco trabajo → menos gas
+- **Transacciones complejas** (interactuar con contratos inteligentes, hacer swaps) requieren más trabajo → más gas
+
+El sistema evita que alguien sature la red con millones de transacciones basura. Si cada transacción cuesta algo, la gente se lo piensa antes de spamear.
+
+## Las tres piezas que forman el precio del gas
+
+Para entender cuánto vas a pagar, necesitas conocer tres conceptos:
+
+### 1. Gas limit (cuánto combustible máximo)
+
+Es la cantidad máxima de gas que estás dispuesto a usar. Como cuando llenas el tanque del coche: pones un tope.
+
+Una transferencia simple suele necesitar 21.000 unidades de gas. Un swap en una plataforma DeFi puede necesitar 200.000 o más.
+
+### 2. Base fee (precio base por unidad)
+
+Es el precio mínimo por cada unidad de gas. Lo fija la propia red según la demanda.
+
+Cuando hay mucha gente queriendo hacer transacciones, el base fee sube. Cuando la red está tranquila, baja.
+
+### 3. Priority fee (propina)
+
+Es lo que pagas extra para que tu transacción tenga prioridad sobre otras. Como darle propina al mesero para que te atienda antes.
+
+Si tienes prisa, pones más propina. Si puedes esperar, pones menos.
+
+## El cálculo real (con números)
+
+**Precio total = (Base fee + Priority fee) × Gas usado**
+
+Pongamos un ejemplo:
+
+- Base fee: 20 gwei (gwei es una unidad muy pequeña de Ethereum)
+- Priority fee: 2 gwei
+- Gas usado: 21.000 unidades
+
+Total: (20 + 2) × 21.000 = 462.000 gwei
+
+Como 1 gwei = 0,000000001 ETH, eso son 0,000462 ETH.
+
+Si ETH está a 3.000 dólares, pagarías unos 1,39 de comisión.
+
+No está mal. Pero cuando la red está saturada, el base fee puede subir a 200 gwei o más. Ahí la misma transacción te costaría casi 14.
+
+## Por qué a veces el gas se dispara
+
+Hay momentos en que todos quieren usar Ethereum a la vez:
+
+- **Lanzamiento de una colección de NFTs popular** → miles de personas intentando comprar al mismo tiempo
+- **Caídas bruscas del mercado** → todo el mundo corriendo a vender
+- **Nuevo proyecto DeFi con recompensas jugosas** → fiebre por entrar antes que los demás
+
+En esos momentos, el gas puede multiplicarse por 10 o por 20.
+
+## Cómo pagar menos gas (trucos que funcionan)
+
+### Elige el momento adecuado
+
+La red tiene horas punta y horas valle. Como el tráfico de una ciudad.
+
+- **Fines de semana** suelen ser más baratos
+- **Madrugada en horario europeo** (cuando EE.UU. duerme) suele haber menos actividad
+- **Evita las primeras horas** después de noticias importantes del mercado
+
+Hay webs como Etherscan Gas Tracker que te muestran el precio del gas en tiempo real. Mira antes de hacer cualquier transacción.
+
+### Ajusta el gas manualmente
+
+La mayoría de wallets te dejan elegir entre "lento", "medio" y "rápido". Si no tienes prisa, elige lento.
+
+También puedes poner un gas price personalizado. Ojo: si lo pones demasiado bajo, tu transacción puede quedarse pendiente horas o incluso cancelarse.
+
+### Agrupa transacciones
+
+Si tienes que hacer varias cosas (aprobar un token, hacer un swap, mover a otra wallet), intenta hacerlas todas seguidas cuando el gas esté bajo. En lugar de entrar tres veces en momentos distintos.
+
+### Usa redes de capa 2
+
+Esta es la solución real para el futuro. Las capas 2 (como Arbitrum, Optimism, Base o Polygon) son redes que funcionan "encima" de Ethereum.
+
+Procesan las transacciones fuera de la red principal y luego las envían agrupadas. Resultado: **comisiones hasta 100 veces más baratas**.
+
+Si solo quieres mover cripto o usar aplicaciones DeFi básicas, las capas 2 son tu mejor amigo.
+
+## Errores que te van a costar dinero
+
+### Ignorar el gas cuando el mercado está loco
+
+El peor momento para hacer transacciones es cuando todo el mundo está en pánico. Espera a que se calme si no es urgente.
+
+### Poner un gas limit demasiado bajo
+
+Si pones menos gas del que necesita la transacción, fallará. Y aquí viene lo doloroso: **pagas el gas igual aunque falle**.
+
+Es como pagar la entrada al cine y que te echen antes de que empiece la película.
+
+### No revisar antes de confirmar
+
+Tu wallet siempre te muestra cuánto vas a pagar de gas antes de confirmar. Léelo. Si ves un número que te parece una locura, cancela y espera.
+
+### Hacer transacciones pequeñas en Ethereum principal
+
+Si quieres mover 50 en cripto, no tiene sentido pagar 15 de gas. Usa una capa 2 o espera a acumular más.
+
+## Cuándo vale la pena pagar gas alto
+
+A veces sí tiene sentido pagar más:
+
+- **Emergencias**: necesitas sacar tu dinero de un protocolo que está siendo hackeado
+- **Oportunidades que desaparecen**: un NFT que va a subir de precio o una oferta limitada
+- **Movimientos grandes**: si mueves 10.000, pagar 20 de gas es un 0,2%
+
+Pero para el día a día, la paciencia te ahorra mucho dinero.
+
+## Lo que debes recordar
+
+- **El gas es el precio** que pagas para que la red Ethereum procese tu transacción
+- **Varía según la demanda**: más gente queriendo usar la red = gas más caro
+- **Puedes controlarlo** eligiendo momentos de baja demanda y ajustando manualmente
+- **Las capas 2 son la solución** para no arruinarte en comisiones
+
+## Tu acción para hoy
+
+Entra en Etherscan Gas Tracker (o cualquier web similar que muestre el gas en tiempo real). Mira el precio ahora mismo. Apúntalo.
+
+Vuelve a mirarlo mañana a diferentes horas. El sábado por la mañana. El lunes después de comer.
+
+Así vas a ver con tus propios ojos cuándo está caro y cuándo está barato. Y la próxima vez que necesites hacer una transacción, sabrás cuándo apretar el botón.
