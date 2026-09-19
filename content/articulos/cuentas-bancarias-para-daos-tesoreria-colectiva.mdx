@@ -1,0 +1,174 @@
+---
+title: "Cuentas bancarias para DAOs: cómo gestionar tesorería colectiva sin que el banco te cierre la puerta"
+slug: "cuentas-bancarias-para-daos-tesoreria-colectiva"
+fecha: "2026-09-19"
+nivel: 3
+categoria: "banca"
+resuelve: "Cómo abrir y mantener una cuenta bancaria para una DAO sin que te la cierren o te bloqueen fondos"
+extracto: "Tienes una DAO con miles en la tesorería, pero ningún banco quiere abrirte una cuenta. Así se soluciona."
+lectura: 6
+destacado: false
+nuevo: true
+---
+
+## El problema que nadie te contó al crear tu DAO
+
+Tienes una organización descentralizada funcionando. Hay fondos en el multisig, propuestas votadas, contribuyentes cobrando. Todo muy Web3.
+
+Hasta que necesitas pagar el hosting. O la nómina de alguien en fiat. O recibir un pago de un cliente que solo trabaja con transferencias bancarias.
+
+Entonces descubres la realidad: **ningún banco tradicional entiende qué es una DAO**, y la mayoría te rechazará antes de que termines de explicarlo.
+
+No es paranoia. Es que el sistema bancario está diseñado para entidades con una estructura jurídica clara: una persona física, una sociedad limitada, una corporación. Una DAO no encaja en ninguna de esas casillas.
+
+---
+
+## Por qué los bancos te miran raro (y tienen parte de razón)
+
+Desde la perspectiva del banco, una DAO presenta tres problemas gordos:
+
+- **Sin persona jurídica clara**: ¿Quién es el responsable legal? ¿Quién firma? El banco necesita a alguien a quien demandar si algo sale mal.
+
+- **Origen de fondos difuso**: Si la tesorería viene de ventas de NFTs, staking o donaciones anónimas, el departamento de compliance entra en pánico.
+
+- **Múltiples firmantes en múltiples países**: Un multisig con cinco firmantes en cinco países es una pesadilla regulatoria para el banco.
+
+No es que te odien. Es que no saben cómo encajarte en su sistema de riesgo. Y ante la duda, rechazan.
+
+---
+
+## Las tres rutas que funcionan en 2026
+
+### 1. El wrapper legal: convertir tu DAO en algo que el banco entienda
+
+La solución más común es crear una **entidad jurídica que "envuelva" a la DAO**. Esto no significa matar la descentralización, sino crear un puente con el mundo fiat.
+
+Opciones populares según jurisdicción:
+
+- **Wyoming (EE.UU.)**: Permite registrar una DAO LLC. La propia DAO puede ser la entidad legal.
+- **Islas Marshall**: Reconocen DAOs como entidades legales desde 2022.
+- **Suiza (Zug)**: Asociaciones que pueden tener gobernanza descentralizada.
+- **Panamá**: Fundaciones de interés privado, flexibles para estructuras descentralizadas.
+
+**Ejemplo práctico**: Creas una LLC en Wyoming donde los miembros del multisig son los "managers". Esa LLC abre una cuenta bancaria normal. La tesorería on-chain sigue siendo de la DAO, pero la LLC maneja las operaciones fiat.
+
+Coste típico: entre 500 y 3.000 para constituir, más mantenimiento anual.
+
+### 2. Neobancos y fintechs crypto-friendly
+
+Algunos neobancos ya entienden el espacio y aceptan proyectos Web3 si demuestras:
+
+- Origen de fondos documentable (aunque sea cripto)
+- KYC de los firmantes principales
+- Actividad económica real
+
+**Opciones que funcionan** (verifica disponibilidad en tu país):
+
+- **Mercury** (EE.UU.): Acepta empresas cripto si tienes una LLC americana.
+- **Relay** (EE.UU./Canadá): Similar enfoque para startups Web3.
+- **Fiat Republic** (Europa): Diseñado específicamente para empresas cripto.
+- **BVNK** (Europa): Cuentas multimoneda para empresas Web3.
+
+**Advertencia importante**: Incluso estos bancos pueden cerrar cuentas si detectan actividad sospechosa. Mantén documentación impecable de todo.
+
+### 3. El modelo híbrido: tesorería on-chain + fiat bridge
+
+La opción más pragmática para muchas DAOs:
+
+- La tesorería principal permanece en el multisig on-chain (Gnosis Safe, por ejemplo)
+- Una pequeña cantidad se mantiene en una cuenta fiat para gastos operativos
+- Se "recarga" la cuenta fiat según necesidad mediante un exchange regulado
+
+**Flujo típico**:
+
+1. La DAO vota gastar 5.000 en salarios fiat
+2. Se envía cripto desde el multisig a un exchange (Kraken, Coinbase...)
+3. Se convierte a fiat y se retira a la cuenta bancaria
+4. Se pagan los salarios
+
+Ventaja: La cuenta fiat maneja volúmenes pequeños y predecibles, lo que genera menos alarmas.
+
+---
+
+## Los errores que te cerrarán la cuenta (garantizado)
+
+### Mezclar fondos personales y de la DAO
+
+Si la cuenta está a nombre de un individuo que "representa" a la DAO, ese individuo no puede usar la misma cuenta para sus gastos personales. Parece obvio, pero pasa constantemente.
+
+### No documentar el origen de cada entrada
+
+Cada vez que entre dinero, debes poder explicar de dónde viene. "Es de la tesorería de la DAO" no basta. Necesitas:
+
+- Hash de la transacción on-chain
+- Propuesta votada que autorizó el movimiento
+- Conversión en exchange con timestamp
+
+### Volúmenes erráticos sin explicación
+
+Si un mes mueves 500 y al siguiente 50.000, el banco te va a preguntar. Ten preparada la explicación: "Pagamos una auditoría de smart contracts" con factura adjunta.
+
+### No responder al compliance del banco
+
+Cuando el banco te pida información (y lo hará), responde rápido y completo. Ignorar correos del departamento de compliance es la forma más rápida de que te cierren la cuenta.
+
+---
+
+## Cómo presentarte ante el banco sin que huyan
+
+Si vas a abrir una cuenta, prepara esto antes:
+
+**Documentación básica**:
+- Estatutos de la entidad legal (si la tienes)
+- Lista de firmantes con pasaportes y prueba de domicilio
+- Descripción de la actividad económica en lenguaje humano ("desarrollamos software de gobernanza colaborativa", no "DAO que tokeniza la participación")
+
+**Sobre el origen de fondos**:
+- Historial de la tesorería on-chain
+- Explicación de cómo se generaron los fondos iniciales
+- Política de aceptación de nuevos fondos
+
+**Proyección de uso**:
+- Volumen mensual esperado de transacciones
+- Tipo de pagos (nóminas, proveedores, licencias...)
+- Países involucrados
+
+La clave: **habla su idioma**. El banco no necesita entender qué es un snapshot vote. Necesita entender quién controla el dinero y de dónde viene.
+
+---
+
+## Alternativas cuando ningún banco te acepta
+
+Si después de todo no consigues cuenta bancaria:
+
+- **Pagar en cripto directamente**: Muchos proveedores ya aceptan stablecoins. Plataformas como Request Network permiten facturar y pagar en cripto de forma profesional.
+
+- **Servicios de payroll cripto**: Plataformas como Utopia Labs o Coinshift permiten pagar contribuyentes directamente desde el multisig, incluso haciendo la conversión a fiat en destino.
+
+- **Tarjetas cripto corporativas**: Algunos emisores ofrecen tarjetas vinculadas a wallets que permiten gastar en cualquier comercio tradicional.
+
+No es lo ideal, pero permite operar mientras encuentras una solución bancaria estable.
+
+---
+
+## Lo que viene: regulación y claridad
+
+La situación está mejorando. Varias jurisdicciones están creando marcos legales específicos para DAOs. El Parlamento Europeo trabaja en clarificar el estatus legal de organizaciones descentralizadas bajo MiCA.
+
+Mientras tanto, la estrategia ganadora es **ser proactivamente transparente**. Los reguladores y bancos temen lo que no entienden. Si demuestras que tu DAO tiene gobernanza clara, origen de fondos documentado y cumplimiento fiscal, te diferencias del 90% de proyectos que operan en la sombra.
+
+---
+
+## Los 3 puntos que debes recordar
+
+1. **Sin entidad legal, sin cuenta bancaria** – Necesitas algún tipo de wrapper jurídico para que el banco te acepte.
+
+2. **Documenta todo obsesivamente** – El origen de cada euro que entre, cada propuesta votada, cada conversión de cripto a fiat.
+
+3. **Empieza pequeño** – Una cuenta con volúmenes bajos y predecibles genera menos alarmas que intentar mover toda la tesorería desde el día uno.
+
+---
+
+## Tu acción para hoy
+
+Revisa la estructura legal actual de tu DAO (o la que piensas crear). Si no tienes ninguna entidad jurídica, investiga las opciones de Wyoming LLC o las fundaciones en Suiza/Panamá. Calcula el coste de constituir y mantener cada opción, y compáralo con el volumen de operaciones fiat que necesitas manejar. Esa cuenta te dirá si vale la pena el wrapper o si puedes operar solo en cripto por ahora.
