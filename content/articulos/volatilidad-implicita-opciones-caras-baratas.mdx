@@ -1,0 +1,194 @@
+---
+title: "Volatilidad implícita: cómo usarla para saber si las opciones están caras o baratas"
+slug: "volatilidad-implicita-opciones-caras-baratas"
+fecha: "2026-09-23"
+nivel: 3
+categoria: "inversion"
+resuelve: "Cómo saber si estás pagando de más por una opción antes de comprarla"
+extracto: "La volatilidad implícita es lo que separa a quien pierde dinero con opciones de quien lo gana. Te explico cómo leerla sin fórmulas imposibles."
+lectura: 8
+destacado: false
+nuevo: true
+---
+
+## El problema: compras opciones y pierdes aunque aciertes la dirección
+
+Apostaste a que la acción subiría. Subió. Y aun así perdiste dinero con tu opción call.
+
+¿Cómo es posible? Pagaste demasiado por ella. La opción estaba "cara" y cuando la volatilidad bajó, el precio se desinfló aunque el subyacente se moviera a tu favor.
+
+Esto le pasa a casi todo el mundo que empieza con opciones. Aprenden calls, puts, strikes, vencimientos... pero nadie les explica **la variable invisible que decide si ganas o pierdes**: la volatilidad implícita.
+
+---
+
+## Qué es la volatilidad implícita (sin fórmulas)
+
+La volatilidad implícita (VI) es lo que el mercado **cree** que va a moverse un activo en el futuro.
+
+No es lo que se movió ayer. Es la expectativa de movimiento futuro que los participantes están dispuestos a pagar.
+
+Piensa en las opciones como un seguro de coche:
+
+- Cuando hay muchos accidentes en la ciudad, el seguro sube
+- Cuando todo está tranquilo, baja
+
+Con las opciones pasa igual:
+
+- Cuando el mercado espera movimientos grandes (resultados empresariales, elecciones, crisis), las opciones se encarecen
+- Cuando todo está calmado, se abaratan
+
+La VI se expresa como porcentaje. Una VI del 20% significa que el mercado espera que el activo se mueva un 20% en el próximo año (aproximadamente).
+
+---
+
+## Por qué la VI te importa más que el precio del activo
+
+Puedes acertar la dirección y perder dinero. O fallar la dirección y ganar dinero.
+
+Esto ocurre porque el precio de una opción tiene dos componentes:
+
+1. **Valor intrínseco**: cuánto vale si la ejercieras ahora mismo
+2. **Valor temporal**: lo que pagas por la posibilidad de que ocurra algo
+
+La VI afecta directamente al valor temporal. Y aquí está el truco:
+
+- Si compras cuando la VI está alta y luego baja, el valor temporal se evapora
+- Si compras cuando la VI está baja y luego sube, ganas aunque el precio apenas se mueva
+
+**Esto se llama "crush de volatilidad"** y es la razón número uno por la que los principiantes pierden con opciones.
+
+---
+
+## Cómo saber si la VI está alta o baja
+
+No existe un número mágico. Una VI de 30% puede ser alta para una acción aburrida y baja para una cripto.
+
+Lo que necesitas es **contexto**. Hay tres formas de conseguirlo:
+
+### 1. Compara con la volatilidad histórica
+
+La volatilidad histórica (VH) es lo que realmente se movió el activo en el pasado.
+
+- **VI > VH**: las opciones están "caras" — el mercado espera más movimiento del habitual
+- **VI < VH**: las opciones están "baratas" — el mercado espera menos movimiento
+
+Si la VH de los últimos 30 días es 25% y la VI actual es 40%, algo gordo se espera.
+
+### 2. Mira el rango de VI del último año
+
+La mayoría de plataformas te muestran dónde está la VI actual respecto a su rango histórico.
+
+- **Percentil 80-100%**: muy alta, probablemente cara
+- **Percentil 20-40%**: normal
+- **Percentil 0-20%**: baja, potencialmente barata
+
+Si ves que la VI está en el percentil 95, estás comprando el seguro más caro del año.
+
+### 3. Usa el VIX como referencia general
+
+El VIX mide la volatilidad implícita del S&P 500. Es el "índice del miedo".
+
+- **VIX 12-15**: mercado muy tranquilo
+- **VIX 15-20**: normalidad
+- **VIX 20-30**: nerviosismo
+- **VIX > 30**: pánico
+
+No te sirve para activos individuales, pero te da el contexto del mercado general.
+
+---
+
+## Estrategias según esté la VI alta o baja
+
+### Cuando la VI está alta: mejor vender
+
+Con VI alta, el tiempo juega a tu favor si vendes opciones:
+
+- **Vender calls cubiertas**: tienes las acciones y vendes calls. Cobras prima gorda y si te ejecutan, vendes a buen precio
+- **Credit spreads**: vendes una opción y compras otra más alejada como protección. Cobras la diferencia
+- **Iron condors**: apuestas a que el precio se queda en un rango. Funciona genial después de anuncios importantes
+
+El crush de volatilidad es tu amigo. Cuando la VI baja, la prima que cobraste se desinfla y puedes cerrar con beneficio.
+
+### Cuando la VI está baja: mejor comprar
+
+Con VI baja, pagas poco por mucho potencial:
+
+- **Comprar calls o puts directamente**: si aciertas la dirección y la VI sube, ganas por partida doble
+- **Straddles**: compras call y put al mismo strike. No sabes hacia dónde, pero esperas un movimiento grande
+- **Calendars**: compras una opción lejana y vendes una cercana. Si la VI sube, la lejana se revaloriza más
+
+Ojo: que la VI esté baja no significa que vaya a subir. Puede quedarse baja mucho tiempo.
+
+---
+
+## Los errores que te van a costar dinero
+
+### Comprar opciones antes de resultados empresariales
+
+La VI se dispara antes de los resultados porque todo el mundo espera movimiento. Compras caro.
+
+Después del anuncio, aunque la acción se mueva un 5%, la VI se desploma un 50%. Tu opción puede perder valor.
+
+**Solución**: si quieres apostar a resultados, usa spreads que limiten el impacto del crush.
+
+### Ignorar el vencimiento
+
+Las opciones a una semana tienen más sensibilidad a la VI que las opciones a tres meses.
+
+Si compras una opción que vence en 5 días con VI alta, el crush te va a destrozar.
+
+**Solución**: para posiciones largas, usa vencimientos más alejados. Te da margen para que la tesis funcione.
+
+### No tener plan de salida
+
+La VI no es estática. Sube y baja constantemente.
+
+Si compraste cuando la VI estaba en percentil 20 y ahora está en percentil 70, quizá deberías tomar beneficios aunque el subyacente no se haya movido mucho.
+
+**Solución**: define antes de entrar a qué nivel de VI o beneficio vas a cerrar.
+
+---
+
+## Un ejemplo con números reales
+
+Imagina una acción que cotiza a 100.
+
+- **VI actual**: 40% (percentil 85, muy alta)
+- **VH 30 días**: 25%
+
+Una call ATM (at the money) al mes cuesta 5.
+
+Tres escenarios:
+
+1. **La acción sube a 105 y la VI baja a 25%**: la call vale 6. Ganaste 1, un 20%
+2. **La acción se queda en 100 y la VI baja a 25%**: la call vale 2,50. Perdiste 2,50, un 50%
+3. **La acción sube a 105 y la VI sube a 50%**: la call vale 8. Ganaste 3, un 60%
+
+El movimiento de la VI puede importar tanto o más que el del subyacente.
+
+---
+
+## Herramientas para trackear la VI
+
+- **TradingView**: muestra VI y percentiles en la mayoría de activos
+- **Think or Swim**: plataforma de TD Ameritrade con análisis de VI potente
+- **OptionStrat**: calculadora visual de estrategias con impacto de VI
+- **Market Chameleon**: rankings de VI por sectores y acciones
+
+La mayoría de brókers serios muestran la VI en la cadena de opciones. Si el tuyo no lo hace, cámbiate.
+
+---
+
+## Los 3 puntos que tienes que recordar
+
+1. **La VI es lo que pagas de más** por la expectativa de movimiento. Alta = caro, baja = barato
+2. **Compara siempre** la VI actual con la histórica y con su rango del último año. Sin contexto, el número no significa nada
+3. **Adapta tu estrategia**: VI alta favorece vender, VI baja favorece comprar
+
+---
+
+## Tu acción para hoy
+
+Abre tu plataforma de trading y busca la VI de cualquier activo que te interese. Compárala con su rango de un año. ¿Está en el percentil 20 o en el 80?
+
+Solo con saber esto, ya vas por delante del 90% de los que operan opciones sin entender qué están pagando.
