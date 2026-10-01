@@ -119,10 +119,7 @@ export default function ArticleSidebar({ headings, related }: Props) {
         )}
         <MiniNewsletter />
         {/* Ad — rectangle in sidebar (desktop only, max 1) */}
-        <div>
-          <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
-          <AdUnit slot="1122334455" format="rectangle" />
-        </div>
+        <AdUnit slot="1122334455" format="rectangle" />
         {related.length > 0 && (
           <RelatedArticles articles={related} />
         )}

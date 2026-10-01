@@ -146,13 +146,13 @@ ${titlesBlock}
 Devuelve ÚNICAMENTE el MDX con este frontmatter exacto (sin texto antes ni después):
 
 ---
-title: "TÍTULO ATRACTIVO Y DIRECTO"
+title: "TÍTULO DIRECTO CON LA PALABRA CLAVE AL PRINCIPIO — MÁXIMO 60 CARACTERES"
 slug: "slug-sin-tildes-ni-espacios"
 fecha: "${today()}"
 nivel: ${nivel}
 categoria: "${categoria}"
 resuelve: "El problema concreto que resuelve en una frase"
-extracto: "1-2 frases para mostrar en la portada"
+extracto: "1-2 frases para mostrar en la portada — MÁXIMO 155 CARACTERES"
 lectura: [minutos estimados como número]
 destacado: false
 nuevo: true

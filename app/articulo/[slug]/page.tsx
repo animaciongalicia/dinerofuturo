@@ -8,6 +8,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
+import { seoTitle, seoDescription } from '@/lib/seo'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
 import ArticleCard from '@/components/ArticleCard'
@@ -31,8 +32,9 @@ export async function generateMetadata({
   const canonical = siteUrl(`/articulo/${params.slug}`)
 
   return {
-    title: article.title,
-    description: article.extracto,
+    // absolute: evita sumar el sufijo de marca y pasarnos de 60 caracteres
+    title: { absolute: seoTitle(article.title) },
+    description: seoDescription(article.extracto),
 
     alternates: {
       canonical,
@@ -44,7 +46,7 @@ export async function generateMetadata({
       locale: 'es_ES',
       siteName: 'Dinero Futuro',
       title: article.title,
-      description: article.extracto,
+      description: seoDescription(article.extracto),
       url: canonical,
       publishedTime: article.fecha,
       tags: [article.categoria, `nivel-${article.nivel}`, 'finanzas-personales'],
@@ -107,8 +109,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
   // Sidebar data
   const headings  = extractHeadings(article.content ?? '')
-  const allByNivel = getArticlesByNivel(article.nivel)
-  const related   = allByNivel.filter(a => a.slug !== article.slug).slice(0, 3)
+  // Relacionados: primero misma categoría (relevancia temática), luego mismo nivel
+  const sameNivel = getArticlesByNivel(article.nivel).filter(a => a.slug !== article.slug)
+  const sameCat   = getAllArticles().filter(a => a.slug !== article.slug && a.categoria === article.categoria)
+  const related   = [...sameCat, ...sameNivel.filter(a => !sameCat.includes(a))].slice(0, 3)
 
   // Prev / next navigation (articles sorted newest first)
   const allArticles  = getAllArticles()
@@ -117,8 +121,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   const nextArticle  = currentIndex > 0                      ? allArticles[currentIndex - 1] : null
 
   // More articles at the bottom (same nivel, excludes current)
-  const moreArticles = allArticles
-    .filter(a => a.slug !== article.slug && a.nivel === article.nivel)
+  const moreArticles = [...sameCat, ...sameNivel.filter(a => !sameCat.includes(a))]
+    .filter(a => !related.includes(a))
     .slice(0, 3)
 
   // Schema.org Article JSON-LD
@@ -130,12 +134,14 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     datePublished: article.fecha,
     dateModified: article.fecha,
     inLanguage: 'es',
+    author: { '@type': 'Organization', name: 'Dinero Futuro', url: siteUrl() },
     educationalLevel: `Nivel ${article.nivel}`,
     about: { '@type': 'Thing', name: CATEGORIA_LABEL[article.categoria] ?? article.categoria },
     publisher: {
       '@type': 'Organization',
       name: 'Dinero Futuro',
       url: siteUrl(),
+      logo: { '@type': 'ImageObject', url: siteUrl('/icon') },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -246,10 +252,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             />
 
             {/* Ad — rectangle after content */}
-            <div className="mt-10">
-              <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
-              <AdUnit slot="1234567890" format="rectangle" />
-            </div>
+            <AdUnit slot="1234567890" format="rectangle" className="mt-10" />
 
             {/* Share buttons */}
             <div className="mt-8 pt-8 border-t border-border">
@@ -285,10 +288,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             )}
 
             {/* Ad — horizontal before related articles */}
-            <div className="mt-10">
-              <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
-              <AdUnit slot="0987654321" format="horizontal" />
-            </div>
+            <AdUnit slot="0987654321" format="horizontal" className="mt-10" />
 
             {/* More articles grid — mobile TOC + related */}
             {moreArticles.length > 0 && (

@@ -6,7 +6,7 @@ import type { Article } from '@/lib/types'
 // Only include categories that have articles and are in the nav
 const ALL_CATEGORIAS: Array<Article['categoria']> = [
   'ahorro', 'inversion', 'cripto', 'presupuesto',
-  'hipotecas', 'banca', 'jubilacion', 'comparativa',
+  'hipotecas', 'banca', 'jubilacion', 'comparativa', 'finanzas', 'impuestos',
 ]
 
 const PAISES = [
@@ -48,7 +48,8 @@ const ESTATICAS = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles()
-  const now = new Date()
+  // Fecha real del último contenido publicado (no "ahora": Google ignora lastmod poco fiable)
+  const now = articles.length ? new Date(articles[0].fecha) : new Date()
 
   return [
     // Estáticas

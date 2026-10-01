@@ -164,14 +164,14 @@ ${existingTitles}
 Devuelve ÚNICAMENTE el MDX con este frontmatter exacto (sin texto antes ni después):
 
 ---
-title: "TÍTULO ATRACTIVO Y DIRECTO — optimizado para CTR en buscadores"
+title: "TÍTULO DIRECTO CON LA PALABRA CLAVE AL PRINCIPIO — MÁXIMO 60 CARACTERES"
 slug: "${item.slug}"
 fecha: "${today()}"
 nivel: ${item.nivel}
 categoria: "${item.categoria}"
 ${item.pais ? `pais: "${item.pais}"` : ''}
 resuelve: "${item.dolor}"
-extracto: "1-2 frases que resumen la solución y generan curiosidad para leer"
+extracto: "1-2 frases que resumen la solución y generan curiosidad — MÁXIMO 155 CARACTERES"
 lectura: [minutos estimados como número]
 destacado: false
 nuevo: true
