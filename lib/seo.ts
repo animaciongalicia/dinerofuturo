@@ -16,8 +16,14 @@ export function seoTitle(title: string, max = 60): string {
 
   // 2) Cortar en límite de palabra sin dejar conectores colgando
   const words = t.slice(0, max + 1).replace(/\s+\S*$/, '').split(/\s+/)
-  while (words.length > 3 && DANGLING.has(words[words.length - 1].toLowerCase().replace(/[,;:]+$/, ''))) words.pop()
-  return words.join(' ').replace(/[\s,;:¿¡(–—-]+$/, '')
+  const bare = (w: string) => w.toLowerCase().replace(/^[(¿¡"“'«]+|[,;:)"”'»]+$/g, '')
+  while (words.length > 3 && DANGLING.has(bare(words[words.length - 1]))) words.pop()
+  let out = words.join(' ').replace(/[\s,;:¿¡(–—-]+$/, '')
+  // Paréntesis sin cerrar → quitar la cola abierta
+  if ((out.match(/\(/g) ?? []).length > (out.match(/\)/g) ?? []).length) {
+    out = out.slice(0, out.lastIndexOf('(')).replace(/[\s,;:¿¡–—-]+$/, '')
+  }
+  return out
 }
 
 /** Recorta una descripción para meta description (~155 caracteres). */
