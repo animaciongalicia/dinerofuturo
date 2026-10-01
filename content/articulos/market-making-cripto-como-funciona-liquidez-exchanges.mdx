@@ -1,0 +1,202 @@
+---
+title: "Market making en cripto: cómo funciona el negocio de dar liquidez a los exchanges"
+slug: "market-making-cripto-como-funciona-liquidez-exchanges"
+fecha: "2026-10-01"
+nivel: 3
+categoria: "inversion"
+resuelve: "Entender qué es el market making, cómo ganan dinero los creadores de mercado y si tiene sentido para un inversor particular"
+extracto: "Cada vez que compras cripto al instante, alguien te la está vendiendo. Ese alguien es un market maker, y su negocio no es tan simple como parece."
+lectura: 6
+destacado: false
+nuevo: true
+---
+
+## El tipo invisible que hace posible que compres cripto al instante
+
+Abres tu app, pulsas "comprar 500 en ETH" y en dos segundos los tienes en tu wallet.
+
+¿Te has preguntado quién te los vendió? No fue magia. Tampoco fue "el exchange". Fue un market maker —alguien que tiene ETH listos para venderte y dinero listo para comprarte cuando quieras vender.
+
+Sin ellos, cada operación tardaría minutos u horas esperando que apareciera alguien dispuesto a hacer el intercambio exacto que necesitas.
+
+---
+
+## Qué es un market maker (y por qué existe)
+
+Un market maker es alguien que pone órdenes de compra y venta simultáneamente en un mercado.
+
+Imagina que tienes una frutería. Compras manzanas a 0,80 y las vendes a 1,00. No esperas a que alguien te pida manzanas para ir a buscarlas. Las tienes ya en el estante.
+
+En cripto funciona igual:
+
+- **Orden de compra (bid):** "Compro BTC a 67.450"
+- **Orden de venta (ask):** "Vendo BTC a 67.480"
+
+Esos 30 de diferencia son el **spread**. Si alguien te compra a 67.480 y otro te vende a 67.450, acabas de ganar 30 por cada Bitcoin que ha pasado por tus manos.
+
+Parece poco. Pero si lo haces miles de veces al día, con volumen grande, es un negocio muy rentable.
+
+---
+
+## Cómo ganan dinero los market makers
+
+El spread es solo la punta del iceberg. Los market makers profesionales ganan de varias formas:
+
+### El spread multiplicado por volumen
+
+Si el spread es 0,05% y mueves 10 millones al día, son 5.000 diarios brutos. Parece sencillo, pero hay trampa: no todas las operaciones salen bien.
+
+### Rebates del exchange
+
+Muchos exchanges pagan a los market makers por poner liquidez. Literalmente te dan un porcentaje de cada operación que facilitas.
+
+En algunos exchanges grandes, los makers cobran -0,01% (sí, negativo: el exchange te paga) mientras los takers pagan 0,05%.
+
+### Arbitraje de latencia
+
+Los buenos market makers tienen servidores junto a los del exchange. Cuando el precio se mueve en Binance, actualizan sus órdenes en Coinbase milisegundos antes que nadie.
+
+Esto no es para mortales. Requiere infraestructura de millones.
+
+---
+
+## Los riesgos que nadie menciona
+
+Parece un negocio perfecto: compras barato, vendes caro, repites. ¿Dónde está la trampa?
+
+### Inventory risk (riesgo de inventario)
+
+Si el mercado cae mientras tienes mucho BTC, pierdes dinero. Da igual que el spread sea bueno si el activo que tienes se desploma un 10%.
+
+Los market makers profesionales cubren este riesgo con derivados, operando en varios exchanges a la vez o ajustando sus quotes muy rápido.
+
+### Adverse selection (selección adversa)
+
+Los traders con mejor información operan contra ti. Si alguien sabe que va a haber una noticia mala, te vende justo antes del desplome.
+
+Tú quedas con el inventario que nadie quiere.
+
+### Competencia brutal
+
+Ya no compites contra humanos. Compites contra algoritmos que operan en microsegundos. Si tu sistema tarda 100 milisegundos más que el del rival, pierdes.
+
+---
+
+## Market making en DeFi: otra historia
+
+En exchanges centralizados, el market making es territorio de profesionales con millones en capital.
+
+Pero en DeFi existe algo diferente: los **AMM (Automated Market Makers)**.
+
+Uniswap, Curve, PancakeSwap... funcionan sin libro de órdenes. Tú depositas liquidez en un pool y el protocolo calcula automáticamente el precio según una fórmula matemática.
+
+### Cómo funciona un pool de liquidez
+
+1. Depositas dos tokens en proporción 50/50 (ej: 1.000 en ETH y 1.000 en USDC)
+2. El protocolo te da tokens LP que representan tu parte del pool
+3. Cada vez que alguien hace swap, paga una comisión (0,3% típico en Uniswap)
+4. Esas comisiones se reparten entre todos los proveedores de liquidez
+
+Parece fácil: pones dinero, cobras comisiones, te haces rico.
+
+No tan rápido.
+
+---
+
+## Impermanent loss: el monstruo silencioso
+
+El mayor riesgo de proveer liquidez en DeFi es el **impermanent loss** (pérdida impermanente).
+
+Funciona así:
+
+- Depositas 1 ETH (valor: 2.000) + 2.000 USDC
+- Total: 4.000
+
+Si ETH sube a 4.000:
+
+- El pool rebalancea automáticamente. Ahora tienes menos ETH y más USDC.
+- Tu posición vale unos 5.650 aproximadamente.
+- Pero si hubieras mantenido 1 ETH + 2.000 USDC fuera del pool, tendrías 6.000.
+
+**Perdiste 350 por proveer liquidez.** Las comisiones ganadas pueden compensarlo o no.
+
+El nombre "impermanente" es engañoso. Si retiras cuando hay divergencia de precio, la pérdida es muy permanente.
+
+---
+
+## ¿Tiene sentido para un inversor particular?
+
+Depende de qué tipo de market making hablemos:
+
+### Market making profesional en exchanges centralizados
+
+**No.** Necesitas capital grande (cientos de miles mínimo), infraestructura técnica, equipo de desarrollo y experiencia manejando riesgo de inventario.
+
+Es como querer competir en Fórmula 1 con un coche de calle.
+
+### Proveer liquidez en DeFi
+
+**Puede tener sentido**, pero con precauciones:
+
+- **Pools de stablecoins** (USDC/DAI, por ejemplo) tienen poco impermanent loss porque los precios se mueven juntos.
+- **Pools de tokens correlacionados** (ETH/stETH) también son más seguros.
+- **Pools de alta volatilidad** (BTC/nuevaMemecoin) son ruleta rusa.
+
+### La matemática que debes hacer
+
+Antes de depositar en cualquier pool:
+
+1. Calcula las comisiones esperadas (APR real, no el que te muestra la app)
+2. Simula diferentes escenarios de precio
+3. Compara con simplemente mantener los tokens
+
+A menudo, HODL simple gana a proveer liquidez después del impermanent loss.
+
+---
+
+## Errores comunes al intentar hacer market making
+
+### Creer que el APR mostrado es lo que ganarás
+
+Esos APR del 200% que ves son: proyecciones basadas en el volumen de hoy, sin contar impermanent loss, y a veces incluyen recompensas de tokens que luego valen cero.
+
+### No entender en qué pool estás entrando
+
+Algunos pools tienen tokens con riesgo de depeg, contratos sin auditar o liquidez que puede desaparecer de un día para otro.
+
+### Ignorar los costes de gas
+
+En Ethereum, entrar y salir de un pool puede costarte 50-100 en comisiones. Si tu capital es pequeño, las comisiones se comen las ganancias.
+
+### Sobreestimar tu tolerancia al riesgo
+
+Ver que tu posición baja un 20% por impermanent loss mientras el mercado sube es psicológicamente duro. Muchos venden en el peor momento.
+
+---
+
+## Lo que sí puedes aprender del market making
+
+Aunque no vayas a ser market maker, entender cómo funcionan te hace mejor inversor:
+
+- **El spread que pagas importa.** Compara antes de operar.
+- **La liquidez no es gratis.** Alguien asume riesgo para que puedas comprar al instante.
+- **Los mercados poco líquidos son peligrosos.** Tu orden puede mover el precio en tu contra.
+- **DeFi tiene riesgos ocultos.** Ese APR jugoso esconde impermanent loss, smart contract risk y depeg risk.
+
+---
+
+## Tres puntos clave
+
+- **El market making es el negocio de ganar el spread miles de veces al día**, pero requiere gestionar riesgo de inventario, competir contra algoritmos y tener capital significativo.
+
+- **Proveer liquidez en DeFi es market making automatizado**, pero el impermanent loss puede superar las comisiones ganadas si los precios divergen.
+
+- **Para inversores particulares, los pools de stablecoins son los más seguros**, aunque con rentabilidades modestas. Los pools volátiles son para expertos.
+
+---
+
+## Tu acción para hoy
+
+Entra en cualquier agregador DeFi (DefiLlama, por ejemplo) y busca un pool de stablecoins con buen volumen. Calcula cuánto ganarías en comisiones con 1.000 durante un mes. Luego busca un simulador de impermanent loss y mete los mismos datos.
+
+La diferencia entre lo que promete la app y lo que realmente ganarías te abrirá los ojos sobre este negocio.
