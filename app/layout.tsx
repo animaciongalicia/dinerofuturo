@@ -1,23 +1,25 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import Script from 'next/script'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { siteUrl } from '@/lib/utils'
 
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
+// Fuentes alojadas en el repo (variables, subset latin): el cargador de next/font/google
+// falla en el build de Vercel cuando Google devuelve URLs sin extensión.
+const playfairDisplay = localFont({
+  src: './fonts/PlayfairDisplay-latin.woff2',
   variable: '--font-fraunces',
   display: 'swap',
-  weight: ['700', '800', '900'],
+  weight: '400 900',
 })
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: './fonts/Inter-latin.woff2',
   variable: '--font-instrument',
   display: 'swap',
-  weight: ['400', '500', '600'],
+  weight: '100 900',
 })
 
 const SITE_NAME = 'Dinero Futuro'
