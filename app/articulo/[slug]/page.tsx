@@ -8,7 +8,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
-import { seoTitle, seoDescription } from '@/lib/seo'
+import { seoTitle, seoDescription, extractFaq } from '@/lib/seo'
+import { PAIS_HREFLANG, PAIS_OG_LOCALE } from '@/lib/locale'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
 import ArticleCard from '@/components/ArticleCard'
@@ -38,12 +39,15 @@ export async function generateMetadata({
 
     alternates: {
       canonical,
-      languages: { es: canonical, 'x-default': canonical },
+      // Contenido con país concreto → hreflang regional; el resto es español general
+      languages: article.pais
+        ? { [PAIS_HREFLANG[article.pais]]: canonical }
+        : { es: canonical, 'x-default': canonical },
     },
 
     openGraph: {
       type: 'article',
-      locale: 'es_ES',
+      locale: article.pais ? PAIS_OG_LOCALE[article.pais] : 'es_ES',
       siteName: 'Dinero Futuro',
       title: article.title,
       description: seoDescription(article.extracto),
@@ -133,7 +137,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     description: article.extracto,
     datePublished: article.fecha,
     dateModified: article.fecha,
-    inLanguage: 'es',
+    inLanguage: article.pais ? PAIS_HREFLANG[article.pais] : 'es',
     author: { '@type': 'Organization', name: 'Dinero Futuro', url: siteUrl() },
     educationalLevel: `Nivel ${article.nivel}`,
     about: { '@type': 'Thing', name: CATEGORIA_LABEL[article.categoria] ?? article.categoria },
@@ -151,6 +155,19 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   }
 
   const articleUrl = siteUrl(`/articulo/${article.slug}`)
+
+  const faq = extractFaq(article.content ?? '')
+  const faqSchema = faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map(f => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }
+    : null
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -173,6 +190,12 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <div className="max-w-wrap mx-auto px-7 py-10">
         {/* Breadcrumb */}

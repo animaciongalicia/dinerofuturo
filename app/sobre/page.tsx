@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/sobre') },
   title: 'Sobre el proyecto — Dinero Futuro',
   description: 'Qué es Dinero Futuro, por qué existe y quién lo escribe.',
 }

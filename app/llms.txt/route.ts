@@ -78,6 +78,7 @@ Dinero Futuro es un blog de finanzas personales para personas sin formación fin
 - Enfoque: educativo, sin asesoramiento financiero personalizado
 - Sitemap: ${u('/sitemap.xml')}
 - RSS: ${u('/feed.xml')}
+- Texto completo de todos los artículos: ${u('/llms-full.txt')}
 
 ## Artículos
 

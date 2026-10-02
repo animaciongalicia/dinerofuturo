@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/cookies') },
   title: 'Política de cookies',
   description: 'Información sobre las cookies que utiliza Dinero Futuro y cómo gestionarlas.',
 }

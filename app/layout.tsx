@@ -79,6 +79,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${playfairDisplay.variable} ${inter.variable}`}>
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="Dinero Futuro — Artículos" href={siteUrl('/feed.xml')} />
+      </head>
       <body className="bg-paper text-ink text-[16px] leading-[1.7] font-sans">
         <Nav />
         <main>{children}</main>

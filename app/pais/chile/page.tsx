@@ -7,8 +7,12 @@ export const metadata: Metadata = {
   title: 'Finanzas personales en Chile: APV, AFP, Fintual y cómo hacer crecer tus lucas',
   description:
     'Guía financiera para Chile: APV, AFP bien elegida, Fintual, salir de deudas de retail y hacer crecer tus ahorros. Explicado sin tecnicismos.',
-  alternates: { canonical: siteUrl('/pais/chile') },
+  alternates: {
+    canonical: siteUrl('/pais/chile'),
+    languages: { 'es-CL': siteUrl('/pais/chile') },
+  },
   openGraph: {
+    locale: 'es_CL',
     title: 'Finanzas personales en Chile — Dinero Futuro',
     description: 'APV, AFP, Fintual y cómo hacer crecer tus lucas en Chile.',
     type: 'website',

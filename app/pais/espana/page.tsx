@@ -7,8 +7,12 @@ export const metadata: Metadata = {
   title: 'Finanzas personales en España: guía práctica para hacer crecer tu dinero',
   description:
     'Aprende a manejar tu dinero en España: cuentas remuneradas, Letras del Tesoro, ETFs, IRPF, hipotecas y pensiones. Sin tecnicismos, sin relleno.',
-  alternates: { canonical: siteUrl('/pais/espana') },
+  alternates: {
+    canonical: siteUrl('/pais/espana'),
+    languages: { 'es-ES': siteUrl('/pais/espana') },
+  },
   openGraph: {
+    locale: 'es_ES',
     title: 'Finanzas personales en España — Dinero Futuro',
     description: 'Guía práctica para hacer crecer tu dinero en España.',
     type: 'website',

@@ -58,8 +58,26 @@ const CAT_COLOR: Record<string, string> = {
 }
 
 export default function GlosarioPage() {
+  const glossarySchema = {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    name: 'Glosario financiero de Dinero Futuro',
+    url: siteUrl('/glosario'),
+    inLanguage: 'es',
+    hasDefinedTerm: TERMS.map(t => ({
+      '@type': 'DefinedTerm',
+      name: t.term,
+      description: t.def,
+      inDefinedTermSet: siteUrl('/glosario'),
+    })),
+  }
+
   return (
     <div className="max-w-wrap mx-auto px-7 py-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(glossarySchema) }}
+      />
       {/* Header */}
       <div className="max-w-[680px] mb-10">
         <p className="text-[12px] font-semibold uppercase tracking-[.12em] text-moss mb-2">Referencia rápida</p>

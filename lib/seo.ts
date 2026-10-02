@@ -39,3 +39,55 @@ export function seoDescription(text: string, max = 155): string {
   const cut = t.slice(0, max - 1).replace(/\s+\S*$/, '').replace(/[\s,;:¿¡(–—-]+$/, '')
   return `${cut}…`
 }
+
+export interface FaqItem { question: string; answer: string }
+
+function plain(md: string): string {
+  return md
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[*_`>#]/g, '')
+    .replace(/^\s*[-+]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/**
+ * Extrae pares pregunta/respuesta de los H2/H3 que son preguntas ("¿…?"), con la
+ * respuesta tomada del primer párrafo que les sigue. Todo el texto ya está visible
+ * en la página, como exige schema.org para FAQPage.
+ */
+export function extractFaq(content: string, max = 6): FaqItem[] {
+  const lines = content.split('\n')
+  const items: FaqItem[] = []
+  for (let i = 0; i < lines.length && items.length < max; i++) {
+    const m = /^#{2,3}\s+(.*\?)\s*$/.exec(lines[i])
+    if (!m) continue
+    const question = plain(m[1])
+    // Hasta 2 párrafos (la primera frase suele ser solo una introducción)
+    const paras: string[] = []
+    let cur: string[] = []
+    for (let j = i + 1; j < lines.length; j++) {
+      const l = lines[j]
+      if (/^#{1,6}\s/.test(l) || /^(\||```|---)/.test(l.trim())) break
+      if (!l.trim()) {
+        if (cur.length) { paras.push(cur.join(' ')); cur = [] }
+        if (paras.length >= 2) break
+        continue
+      }
+      cur.push(l)
+    }
+    if (cur.length && paras.length < 2) paras.push(cur.join(' '))
+    let answer = plain(paras.join(' '))
+    // Una respuesta que termina en ":" es una introducción a una lista, no una respuesta
+    if (answer.length < 80 || /[:：]\s*$/.test(answer) || /[:：]\s*$/.test(plain(paras[0] ?? ''))) continue
+    if (answer.length > 320) {
+      const cut = answer.slice(0, 320)
+      const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('? '), cut.lastIndexOf('! '))
+      answer = end > 120 ? cut.slice(0, end + 1) : cut.replace(/\s+\S*$/, '') + '…'
+    }
+    items.push({ question, answer })
+  }
+  return items.length >= 2 ? items : []
+}

@@ -7,8 +7,12 @@ export const metadata: Metadata = {
   title: 'Finanzas personales en México: guía práctica para hacer crecer tu lana',
   description:
     'Aprende a manejar tu dinero en México: CETES, AFORE, inversión con poco dinero, cómo salir de deudas y hacer rendir la quincena. Sin tecnicismos, sin rollo.',
-  alternates: { canonical: siteUrl('/pais/mexico') },
+  alternates: {
+    canonical: siteUrl('/pais/mexico'),
+    languages: { 'es-MX': siteUrl('/pais/mexico') },
+  },
   openGraph: {
+    locale: 'es_MX',
     title: 'Finanzas personales en México — Dinero Futuro',
     description: 'Guía práctica para hacer crecer tu lana en México.',
     type: 'website',

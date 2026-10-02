@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import ToolSchema from '@/components/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Calculadora número FIRE: años hasta la independencia financiera',
@@ -21,5 +22,10 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      <ToolSchema name="Calculadora del número FIRE" description="Calcula tu número FIRE, años que te faltan y edad de jubilación anticipada con la regla del 4%." path="/herramientas/numero-fire" />
+      {children}
+    </>
+  )
 }

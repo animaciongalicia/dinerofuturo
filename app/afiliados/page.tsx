@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/afiliados') },
   title: 'Política de afiliados',
   description: 'Cómo funciona la política de enlaces de afiliado en Dinero Futuro: transparencia total sobre cómo ganamos dinero y por qué no afecta a nuestra independencia editorial.',
 }
