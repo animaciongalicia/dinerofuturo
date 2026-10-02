@@ -10,6 +10,8 @@ import { notFound } from 'next/navigation'
 import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
 import { seoTitle, seoDescription, extractFaq } from '@/lib/seo'
 import { PAIS_HREFLANG, PAIS_OG_LOCALE } from '@/lib/locale'
+import { AUTHOR } from '@/lib/site'
+import { buildTargets, autoLink } from '@/lib/autolink'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
 import ArticleCard from '@/components/ArticleCard'
@@ -95,6 +97,9 @@ const CATEGORIA_LABEL: Record<string, string> = {
   vivienda:    'Vivienda',
 }
 
+// Categorías que tienen página de hub (/categoria/<slug>)
+const CATEGORIA_CON_HUB = new Set(['ahorro', 'inversion', 'cripto', 'presupuesto', 'hipotecas', 'banca', 'jubilacion', 'comparativa', 'finanzas', 'impuestos'])
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function ArticlePage({ params }: { params: { slug: string } }) {
   let article
@@ -103,13 +108,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
   // Render MDX → HTML and inject id attrs into h2/h3 so sidebar TOC links work
   const rawHtml = marked(article.content ?? '') as string
-  const contentHtml = rawHtml.replace(
+  const withIds = rawHtml.replace(
     /<(h[23])>([\s\S]*?)<\/h[23]>/g,
     (_, tag, inner) => {
       const id = headingToId(inner.replace(/<[^>]+>/g, '').trim())
       return `<${tag} id="${id}">${inner}</${tag}>`
     },
   )
+  // Enlaces internos contextuales (máx. 4 por artículo, primera aparición, sin duplicar los manuales)
+  const contentHtml = autoLink(withIds, article.slug, buildTargets(getAllArticles())).html
 
   // Sidebar data
   const headings  = extractHeadings(article.content ?? '')
@@ -138,7 +145,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     datePublished: article.fecha,
     dateModified: article.fecha,
     inLanguage: article.pais ? PAIS_HREFLANG[article.pais] : 'es',
-    author: { '@type': 'Organization', name: 'Dinero Futuro', url: siteUrl() },
+    author: { '@type': 'Organization', name: AUTHOR.name, url: AUTHOR.url },
     educationalLevel: `Nivel ${article.nivel}`,
     about: { '@type': 'Thing', name: CATEGORIA_LABEL[article.categoria] ?? article.categoria },
     publisher: {
@@ -219,9 +226,18 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <span className={`inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md ${NIVEL_CLASS[article.nivel]}`}>
                 {NIVEL_LABEL[article.nivel]}
               </span>
-              <span className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-[#F5F3FF] text-[#5B21B6]">
-                {CATEGORIA_LABEL[article.categoria] ?? article.categoria}
-              </span>
+              {CATEGORIA_CON_HUB.has(article.categoria) ? (
+                <Link
+                  href={`/categoria/${article.categoria}`}
+                  className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-[#F5F3FF] text-[#5B21B6] hover:bg-[#EDE9FE] transition-colors"
+                >
+                  {CATEGORIA_LABEL[article.categoria] ?? article.categoria}
+                </Link>
+              ) : (
+                <span className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-[#F5F3FF] text-[#5B21B6]">
+                  {CATEGORIA_LABEL[article.categoria] ?? article.categoria}
+                </span>
+              )}
               {article.nuevo && (
                 <span className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-gold text-forest">
                   Nuevo
@@ -238,6 +254,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <div className="flex items-center gap-4 text-[13px] text-ink3 mb-6 flex-wrap">
               <span className="inline-flex items-center gap-1 bg-cream border border-border px-3 py-[5px] rounded-full font-medium">
                 📖 {article.lectura} min de lectura
+              </span>
+              <span>
+                Por{' '}
+                <Link href="/sobre" className="font-semibold text-moss hover:underline">{AUTHOR.name}</Link>
               </span>
               <time dateTime={article.fecha}>
                 {new Date(article.fecha).toLocaleDateString('es-ES', {
