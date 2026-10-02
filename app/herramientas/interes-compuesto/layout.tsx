@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import ToolSchema from '@/components/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Calculadora de interés compuesto: simula cómo crece tu dinero',
@@ -21,5 +22,10 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      <ToolSchema name="Calculadora de interés compuesto" description="Calcula cuánto crece tu inversión con el interés compuesto. Capital, rentabilidad anual y años para ver el resultado al instante." path="/herramientas/interes-compuesto" />
+      {children}
+    </>
+  )
 }

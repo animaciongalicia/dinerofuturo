@@ -30,10 +30,11 @@ export default function HomePage() {
     description: 'Educación financiera práctica para personas normales en toda la hispanosfera.',
     url: siteUrl('/'),
     inLanguage: 'es-ES',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: siteUrl('/') + '?q={search_term_string}' },
-      'query-input': 'required name=search_term_string',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Dinero Futuro',
+      url: siteUrl('/'),
+      logo: { '@type': 'ImageObject', url: siteUrl('/icon') },
     },
   }
 
@@ -49,10 +50,7 @@ export default function HomePage() {
       <ProblemBand />
 
       {/* Ad — horizontal between ProblemBand and recent articles */}
-      <div className="max-w-wrap mx-auto px-7 py-6">
-        <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
-        <AdUnit slot="5544332211" format="horizontal" />
-      </div>
+      <AdUnit slot="5544332211" format="horizontal" className="max-w-wrap mx-auto px-7 py-6" />
 
       <section className="py-[52px]">
         <div className="max-w-wrap mx-auto px-7">

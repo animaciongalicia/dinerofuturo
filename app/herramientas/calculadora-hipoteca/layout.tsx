@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import ToolSchema from '@/components/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Calculadora de hipoteca: cuota mensual y coste total real',
@@ -21,5 +22,10 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      <ToolSchema name="Calculadora de hipoteca" description="Calcula tu cuota hipotecaria, total de intereses y ahorro por amortización anticipada. Gratis y sin registro." path="/herramientas/calculadora-hipoteca" />
+      {children}
+    </>
+  )
 }

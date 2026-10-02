@@ -7,8 +7,12 @@ export const metadata: Metadata = {
   title: 'Finanzas personales en Colombia: cómo hacer rendir la plata de verdad',
   description:
     'Aprende a manejar tu plata en Colombia: CDT, AFP, Nequi, Daviplata, inversión en el exterior y cómo salir de deudas. Sin humo, sin enredos.',
-  alternates: { canonical: siteUrl('/pais/colombia') },
+  alternates: {
+    canonical: siteUrl('/pais/colombia'),
+    languages: { 'es-CO': siteUrl('/pais/colombia') },
+  },
   openGraph: {
+    locale: 'es_CO',
     title: 'Finanzas personales en Colombia — Dinero Futuro',
     description: 'Cómo hacer rendir la plata de verdad en Colombia.',
     type: 'website',

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/privacidad') },
   title: 'Política de privacidad',
   description: 'Cómo Dinero Futuro trata tus datos personales de acuerdo al RGPD.',
 }

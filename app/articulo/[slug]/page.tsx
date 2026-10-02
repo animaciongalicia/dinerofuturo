@@ -8,6 +8,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
+import { seoTitle, seoDescription, extractFaq } from '@/lib/seo'
+import { PAIS_HREFLANG, PAIS_OG_LOCALE } from '@/lib/locale'
+import { AUTHOR } from '@/lib/site'
+import { buildTargets, autoLink } from '@/lib/autolink'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
 import ArticleCard from '@/components/ArticleCard'
@@ -31,20 +35,24 @@ export async function generateMetadata({
   const canonical = siteUrl(`/articulo/${params.slug}`)
 
   return {
-    title: article.title,
-    description: article.extracto,
+    // absolute: evita sumar el sufijo de marca y pasarnos de 60 caracteres
+    title: { absolute: seoTitle(article.title) },
+    description: seoDescription(article.extracto),
 
     alternates: {
       canonical,
-      languages: { es: canonical, 'x-default': canonical },
+      // Contenido con país concreto → hreflang regional; el resto es español general
+      languages: article.pais
+        ? { [PAIS_HREFLANG[article.pais]]: canonical }
+        : { es: canonical, 'x-default': canonical },
     },
 
     openGraph: {
       type: 'article',
-      locale: 'es_ES',
+      locale: article.pais ? PAIS_OG_LOCALE[article.pais] : 'es_ES',
       siteName: 'Dinero Futuro',
       title: article.title,
-      description: article.extracto,
+      description: seoDescription(article.extracto),
       url: canonical,
       publishedTime: article.fecha,
       tags: [article.categoria, `nivel-${article.nivel}`, 'finanzas-personales'],
@@ -89,6 +97,9 @@ const CATEGORIA_LABEL: Record<string, string> = {
   vivienda:    'Vivienda',
 }
 
+// Categorías que tienen página de hub (/categoria/<slug>)
+const CATEGORIA_CON_HUB = new Set(['ahorro', 'inversion', 'cripto', 'presupuesto', 'hipotecas', 'banca', 'jubilacion', 'comparativa', 'finanzas', 'impuestos'])
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function ArticlePage({ params }: { params: { slug: string } }) {
   let article
@@ -97,18 +108,22 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
   // Render MDX → HTML and inject id attrs into h2/h3 so sidebar TOC links work
   const rawHtml = marked(article.content ?? '') as string
-  const contentHtml = rawHtml.replace(
+  const withIds = rawHtml.replace(
     /<(h[23])>([\s\S]*?)<\/h[23]>/g,
     (_, tag, inner) => {
       const id = headingToId(inner.replace(/<[^>]+>/g, '').trim())
       return `<${tag} id="${id}">${inner}</${tag}>`
     },
   )
+  // Enlaces internos contextuales (máx. 4 por artículo, primera aparición, sin duplicar los manuales)
+  const contentHtml = autoLink(withIds, article.slug, buildTargets(getAllArticles())).html
 
   // Sidebar data
   const headings  = extractHeadings(article.content ?? '')
-  const allByNivel = getArticlesByNivel(article.nivel)
-  const related   = allByNivel.filter(a => a.slug !== article.slug).slice(0, 3)
+  // Relacionados: primero misma categoría (relevancia temática), luego mismo nivel
+  const sameNivel = getArticlesByNivel(article.nivel).filter(a => a.slug !== article.slug)
+  const sameCat   = getAllArticles().filter(a => a.slug !== article.slug && a.categoria === article.categoria)
+  const related   = [...sameCat, ...sameNivel.filter(a => !sameCat.includes(a))].slice(0, 3)
 
   // Prev / next navigation (articles sorted newest first)
   const allArticles  = getAllArticles()
@@ -117,8 +132,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   const nextArticle  = currentIndex > 0                      ? allArticles[currentIndex - 1] : null
 
   // More articles at the bottom (same nivel, excludes current)
-  const moreArticles = allArticles
-    .filter(a => a.slug !== article.slug && a.nivel === article.nivel)
+  const moreArticles = [...sameCat, ...sameNivel.filter(a => !sameCat.includes(a))]
+    .filter(a => !related.includes(a))
     .slice(0, 3)
 
   // Schema.org Article JSON-LD
@@ -129,13 +144,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     description: article.extracto,
     datePublished: article.fecha,
     dateModified: article.fecha,
-    inLanguage: 'es',
+    inLanguage: article.pais ? PAIS_HREFLANG[article.pais] : 'es',
+    author: { '@type': 'Organization', name: AUTHOR.name, url: AUTHOR.url },
     educationalLevel: `Nivel ${article.nivel}`,
     about: { '@type': 'Thing', name: CATEGORIA_LABEL[article.categoria] ?? article.categoria },
     publisher: {
       '@type': 'Organization',
       name: 'Dinero Futuro',
       url: siteUrl(),
+      logo: { '@type': 'ImageObject', url: siteUrl('/icon') },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -145,6 +162,19 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   }
 
   const articleUrl = siteUrl(`/articulo/${article.slug}`)
+
+  const faq = extractFaq(article.content ?? '')
+  const faqSchema = faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map(f => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }
+    : null
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -167,6 +197,12 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <div className="max-w-wrap mx-auto px-7 py-10">
         {/* Breadcrumb */}
@@ -190,9 +226,18 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <span className={`inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md ${NIVEL_CLASS[article.nivel]}`}>
                 {NIVEL_LABEL[article.nivel]}
               </span>
-              <span className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-[#F5F3FF] text-[#5B21B6]">
-                {CATEGORIA_LABEL[article.categoria] ?? article.categoria}
-              </span>
+              {CATEGORIA_CON_HUB.has(article.categoria) ? (
+                <Link
+                  href={`/categoria/${article.categoria}`}
+                  className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-[#F5F3FF] text-[#5B21B6] hover:bg-[#EDE9FE] transition-colors"
+                >
+                  {CATEGORIA_LABEL[article.categoria] ?? article.categoria}
+                </Link>
+              ) : (
+                <span className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-[#F5F3FF] text-[#5B21B6]">
+                  {CATEGORIA_LABEL[article.categoria] ?? article.categoria}
+                </span>
+              )}
               {article.nuevo && (
                 <span className="inline-flex items-center text-[11px] font-bold tracking-[.07em] uppercase px-3 py-1 rounded-md bg-gold text-forest">
                   Nuevo
@@ -209,6 +254,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <div className="flex items-center gap-4 text-[13px] text-ink3 mb-6 flex-wrap">
               <span className="inline-flex items-center gap-1 bg-cream border border-border px-3 py-[5px] rounded-full font-medium">
                 📖 {article.lectura} min de lectura
+              </span>
+              <span>
+                Por{' '}
+                <Link href="/sobre" className="font-semibold text-moss hover:underline">{AUTHOR.name}</Link>
               </span>
               <time dateTime={article.fecha}>
                 {new Date(article.fecha).toLocaleDateString('es-ES', {
@@ -246,10 +295,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             />
 
             {/* Ad — rectangle after content */}
-            <div className="mt-10">
-              <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
-              <AdUnit slot="1234567890" format="rectangle" />
-            </div>
+            <AdUnit slot="1234567890" format="rectangle" className="mt-10" />
 
             {/* Share buttons */}
             <div className="mt-8 pt-8 border-t border-border">
@@ -285,10 +331,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             )}
 
             {/* Ad — horizontal before related articles */}
-            <div className="mt-10">
-              <p className="text-[11px] text-ink3/50 mb-1 uppercase tracking-[.08em]">Publicidad</p>
-              <AdUnit slot="0987654321" format="horizontal" />
-            </div>
+            <AdUnit slot="0987654321" format="horizontal" className="mt-10" />
 
             {/* More articles grid — mobile TOC + related */}
             {moreArticles.length > 0 && (

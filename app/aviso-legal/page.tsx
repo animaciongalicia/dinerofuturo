@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/aviso-legal') },
   title: 'Aviso Legal',
   description: 'Información legal sobre Dinero Futuro: titular, objeto del sitio, propiedad intelectual y responsabilidades.',
 }

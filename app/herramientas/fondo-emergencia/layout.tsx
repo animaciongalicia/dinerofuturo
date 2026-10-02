@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import ToolSchema from '@/components/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Calculadora del fondo de emergencia: cuánto necesitas exactamente',
@@ -21,5 +22,10 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      <ToolSchema name="Calculadora del fondo de emergencia" description="Calcula tu fondo de emergencia según tus gastos reales y situación laboral. Sin fórmulas genéricas." path="/herramientas/fondo-emergencia" />
+      {children}
+    </>
+  )
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { siteUrl } from '@/lib/utils'
+import ToolSchema from '@/components/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Calculadora de objetivo de ahorro: cuánto ahorrar cada mes',
@@ -21,5 +22,10 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      <ToolSchema name="Calculadora de objetivo de ahorro" description="Cuánto tienes que ahorrar cada mes para alcanzar tu meta financiera, con y sin rentabilidad." path="/herramientas/objetivo-ahorro" />
+      {children}
+    </>
+  )
 }

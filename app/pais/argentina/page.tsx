@@ -7,8 +7,12 @@ export const metadata: Metadata = {
   title: 'Finanzas personales en Argentina: cómo cuidar tu guita con inflación y todo',
   description:
     'Guía financiera para Argentina: CEDEARs, dólar MEP, cuentas remuneradas, cómo protegerse de la inflación y qué hacer con los ahorros en pesos. Sin verso.',
-  alternates: { canonical: siteUrl('/pais/argentina') },
+  alternates: {
+    canonical: siteUrl('/pais/argentina'),
+    languages: { 'es-AR': siteUrl('/pais/argentina') },
+  },
   openGraph: {
+    locale: 'es_AR',
     title: 'Finanzas personales en Argentina — Dinero Futuro',
     description: 'Cómo cuidar tu guita en Argentina, con inflación y todo.',
     type: 'website',

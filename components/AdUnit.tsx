@@ -14,14 +14,17 @@ export default function AdUnit({ slot, format = 'rectangle', className = '' }: A
     format === 'vertical'   ? 'h-96 w-full' :
                               'h-64 w-full'
 
-  // Dev placeholder
-  if (process.env.NODE_ENV === 'development' || !ADSENSE_ID) {
+  // Placeholder visible solo en desarrollo (con o sin ID)
+  if (process.env.NODE_ENV === 'development') {
     return (
       <div className={`${sizeClass} ${className} bg-gray-100 border border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 text-xs`}>
         Espacio publicitario ({format})
       </div>
     )
   }
+
+  // Producción sin ID de AdSense: no pintamos nada
+  if (!ADSENSE_ID) return null
 
   return (
     <div className={className}>

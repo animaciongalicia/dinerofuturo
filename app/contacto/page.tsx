@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/utils'
 
 export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/contacto') },
   title: 'Contacto — Dinero Futuro',
   description: 'Escríbenos para cualquier consulta, corrección o sugerencia.',
 }

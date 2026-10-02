@@ -32,6 +32,7 @@ function readArticle(filename: string): Article {
     fecha:     data.fecha     as string,
     nivel:     data.nivel     as 0 | 1 | 2 | 3,
     categoria: data.categoria as Article['categoria'],
+    pais:      data.pais      as Article['pais'],
     resuelve:  data.resuelve  as string,
     extracto:  data.extracto  as string,
     lectura:   calcReadingTime(content),   // calculado, ignora frontmatter
