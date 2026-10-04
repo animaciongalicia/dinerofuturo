@@ -11,7 +11,7 @@ export default function AvisoLegalPage() {
   return (
     <div className="max-w-[740px] mx-auto px-7 py-14">
       <h1 className="font-fraunces text-[38px] font-black text-ink tracking-[-0.5px] mb-2">Aviso legal</h1>
-      <p className="text-[13px] text-ink3 mb-10">Última actualización: marzo 2026</p>
+      <p className="text-[13px] text-ink3 mb-10">Última actualización: octubre 2026</p>
 
       <div className="prose prose-base max-w-none prose-headings:font-fraunces prose-headings:text-ink prose-headings:tracking-tight prose-h2:text-[22px] prose-h2:font-bold prose-h2:mt-8 prose-p:text-ink2 prose-p:leading-[1.75]">
 
@@ -20,14 +20,11 @@ export default function AvisoLegalPage() {
           En cumplimiento de lo establecido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que este sitio web, accesible bajo el dominio <strong>dinerofuturo.online</strong> (en adelante, "el Sitio"), es titularidad de:
         </p>
         <ul>
-          <li><strong>Nombre / Razón social:</strong> [NOMBRE DEL TITULAR]</li>
-          <li><strong>NIF/CIF:</strong> [NIF]</li>
-          <li><strong>Domicilio:</strong> [DIRECCIÓN]</li>
+          <li><strong>Nombre / Razón social:</strong> INVERSIONES SHISO, S.L.</li>
+          <li><strong>NIF/CIF:</strong> B70319223</li>
+          <li><strong>Domicilio:</strong> Ronda de Montealto, 4, 5.º A, 15002 A Coruña (España)</li>
           <li><strong>Email de contacto:</strong> hola@dinerofuturo.online</li>
         </ul>
-        <p className="text-[13px] text-ink3 italic">
-          Completa estos datos antes de publicar el sitio. Son obligatorios por la LSSI-CE española.
-        </p>
 
         <h2>2. Objeto del sitio web</h2>
         <p>
