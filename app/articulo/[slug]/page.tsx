@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation'
 import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
 import { seoTitle, seoDescription, extractFaq } from '@/lib/seo'
 import { PAIS_HREFLANG, PAIS_OG_LOCALE } from '@/lib/locale'
-import { AUTHOR } from '@/lib/site'
+import { AUTHOR, authorOrganization } from '@/lib/site'
 import { buildTargets, autoLink } from '@/lib/autolink'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
@@ -145,7 +145,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     datePublished: article.fecha,
     dateModified: article.fecha,
     inLanguage: article.pais ? PAIS_HREFLANG[article.pais] : 'es',
-    author: { '@type': 'Organization', name: AUTHOR.name, url: AUTHOR.url },
+    author: authorOrganization(siteUrl('/sobre')),
     educationalLevel: `Nivel ${article.nivel}`,
     about: { '@type': 'Thing', name: CATEGORIA_LABEL[article.categoria] ?? article.categoria },
     publisher: {

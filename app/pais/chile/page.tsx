@@ -65,7 +65,7 @@ const SOLUCIONES = [
       'Paga mínimo en todas menos en la de mayor tasa — ahí metes todo',
       'Una vez pagadas: córtalas o úsalas solo si pagas el total cada mes',
     ],
-    link: '/articulo/deudas-como-salir-por-donde-empezar',
+    link: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso',
     linkLabel: 'Cómo salir de deudas →',
   },
   {
@@ -166,7 +166,7 @@ const ARTICULOS = [
   { href: '/articulo/que-es-el-interes-compuesto-ejemplos-reales', label: 'Interés compuesto: ejemplos reales' },
   { href: '/articulo/que-es-un-etf-y-como-funciona', label: 'Qué es un ETF y cómo funciona' },
   { href: '/articulo/como-empezar-a-invertir-desde-cero', label: 'Cómo empezar a invertir desde cero' },
-  { href: '/articulo/deudas-como-salir-por-donde-empezar', label: 'Deudas: cómo salir y por dónde empezar' },
+  { href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', label: 'Deudas: cómo salir y por dónde empezar' },
   { href: '/articulo/cartera-inversion-principiantes-modelo', label: 'Cartera de inversión para principiantes' },
   { href: '/articulo/diferencia-entre-ahorrar-e-invertir', label: 'La diferencia entre ahorrar e invertir' },
 ]

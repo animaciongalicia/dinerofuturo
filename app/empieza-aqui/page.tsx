@@ -38,7 +38,7 @@ const PASOS = [
     bgColor: 'bg-red-50',
     desc: 'Si tienes deudas con intereses por encima del 7-8% (tarjeta de crédito, préstamos de consumo), atacarlas es la inversión con mayor rentabilidad garantizada que puedes hacer. Ningún ETF te da un 25% sin riesgo.',
     acciones: [
-      { label: 'Cómo salir de deudas: por dónde empezar', href: '/articulo/deudas-como-salir-por-donde-empezar', destacado: true },
+      { label: 'Cómo salir de deudas: por dónde empezar', href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', destacado: true },
       { label: 'Primer sueldo: qué hacer con tu dinero', href: '/articulo/primer-sueldo-que-hacer-con-tu-dinero' },
     ],
   },
@@ -91,7 +91,7 @@ const CONCEPTOS = [
   { label: 'Qué es un ETF', href: '/articulo/que-es-un-etf-y-como-funciona', desc: 'El vehículo de inversión más eficiente para la mayoría de personas' },
   { label: 'Ahorrar vs invertir', href: '/articulo/diferencia-entre-ahorrar-e-invertir', desc: 'Son cosas distintas y confundirlas cuesta dinero' },
   { label: 'Fondo de emergencia', href: '/articulo/fondo-de-emergencia-cuanto-necesitas', desc: 'El requisito previo a cualquier inversión' },
-  { label: 'Cómo salir de deudas', href: '/articulo/deudas-como-salir-por-donde-empezar', desc: 'El orden correcto para atacar las deudas sin agobiarte' },
+  { label: 'Cómo salir de deudas', href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', desc: 'El orden correcto para atacar las deudas sin agobiarte' },
 ]
 
 const HERRAMIENTAS = [

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
+import { siteUrl } from '@/lib/utils'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dinerofuturo.online'
+const SITE_URL = siteUrl().replace(/\/$/, '')
 
 // Rastreadores de buscadores con IA y asistentes. Declararlos explícitamente evita
 // ambigüedades; para bloquear alguno basta con moverlo a `disallow`.
