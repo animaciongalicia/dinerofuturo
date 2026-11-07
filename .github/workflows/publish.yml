@@ -1,9 +1,10 @@
-name: Artículo diario
+name: Artículo (2 por semana, desde la cola)
 
 on:
   schedule:
-    # Cada día a las 07:00 UTC (09:00 España, 02:00 CDMX)
-    - cron: '0 7 * * *'
+    # Martes y viernes a las 07:00 UTC (08:00 España, 01:00 CDMX).
+    # Solo publica lo que esté 'pending' en content/queue.json: si la cola está vacía, no hace nada.
+    - cron: '0 7 * * 2,5'
   # También se puede lanzar a mano desde Actions → Run workflow
   workflow_dispatch:
 
@@ -30,7 +31,7 @@ jobs:
       - name: Instalar dependencias del script
         run: npm install @anthropic-ai/sdk gray-matter
 
-      - name: Generar artículo con Claude
+      - name: Generar el siguiente artículo de la cola con Claude
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node scripts/generate-article.mjs
+        run: node scripts/generate-from-queue.mjs

@@ -3,7 +3,7 @@
     "version": "2.0",
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
-    "publicacion": "1 artículo por día vía GitHub Actions",
+    "publicacion": "2 artículos por semana (martes y viernes) vía GitHub Actions, solo desde esta cola",
     "ultima_actualizacion": "2026-05-30",
     "pending": 0
   },

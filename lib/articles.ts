@@ -38,6 +38,7 @@ function readArticle(filename: string): Article {
     lectura:   calcReadingTime(content),   // calculado, ignora frontmatter
     destacado: data.destacado as boolean | undefined,
     nuevo:     data.nuevo     as boolean | undefined,
+    noindex:   data.noindex === true ? true : undefined,
     content,
   }
 }
@@ -59,14 +60,19 @@ export function getArticleBySlug(slug: string): Article {
   return readArticle(filename)
 }
 
+/** Artículos que se ofrecen a buscadores y asistentes de IA (sin los marcados noindex) */
+export function getIndexableArticles(): Article[] {
+  return getAllArticles().filter(a => !a.noindex)
+}
+
 export function getFeaturedArticles(n = 2): Article[] {
-  const all = getAllArticles()
+  const all = getIndexableArticles()
   const featured = all.filter(a => a.destacado)
   return featured.length >= n ? featured.slice(0, n) : all.slice(0, n)
 }
 
 export function getFeaturedArticle(): Article {
-  const all = getAllArticles()
+  const all = getIndexableArticles()
   return all.find(a => a.destacado) ?? all[0]
 }
 
@@ -79,5 +85,5 @@ export function getArticlesByCategoria(categoria: string): Article[] {
 }
 
 export function getRecentArticles(n: number): Article[] {
-  return getAllArticles().slice(0, n)
+  return getIndexableArticles().slice(0, n)
 }

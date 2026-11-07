@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getAllArticles } from '@/lib/articles'
+import { getIndexableArticles } from '@/lib/articles'
 import { siteUrl } from '@/lib/utils'
 import type { Article } from '@/lib/types'
 
@@ -47,7 +47,7 @@ const ESTATICAS = [
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const articles = getAllArticles()
+  const articles = getIndexableArticles()
   // Fecha real del último contenido publicado (no "ahora": Google ignora lastmod poco fiable)
   const now = articles.length ? new Date(articles[0].fecha) : new Date()
 
