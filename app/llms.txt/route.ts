@@ -1,4 +1,4 @@
-import { getAllArticles } from '@/lib/articles'
+import { getIndexableArticles } from '@/lib/articles'
 import { siteUrl } from '@/lib/utils'
 
 // Se genera en build: el recuento y los enlaces siempre coinciden con el contenido real
@@ -18,7 +18,7 @@ const CATEGORIAS: Array<[string, string]> = [
 ]
 
 export function GET() {
-  const articles = getAllArticles()
+  const articles = getIndexableArticles()
   const u = (p: string) => siteUrl(p)
 
   const porCategoria = CATEGORIAS.map(([slug, label]) => {

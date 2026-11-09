@@ -1,11 +1,11 @@
-import { getAllArticles } from '@/lib/articles'
+import { getIndexableArticles } from '@/lib/articles'
 import { siteUrl } from '@/lib/utils'
 
 // Texto completo de todos los artículos en Markdown plano, para que un modelo lo lea de una vez
 export const dynamic = 'force-static'
 
 export function GET() {
-  const articles = getAllArticles()
+  const articles = getIndexableArticles()
 
   const body = [
     '# Dinero Futuro — contenido completo',

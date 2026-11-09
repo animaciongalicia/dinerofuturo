@@ -155,7 +155,7 @@ export default function ObjetivoAhorroPage() {
         </div>
 
         <div className="flex gap-4 flex-wrap">
-          <Link href="/articulo/como-ahorrar-dinero-cuando-no-te-alcanza" className="inline-flex items-center gap-2 bg-forest text-white px-5 py-3 rounded-xl text-[14px] font-semibold hover:bg-moss transition-colors">
+          <Link href="/articulo/como-ahorrar-dinero-cuando-ganas-poco" className="inline-flex items-center gap-2 bg-forest text-white px-5 py-3 rounded-xl text-[14px] font-semibold hover:bg-moss transition-colors">
             Cómo ahorrar si no te alcanza →
           </Link>
           <Link href="/articulo/diferencia-entre-ahorrar-e-invertir" className="inline-flex items-center gap-2 bg-cream border border-border text-ink px-5 py-3 rounded-xl text-[14px] font-medium hover:border-sage transition-colors">

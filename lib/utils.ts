@@ -35,7 +35,13 @@ export function readingTime(source: string): number {
 }
 
 /** Absolute site URL helper */
+const CANONICAL_ORIGIN = 'https://www.dinerofuturo.online'
+
 export function siteUrl(path = ''): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dinerofuturo.online'
+  // La variable de entorno solo se respeta si ya apunta al dominio canónico (www) o a localhost.
+  // Cualquier otro valor (p. ej. el dominio sin www) se ignora para no volver a generar
+  // canonicals, sitemap o robots hacia una URL que redirige.
+  const env = process.env.NEXT_PUBLIC_SITE_URL
+  const base = env && /^(https:\/\/www\.dinerofuturo\.online|http:\/\/localhost(:\d+)?)\/?$/.test(env) ? env : CANONICAL_ORIGIN
   return base.replace(/\/$/, '') + (path.startsWith('/') ? path : `/${path}`)
 }

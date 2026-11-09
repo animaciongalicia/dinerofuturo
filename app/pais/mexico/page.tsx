@@ -79,7 +79,7 @@ const SOLUCIONES = [
       'Paga primero la de interés más alto mientras das el mínimo en las demás',
       'Nunca saques un préstamo personal para pagar otra deuda (salvo tasa mucho menor)',
     ],
-    link: '/articulo/deudas-como-salir-por-donde-empezar',
+    link: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso',
     linkLabel: 'Cómo salir de deudas →',
   },
   {
@@ -179,7 +179,7 @@ const ARTICULOS = [
   { href: '/articulo/diferencia-entre-ahorrar-e-invertir', label: 'La diferencia entre ahorrar e invertir' },
   { href: '/articulo/como-empezar-a-invertir-desde-cero', label: 'Cómo empezar a invertir desde cero' },
   { href: '/articulo/fondo-de-emergencia-cuanto-necesitas', label: 'Fondo de emergencia: cuánto necesitas' },
-  { href: '/articulo/deudas-como-salir-por-donde-empezar', label: 'Deudas: cómo salir y por dónde empezar' },
+  { href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', label: 'Deudas: cómo salir y por dónde empezar' },
   { href: '/articulo/primer-sueldo-que-hacer-con-tu-dinero', label: 'Primer sueldo: qué hacer con tu dinero' },
 ]
 

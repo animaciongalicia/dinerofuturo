@@ -11,6 +11,7 @@ export type Article = {
   lectura: number         // minutos de lectura
   destacado?: boolean
   nuevo?: boolean
+  noindex?: boolean       // true → meta noindex, fuera de sitemap, llms.txt, RSS y enlazado automático
   pais?: 'espana' | 'mexico' | 'colombia' | 'argentina' | 'chile'
   content?: string
 }

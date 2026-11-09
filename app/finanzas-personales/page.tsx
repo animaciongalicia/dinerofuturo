@@ -50,8 +50,8 @@ const ARTICULOS = [
 const OTRAS_GUIAS = [
   { href: '/articulo/como-hacer-un-presupuesto-personal-que-funcione', label: 'Cómo hacer un presupuesto personal que funcione' },
   { href: '/articulo/fondo-de-emergencia-cuanto-necesitas', label: 'Fondo de emergencia: cuánto necesitas exactamente tú' },
-  { href: '/articulo/deudas-como-salir-por-donde-empezar', label: 'Deudas: cómo salir y por dónde empezar' },
-  { href: '/articulo/como-ahorrar-dinero-cuando-no-te-alcanza', label: 'Cómo ahorrar dinero cuando no te alcanza' },
+  { href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', label: 'Deudas: cómo salir y por dónde empezar' },
+  { href: '/articulo/como-ahorrar-dinero-cuando-ganas-poco', label: 'Cómo ahorrar dinero cuando no te alcanza' },
   { href: '/articulo/primer-sueldo-que-hacer-con-tu-dinero', label: 'Primer sueldo: qué hacer con tu dinero' },
   { href: '/herramientas/objetivo-ahorro', label: 'Calculadora de objetivo de ahorro' },
 ]

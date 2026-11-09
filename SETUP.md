@@ -89,23 +89,22 @@ Cada push a `main` redespliega automáticamente.
 
 ---
 
-## 6. Publicación automática diaria
+## 6. Publicación automática (2 por semana, desde la cola)
 
-El workflow `.github/workflows/publish.yml` se ejecuta cada día a las 07:00 UTC.
+El workflow `.github/workflows/publish.yml` se ejecuta los **martes y viernes a las 07:00 UTC** y publica únicamente lo que esté en la cola editorial `content/queue.json` con `status: "pending"`. Si no hay nada pendiente, termina sin hacer nada.
 
 **Cómo funciona:**
 1. GitHub clona el repo
 2. Instala `@anthropic-ai/sdk` y `gray-matter`
-3. Ejecuta `scripts/generate-article.mjs` que:
-   - Lee los artículos existentes para no repetir temas
-   - Calcula el siguiente nivel (rota 0→1→2→3→0) y categoría
-   - Llama a Claude para generar el artículo completo
-   - Guarda el archivo `.mdx`
+3. Ejecuta `scripts/generate-from-queue.mjs` que:
+   - Elige el item `pending` con mayor prioridad de `content/queue.json`
+   - Llama a Claude con su keyword, dolor del lector y enlaces internos sugeridos
+   - Guarda el archivo `.mdx` y marca el item como `published`
    - Hace `git push origin main`
 4. El push a main dispara el redeploy de Vercel automáticamente
 
 **Para lanzarlo manualmente:**
-GitHub → Actions → "Artículo diario" → **Run workflow**
+GitHub → Actions → "Artículo (2 por semana, desde la cola)" → **Run workflow**
 
 **Para pausarlo:**
 Comenta o elimina el bloque `schedule:` en `publish.yml`
@@ -159,8 +158,8 @@ Los suscriptores pueden añadirlo a cualquier lector RSS (Feedly, NetNewsWire, R
 ## 9. Estructura rápida de archivos clave
 
 ```
-scripts/generate-article.mjs   ← script de auto-publicación
-.github/workflows/publish.yml  ← cron diario 07:00 UTC
+scripts/generate-from-queue.mjs ← auto-publicación desde la cola (generate-article.mjs ya no se usa)
+.github/workflows/publish.yml  ← cron martes y viernes 07:00 UTC (desde la cola)
 app/api/subscribe/route.ts     ← endpoint captura de emails
 app/feed.xml/route.ts          ← feed RSS dinámico
 content/articulos/             ← aquí viven los artículos .mdx

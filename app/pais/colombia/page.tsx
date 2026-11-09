@@ -79,7 +79,7 @@ const SOLUCIONES = [
       'Método: paga el mínimo en todas y ataca con todo la de mayor tasa',
       'Cuando pagues una, ese dinero va a atacar la siguiente',
     ],
-    link: '/articulo/deudas-como-salir-por-donde-empezar',
+    link: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso',
     linkLabel: 'Cómo salir de deudas →',
   },
   {

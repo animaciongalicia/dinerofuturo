@@ -153,7 +153,7 @@ function buildPlan(a: FilledAnswers): Plan {
         'Destina el máximo posible a la primera de la lista; paga el mínimo en el resto',
       ],
       tiempo: 'Empieza esta semana',
-      link: { href: '/articulo/deudas-como-salir-por-donde-empezar', label: 'Guía completa para salir de deudas →' },
+      link: { href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', label: 'Guía completa para salir de deudas →' },
     })
   }
 
@@ -455,7 +455,7 @@ function buildPlan(a: FilledAnswers): Plan {
   const articles: RecommendedArticle[] = []
 
   if (a.deuda === 'deudas_caras') {
-    articles.push({ href: '/articulo/deudas-como-salir-por-donde-empezar', label: 'Cómo salir de las deudas: método avalanche y snowball', desc: 'Los dos métodos más eficaces para eliminar deudas y cuándo usar cada uno' })
+    articles.push({ href: '/articulo/como-salir-de-deudas-rapido-plan-paso-a-paso', label: 'Cómo salir de las deudas: método avalanche y snowball', desc: 'Los dos métodos más eficaces para eliminar deudas y cuándo usar cada uno' })
   }
   articles.push({ href: '/herramientas/fondo-emergencia', label: 'Calculadora de fondo de emergencia', desc: 'Calcula exactamente cuánto necesitas según tus gastos reales' })
   if (a.objetivo === 'comprar_piso') {

@@ -25,6 +25,7 @@ import { execSync } from 'child_process'
 import { fileURLToPath } from 'url'
 import Anthropic from '@anthropic-ai/sdk'
 import matter from 'gray-matter'
+import { explainFatal } from './api-error.mjs'
 
 const __dirname    = path.dirname(fileURLToPath(import.meta.url))
 const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articulos')
@@ -113,11 +114,15 @@ async function generateWithClaude(item, existingArticles) {
   const systemPrompt = `Eres un escritor experto en educación financiera para toda la hispanosfera: España, México, Argentina, Colombia, Chile y el resto de América Latina.
 
 AUDIENCIA Y GEOGRAFÍA:
-- Escribe en español neutro, válido para TODA la hispanosfera
-- Evita referencias exclusivas a un solo país salvo que el artículo sea específico de un país (indicado en el brief)
-- Cuando hagas referencia a productos o normativas locales, menciona alternativas de otros países
-- Ejemplos numéricos sin símbolo de moneda específico (ej: "si ganas 2.000 al mes")
+- Escribe en español claro. Si el brief indica PAÍS ESPECÍFICO, escribe para ese país: moneda local, instituciones, productos y normativa de ese país, vocabulario local, y nombra el país en el título, en el primer párrafo y en al menos un H2
+- Si NO hay país específico (alcance universal): español neutro, sin símbolo de moneda concreto (ej: "si ganas 2.000 al mes") y alternativas de otros países cuando menciones productos locales
 - Los dolores financieros son universales: deudas, ahorro, inversión, vivienda, jubilación
+
+RIGOR (contenido financiero, el lector toma decisiones con su dinero):
+- NO inventes cifras, tasas de interés, importes máximos, porcentajes de impuestos, fechas, requisitos legales, estudios ni citas. Si un dato concreto puede cambiar o no estás seguro de él, explica el mecanismo y usa ejemplos claramente etiquetados como "ejemplo ilustrativo" con números redondos y hipotéticos, y remite a la fuente oficial para comprobar el dato vigente
+- No prometas rentabilidades ni uses "garantizado", "seguro" o "sin riesgo" salvo que sea literalmente cierto y lo expliques
+- Es contenido educativo, no asesoramiento financiero personalizado
+- Termina con una sección "## Fuentes oficiales donde comprobarlo" que nombre las instituciones o entidades reguladoras relevantes del país (sin inventar enlaces)
 
 ESTILO OBLIGATORIO:
 - Lenguaje de la calle, como si se lo explicaras a un amigo en un bar
@@ -131,8 +136,11 @@ SEO — REGLAS CRÍTICAS:
 - La keyword principal debe aparecer de forma natural en el primer párrafo y en al menos 2 H2
 - Variaciones de la keyword en el texto (no repetir exactamente siempre)
 - Mínimo ${item.palabras_min} palabras de contenido real (sin frontmatter)
-- Incluir una tabla comparativa o lista estructurada cuando aporte valor
-- Terminar con una sección "Lo que puedes hacer hoy" o "Tu próximo paso" con acción concreta
+- Empieza con un párrafo de RESPUESTA DIRECTA de 40-60 palabras a la búsqueda del lector (lo que un buscador o un asistente de IA citaría tal cual), antes de desarrollar
+- Incluir al menos una tabla comparativa o lista estructurada
+- Incluir una sección "## Preguntas frecuentes" con 3-5 preguntas como encabezados H3 que terminen en "?", cada una con una respuesta de 2-3 frases completas (que se entienda sin leer el resto)
+- Cuando un H2 sea una pregunta, responde en su primera frase
+- Terminar con una sección "Lo que puedes hacer hoy" o "Tu próximo paso" con acción concreta (antes de "Fuentes oficiales")
 
 INTERLINKING OBLIGATORIO:
 - Incluir entre 4 y 7 enlaces internos usando la sintaxis Markdown: [texto del link](/articulo/slug)
@@ -164,7 +172,7 @@ ${existingTitles}
 Devuelve ÚNICAMENTE el MDX con este frontmatter exacto (sin texto antes ni después):
 
 ---
-title: "TÍTULO DIRECTO CON LA PALABRA CLAVE AL PRINCIPIO — MÁXIMO 60 CARACTERES"
+title: "TÍTULO DIRECTO CON LA PALABRA CLAVE AL PRINCIPIO (Y EL PAÍS SI ES ESPECÍFICO) — MÁXIMO 60 CARACTERES"
 slug: "${item.slug}"
 fecha: "${today()}"
 nivel: ${item.nivel}
@@ -318,6 +326,6 @@ async function main() {
 }
 
 main().catch(err => {
-  console.error('❌ Error fatal:', err)
+  explainFatal(err)
   process.exit(1)
 })

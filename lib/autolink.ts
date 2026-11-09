@@ -66,7 +66,8 @@ const BAD_ANCHOR = /[,()\d]|\bvs\b|\bvs\.|\by\b.*\by\b/i
 
 /** Construye el diccionario frase → URL. Los temas troncales van primero; las frases
  *  derivadas de títulos se descartan si son ambiguas (varios artículos) para no canibalizar. */
-export function buildTargets(articles: Article[]): LinkTarget[] {
+export function buildTargets(all: Article[]): LinkTarget[] {
+  const articles = all.filter(a => !a.noindex)
   const slugs = new Set(articles.map(a => a.slug))
   const curated: LinkTarget[] = CURATED
     .filter(([, slug]) => slugs.has(slug))

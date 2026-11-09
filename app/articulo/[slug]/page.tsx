@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation'
 import { extractHeadings, headingToId, siteUrl } from '@/lib/utils'
 import { seoTitle, seoDescription, extractFaq } from '@/lib/seo'
 import { PAIS_HREFLANG, PAIS_OG_LOCALE } from '@/lib/locale'
-import { AUTHOR } from '@/lib/site'
+import { AUTHOR, authorOrganization } from '@/lib/site'
 import { buildTargets, autoLink } from '@/lib/autolink'
 import ArticleSidebar from '@/components/ArticleSidebar'
 import ShareButtons from '@/components/ShareButtons'
@@ -36,6 +36,8 @@ export async function generateMetadata({
 
   return {
     // absolute: evita sumar el sufijo de marca y pasarnos de 60 caracteres
+    // noindex por artículo (sin demanda de búsqueda): se mantiene accesible pero fuera del índice
+    ...(article.noindex ? { robots: { index: false, follow: true } } : {}),
     title: { absolute: seoTitle(article.title) },
     description: seoDescription(article.extracto),
 
@@ -121,8 +123,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   // Sidebar data
   const headings  = extractHeadings(article.content ?? '')
   // Relacionados: primero misma categoría (relevancia temática), luego mismo nivel
-  const sameNivel = getArticlesByNivel(article.nivel).filter(a => a.slug !== article.slug)
-  const sameCat   = getAllArticles().filter(a => a.slug !== article.slug && a.categoria === article.categoria)
+  const sameNivel = getArticlesByNivel(article.nivel).filter(a => a.slug !== article.slug && !a.noindex)
+  const sameCat   = getAllArticles().filter(a => a.slug !== article.slug && !a.noindex && a.categoria === article.categoria)
   const related   = [...sameCat, ...sameNivel.filter(a => !sameCat.includes(a))].slice(0, 3)
 
   // Prev / next navigation (articles sorted newest first)
@@ -145,7 +147,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     datePublished: article.fecha,
     dateModified: article.fecha,
     inLanguage: article.pais ? PAIS_HREFLANG[article.pais] : 'es',
-    author: { '@type': 'Organization', name: AUTHOR.name, url: AUTHOR.url },
+    author: authorOrganization(siteUrl('/sobre')),
     educationalLevel: `Nivel ${article.nivel}`,
     about: { '@type': 'Thing', name: CATEGORIA_LABEL[article.categoria] ?? article.categoria },
     publisher: {

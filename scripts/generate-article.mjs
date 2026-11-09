@@ -21,6 +21,7 @@ import { execSync } from 'child_process'
 import { fileURLToPath } from 'url'
 import Anthropic from '@anthropic-ai/sdk'
 import matter from 'gray-matter'
+import { explainFatal } from './api-error.mjs'
 
 const __dirname    = path.dirname(fileURLToPath(import.meta.url))
 const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articulos')
@@ -282,6 +283,6 @@ async function main() {
 }
 
 main().catch(err => {
-  console.error('❌ Error fatal:', err)
+  explainFatal(err)
   process.exit(1)
 })
