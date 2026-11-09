@@ -20,6 +20,7 @@ export const TOOL_TARGETS: LinkTarget[] = [
   { phrase: 'calculadora del fondo de emergencia', href: '/herramientas/fondo-emergencia' },
   { phrase: 'calculadora de fondo de emergencia', href: '/herramientas/fondo-emergencia' },
   { phrase: 'número FIRE', href: '/herramientas/numero-fire' },
+  { phrase: 'calculadora de jubilación', href: '/herramientas/calculadora-jubilacion' },
   { phrase: 'calculadora de objetivo de ahorro', href: '/herramientas/objetivo-ahorro' },
 ]
 

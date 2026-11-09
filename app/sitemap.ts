@@ -25,6 +25,7 @@ const HERRAMIENTAS = [
   '/herramientas/calculadora-hipoteca',
   '/herramientas/objetivo-ahorro',
   '/herramientas/numero-fire',
+  '/herramientas/calculadora-jubilacion',
 ]
 
 const PERFILES = [

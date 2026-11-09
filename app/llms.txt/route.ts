@@ -58,6 +58,7 @@ Dinero Futuro es un blog de finanzas personales para personas sin formación fin
 - [Calculadora de hipoteca](${u('/herramientas/calculadora-hipoteca')})
 - [Calculadora de objetivo de ahorro](${u('/herramientas/objetivo-ahorro')})
 - [Calculadora de número FIRE](${u('/herramientas/numero-fire')})
+- [Calculadora de jubilación](${u('/herramientas/calculadora-jubilacion')})
 
 ## Perfiles de inversor
 

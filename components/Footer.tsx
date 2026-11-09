@@ -18,6 +18,7 @@ const columns = [
       { label: 'Calculadora hipoteca', href: '/herramientas/calculadora-hipoteca' },
       { label: 'Fondo de emergencia', href: '/herramientas/fondo-emergencia' },
       { label: 'Número FIRE', href: '/herramientas/numero-fire' },
+      { label: 'Calculadora jubilación', href: '/herramientas/calculadora-jubilacion' },
       { label: 'Comparativa brókers', href: '/categoria/comparativa' },
     ],
   },

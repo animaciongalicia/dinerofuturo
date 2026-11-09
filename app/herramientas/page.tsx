@@ -6,7 +6,7 @@ import Sidebar from '@/components/Sidebar'
 export const metadata: Metadata = {
   title: 'Herramientas financieras gratuitas',
   description:
-    'Calculadoras gratuitas de interés compuesto, hipoteca, fondo de emergencia, número FIRE y objetivo de ahorro. Sin registro. Sin email. Resultados al instante.',
+    'Calculadoras gratuitas de interés compuesto, hipoteca, fondo de emergencia, número FIRE, objetivo de ahorro y jubilación. Sin registro. Sin email. Resultados al instante.',
   alternates: { canonical: siteUrl('/herramientas') },
   openGraph: {
     title: 'Herramientas financieras gratuitas — Dinero Futuro',
@@ -67,6 +67,16 @@ const TOOLS = [
     color: 'bg-[#FEF2F2] border-red-200',
     icoColor: 'bg-red-100',
   },
+  {
+    href: '/herramientas/calculadora-jubilacion',
+    ico: '🏖️',
+    name: 'Calculadora de jubilación',
+    resuelve: '¿Cuánto necesito ahorrar al mes para jubilarme con tranquilidad?',
+    desc: 'Dinos cuánto quieres ingresar al jubilarte y cuánto esperas cobrar de pensión pública. La calculadora te dice el capital que necesitas el día que dejes de trabajar y cuánto ahorrar al mes desde hoy, en euros de hoy y teniendo en cuenta la inflación.',
+    cuando: 'Si tienes entre 25 y 60 años y quieres saber si vas bien de cara a la jubilación o cuánto te falta.',
+    color: 'bg-[#F5F3FF] border-violet-200',
+    icoColor: 'bg-violet-100',
+  },
 ]
 
 export default function HerramientasPage() {
@@ -83,7 +93,7 @@ export default function HerramientasPage() {
           Calcula antes de decidir
         </h1>
         <p className="text-[17px] text-ink2 leading-[1.7] max-w-[600px]">
-          Cinco calculadoras para tomar decisiones financieras con números reales.
+          Seis calculadoras para tomar decisiones financieras con números reales.
           Sin registro. Sin email. Sin publicidad intrusiva.
         </p>
       </div>

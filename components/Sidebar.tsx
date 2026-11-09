@@ -7,6 +7,7 @@ const TOOLS = [
   { href: '/herramientas/calculadora-hipoteca', label: 'Calculadora hipoteca', ico: '🏠' },
   { href: '/herramientas/objetivo-ahorro',      label: 'Objetivo de ahorro',   ico: '🎯' },
   { href: '/herramientas/numero-fire',          label: 'Número FIRE',          ico: '🔥' },
+  { href: '/herramientas/calculadora-jubilacion', label: 'Calculadora jubilación', ico: '🏖️' },
 ]
 
 const SECCIONES = [
