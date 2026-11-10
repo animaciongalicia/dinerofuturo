@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online. Criterio: demanda real (Semrush) y baja dificultad, sin duplicar pilares existentes.",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "2 artículos por semana (martes y viernes) vía GitHub Actions, solo desde esta cola",
-    "ultima_actualizacion": "2026-11-09",
-    "pending": 12
+    "ultima_actualizacion": "2026-11-10",
+    "pending": 11
   },
   "queue": [
     {
@@ -1226,10 +1226,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 10,
-      "status": "pending",
+      "status": "published",
       "notas": "ES · 9.900 búsquedas/mes, dificultad 22. Explicar el mecanismo (coeficientes reductores, periodo cotizado) sin citar cifras exactas que cambian; remitir a la Seguridad Social.",
-      "fecha_publicado": null,
-      "slug_real": null
+      "fecha_publicado": "2026-11-10",
+      "slug_real": "jubilacion-anticipada-requisitos-coste-cuando-conviene"
     },
     {
       "id": 42,
