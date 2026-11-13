@@ -4,8 +4,8 @@
     "descripcion": "Cola editorial de artículos planificados para dinerofuturo.online. Criterio: demanda real (Semrush) y baja dificultad, sin duplicar pilares existentes.",
     "criterios_prioridad": "10=máxima (alto volumen + baja competencia + alta intención), 1=mínima",
     "publicacion": "2 artículos por semana (martes y viernes) vía GitHub Actions, solo desde esta cola",
-    "ultima_actualizacion": "2026-11-10",
-    "pending": 11
+    "ultima_actualizacion": "2026-11-13",
+    "pending": 10
   },
   "queue": [
     {
@@ -1256,10 +1256,10 @@
       ],
       "palabras_min": 1400,
       "prioridad": 10,
-      "status": "pending",
+      "status": "published",
       "notas": "CO · 14.800 búsquedas/mes, dificultad 31. NO inventar tasas: guía de criterios (tasa efectiva anual vs nominal, plazo, monto mínimo, respaldo de Fogafín). La tabla de tasas vigentes la añade el equipo editorial a mano cada mes.",
-      "fecha_publicado": null,
-      "slug_real": null
+      "fecha_publicado": "2026-11-13",
+      "slug_real": "mejores-cdt-colombia-como-elegir"
     },
     {
       "id": 43,
